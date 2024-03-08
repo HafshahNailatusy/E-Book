@@ -118,50 +118,6 @@ exports.Login = async (request, response) => {
     }
 }
 
-//ini sebenernya buat ngecek doang si user uda login apa belum, ntar klo udah ada frontend nya baru keliatan fungsinya
-exports.LoginRegister = async (request, response) => {
-    const email = request.body.email //masukin username
-    let user = await userModel.findAll({
-        where: { role: "user", email: email } //cari data yang sesuai
-    })
-    if (user.length == 0) { //kalo misal ga ada, bikin akun baru
-        let newUser = {
-            nama: request.body.nama,
-            foto: request.body.linkFoto,
-            email: email, //emailnya pake yang udah dimasukin tadi
-            role: "user"
-        }
-        if (newUser.nama_user == "" || newUser.username == "") { //kalo ada yang kosong, harus diisi
-            return response.status(400).json({
-                success: false,
-                message: "isi semua om"
-            })
-        } else { //kalo udah keisi semua, lanjut
-            userModel
-                .create(newUser)
-                .then((result) => {
-                    return response.json({
-                        success: true,
-                        data: result,
-                        message: `New User has been inserted`,
-                    });
-                })
-                .catch((error) => {
-                    return response.json({
-                        success: false,
-                        message: error.message,
-                    });
-                });
-        }
-    } else { //klo ternyata udah ada dan udah login, muncul pesan ini
-        return response.json({
-            success: true,
-            data: user,
-            message: "user sudah ada dan berhasil login"
-        })
-    }
-}
-
 exports.addUser = (request, response) => { //hampir sama kayak register, tp klo ini yang bisa akses si admin
     upload(request, response, async error => {
         if (error) {
@@ -176,12 +132,12 @@ exports.addUser = (request, response) => { //hampir sama kayak register, tp klo 
             foto: request.file.filename,
             email: request.body.email,
             password: md5(request.body.password),
-            role: request.body.role
+            role: "user"
         }
 
         let user = await userModel.findAll({
             where: {
-                [Op.or]: [{ nama_user: newUser.nama_user }, { username: newUser.username }], //ngecek ada apa nggak usernya
+                [Op.or]: [{ nama: newUser.nama }], //ngecek ada apa nggak usernya
             },
         });
 
@@ -247,16 +203,16 @@ exports.updateUser = (request, response) => {
 
         let getId = await userModel.findAll({ //dicari usernya
             where: {
-                [Op.and]: [{ id: UserID }],
+                [Op.and]: [{ UserID: UserID }],
             },
         });
 
-        if (getId.length === 0) { //klo ga nemu
-            return response.status(400).json({
-                success: false,
-                message: "User dengan id tersebut tidak ada",
-            });
-        }
+        // if (getId.length === 0) { //klo ga nemu
+        //     return response.status(400).json({
+        //         success: false,
+        //         message: "User dengan id tersebut tidak ada",
+        //     });
+        // }
 
         let dataUser = { //data terbaru yang udah di update
             nama: request.body.nama,
@@ -268,7 +224,7 @@ exports.updateUser = (request, response) => {
 
         if (request.file) { //klo ternyata ganti foto
             const selectedUser = await userModel.findOne({ //dicari yag mau ganti foto
-                where: { id: UserID },
+                where: { UserID: UserID },
             });
 
             const oldFotoUser = selectedUser.foto;
@@ -297,11 +253,11 @@ exports.updateUser = (request, response) => {
         let user = await userModel.findAll({
             where: {
                 [Op.and]: [
-                    { id: { [Op.ne]: UserID } },
+                    { UserID: { [Op.ne]: UserID } },
                     {
                         [Op.or]: [
-                            { nama_user: dataUser.nama_user }, //cek, nama sama emailnya udah dipake orang lain apa belum
-                            { username: dataUser.username },
+                            { nama: dataUser.nama }, //cek, nama sama emailnya udah dipake orang lain apa belum
+                            { email: dataUser.email },
                         ],
                     },
                 ],
@@ -316,7 +272,7 @@ exports.updateUser = (request, response) => {
         }
 
         userModel
-            .update(dataUser, { where: { id: idUser } })
+            .update(dataUser, { where: { UserID: UserID  } })
             .then((result) => {
                 return response.json({
                     success: true,
@@ -348,16 +304,16 @@ exports.getAllUser = async (request, response) => {
 }
 
 exports.findUser = async (request, response) => {
-    let id = request.params.id;
-    if (!id) { //kalo ga masukin ID
-        return response.status.json({
+    let UserID = request.params.id;
+    if (!UserID) { //kalo ga masukin ID
+        return response.status(400).json({
             success: false,
             message: "masukkan id user di url",
         });
     } else { //dicari user yang sesuai id nya
         let user = await userModel.findOne({
             where: {
-                [Op.and]: [{ id: id }],
+                [Op.and]: [{ UserID: UserID }],
             },
         });
 
@@ -377,7 +333,7 @@ exports.findUser = async (request, response) => {
 }
 
 exports.findAllCustomer = async (request, response) => {
-    let user = await userModel.findAll({ where: { role: "customer" } }); //dicari yang role nya customer/user
+    let user = await userModel.findAll({ where: { role: "user" } }); //dicari yang role nya customer/user
     if (user.length === 0) { //klo ga ada
         return response.status(400).json({
             success: false,
@@ -394,7 +350,7 @@ exports.findAllCustomer = async (request, response) => {
 
 exports.findAllAdmin = async (request, response) => {
     let admin = await userModel.findAll({ where: { role: "admin" } }); //dicari yang role nya admin
-    if (user.length === 0) { //klo ga ada
+    if (admin.length === 0) { //klo ga ada
         return response.status(400).json({
             success: false,
             message: "no admin to show",
@@ -402,7 +358,7 @@ exports.findAllAdmin = async (request, response) => {
     } else { //kalo ada
         return response.json({
             success: true,
-            data: user,
+            data: admin,
             message: `All admin have been loaded`,
         });
     }
@@ -410,34 +366,27 @@ exports.findAllAdmin = async (request, response) => {
 
 exports.deleteUser = async (request, response) => {
     let UserID = request.params.id; //cari user berdasarkan ID
-    let getId = await userModel.findAll({
-        where: { //dicari 
-            [Op.and]: [{ id: UserID }],
-        },
+    let getId = await userModel.findOne({
+        where: 
+           { UserID: request.params.id }
+        
     });
 
-    if (getId.length === 0) { //kalo ga ada yang sesuai
-        return response.status(400).json({
-            success: false,
-            message: "User dengan id tersebut tidak ada",
-        });
-    }
-
-    const user = await userModel.findOne({ where: { id: UserID } }); //data sesuai id nya
+    const user = await userModel.findOne({ where: { UserID: UserID } }); //data sesuai id nya
     const oldFotoUser = user.foto; //foto lama
-    const patchFoto = path.join(__dirname, `../foto`, oldFotoUser); //dicari direktorinya dimana
+    const patchFoto = path.join(__dirname, `../image`, oldFotoUser); //dicari direktorinya dimana
 
     if (fs.existsSync(patchFoto)) {
         fs.unlink(patchFoto, (error) => console.log(error));
     }
 
     userModel
-        .destroy({ where: { id: UserID } })
+        .destroy({ where: { UserID: UserID } })
 
         .then((result) => {
             return response.json({
                 success: true,
-                message: `data user has ben delete where id :` + idUser,
+                message: `data user has ben delete where id :` + UserID,
             });
         })
         .catch((error) => {

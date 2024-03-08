@@ -35,7 +35,6 @@ exports.addDetailtransaksi = (request, response) => {
     let newDetailtransaksi = {
         TransaksiID: request.body.TransaksiID,
         BukuID: request.body.BukuID,
-        Qyt: request.body.Qyt
     }
 
     
@@ -59,7 +58,6 @@ exports.updateDetailtransaksi = (request, response) => {
     let dataDetailtransaksi = {
         TransaksiID: request.body.TransaksiID,
         BukuID: request.body.BukuID,
-        Qyt: request.body.Qyt
     }
 
     let DetailTraID = request.params.DetailTraID

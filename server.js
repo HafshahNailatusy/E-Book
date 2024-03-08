@@ -7,8 +7,6 @@ app.use(cors())
 
 const userRoute = require(`./routes/user.route`)
 app.use(`/user`, userRoute)
-const adminRoute = require(`./routes/admin.route`)
-app.use(`/admin`, adminRoute)
 const bookRoute = require(`./routes/book.route`)
 app.use(`/book`, bookRoute)
 const kategoriRoute = require(`./routes/kategori.route`)
