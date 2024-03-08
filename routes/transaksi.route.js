@@ -5,7 +5,7 @@ const transaksiController = require(`../controllers/transaksi.controller`)
 
 app.get("/", transaksiController.getAllTransaksi)
 app.get("/:find", transaksiController.findTransaksi)
-app.post("/", transaksiController.addTransaksi)
+app.post("/add", transaksiController.addTransaksi)
 app.put("/:id", transaksiController.updateTransaksi)
 app.delete("/:id", transaksiController.deleteTransaksi)
 

@@ -1,30 +1,30 @@
 const { request, response } = require("express")
+const transaksi = require("../models/transaksi")
 
+const userModel = require("../models/index").user
+const bookModel = require("../models/index").book
+const transaksiModel = require("../models/index").transaksi
+const detailmodel = require('../models/index').detailtransaksi
+const Op = require(sequelize).Op
 
-const transaksiModel = require(`../models/index`).transaksi
-const detailtransaksiModel = require (`../models/index`).detailtransaksi
-const Op = require(`sequelize`).Op
-
-exports.getAllTransaksi = async(request, response) => {
-    let transaksis = await transaksiModel.findAll({
-        include:[
-            `user`, `admin`, {
-                model: detailtransaksiModel,
-                as: `detailtransaksi`,
-                include: ["book"]
-            }
-        ]
-    }) 
+exports.getAllTransaksi = async (request, response) => {
+    let transaksis = await transaksiModel.findAll()
+    if (transaksis.length === 0) {
+        return response.status(400).json({
+            success: false,
+            message: "no transaction to show",
+        });
+    }
     return response.json({
-        success: true, 
+        success: true,
         data: transaksis,
-        message: `All Transaksi have been loaded`
-    })    
+        message: "All Transaksi have been loaded"
+    })
 }
 
 exports.findTransaksi = async (request, response) => {
     let keyword = request.body.keyword
-    let transaksis = await transaksiModel.findAll({ 
+    let transaksis = await transaksiModel.findAll({
         where: {
             [Op.or]: [
                 { TransaksiID: { [Op.substring]: keyword } },
@@ -33,115 +33,114 @@ exports.findTransaksi = async (request, response) => {
                 { Total: { [Op.substring]: keyword } },
                 { MetodePay: { [Op.substring]: keyword } },
                 { Status: { [Op.substring]: keyword } },
-                { AdminID: { [Op.substring]: keyword } }
             ]
         }
     })
     return response.json({
-         success: true, 
-         data: transaksis,
-         message: `All Transaksi have been loaded`
+        success: true,
+        data: transaksis,
+        message: "All Transaksi have been loaded"
     })
 }
 
 exports.addTransaksi = async (request, response) => {
+    try {
+        const buku = await bookModel.findOne()
+        const harga = buku.harga //ambil harga
+        const user = await userModel.findOne()
+        const id = user.UserID //ambil id user
+        const idnyabuku = await bookModel.findOne()
+        const idbuku = idnyabuku.BookID //ambil id buku
+        const idtransaksi = await transaksiModel.findOne()
+        const idtrans = idtransaksi.TransaksiID //ambil id transaksi
+        const today = new Date()
+        const TglTransaksi = `${today.getFullYear()}-${today.getMonth() + 1}-
+        ${today.getDate()}${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`
 
-    let newTransaksi = {
-        TransaksiID: request.body.TransaksiID, 
+        let data = {
+            UserID: id,
+            TglTransaksi: TglTransaksi,
+            Qty: request.body.jumlah,
+            MetodePay: request.body.MetodePay,
+            total: (Qty * harga)
+        }
+
+        let detail = {
+            UserID: id,
+            BookID: idbuku,
+            TransaksiID: idtrans
+        }
+
+        const transaction = await sequelize.transaction();
+
+        try {
+            const hasiltransaksi = await transaksiModel.create(data, { transaction })
+            detail.TransaksiID = hasiltransaksi.TransaksiID;
+            detail.BookID = buku.BookID;
+            await detailmodel.create(detail, { transaction });
+            await transaction.commit(); //simpan transaksi
+
+            return response.json({
+                success: true,
+                data: transaksiResult,
+                message: "New transaksi has been inserted"
+            });
+
+        } catch (error) {
+            await transaction.rollback(); //transaksi di cancel
+            return response.json({
+                success: false,
+                message: error.message
+            });
+        }
+    } catch (error) {
+        return response.json({
+            success: false,
+            message: error.message
+        });
+    }
+}
+
+exports.updateTransaksi = async (request, response) => {
+    let TransaksiID = request.params.TransaksiID
+
+    let getId = await transaksiModel.findAll({ //dicari usernya
+        where: {
+            [Op.and]: [{ id: TransaksiID }],
+        },
+    });
+
+    if (getId.length === 0) { //klo ga nemu
+        return response.status(400).json({
+            success: false,
+            message: "transaksi dengan id tersebut tidak ada",
+        });
+    }
+    let dataTransaksi = {
+        TransaksiID: request.body.TransaksiID,
         UserID: request.body.UserID,
         TglTransaksi: request.body.TglTransaksi,
         Total: request.body.Total,
         MetodePay: request.body.MetodePay,
-        Status: request.body.Status,
-        AdminID: request.body.AdminID
     }
 
-    
-    transaksiModel.create(newTransaksi)
-    .then(result => {
+    if ( //kalo ada yang kosong
+        dataTransaksi.UserID === "" ||
+        dataTransaksi.MetodePay === "" ||
+        dataTransaksi.Total === ""
+    ) {
+        return response.status(400).json({
+            success: false,
+            message:
+                "Harus diisi semua.Kalau tidak ingin merubah, isi dengan value sebelumnya",
+        });
+    }
 
-        let detailtransaksi = request.body.detailtransaksi
-        detailtransaksiModel.bulkCreate(detailtransaksi)
+    transaksiModel.update(dataTransaksi, { where: { id: TransaksiID } })
         .then(result => {
             return response.json({
                 success: true,
-                message: `New Transaksi has been added`
-            })
-        })
-        .catch(error => {
-            return response.json({
-                success: false, 
-                message: error.message
-            })
-        })
-    })
-    .catch(error => {
-        return response.json({
-            success: false, 
-            message: error.message
-        })
-    })
-}
-
-exports.updateTransaksi = (request, response) => {
-    let dataTransaksi = {
-        TransaksiID: request.body.TransaksiID, 
-        UserID: request.body.UserID,
-        TglTransaksi: request.body.TglTransaksi,
-        Total: request.body.Total,
-        MetodePay: request.body.MetodePay,
-        Status: request.body.Status,
-        AdminID: request.body.AdminID
-    }
-
-    let TransaksiID = request.params.TransaksiID
- 
-    transaksiModel.update(dataTransaksi, { where: { TransaksiID: TransaksiID } })
-        .then(async result => {
-            await detailtransaksiModel.destroy(
-                {where: {TransaksiID: TransaksiID}}
-            )
-
-            let detailtransaksi= request.body.detailtransaksi
-
-            detailtransaksiModel.bulkCreate(detailtransaksi)
-                .then(result => {
-                    return response.json({
-                        success: true,
-                        message: `Data Transaksi has been updated`
-                    })
-                })
-                .catch(error => {
-                    return response.json({
-                        success: false, 
-                        message: error.message
-                    })
-                })
-        })
-        .catch(error => {
-            return response.json({
-                success: false, 
-                message: error.message
-            })
-        })
-}
-
-exports.deleteTransaksi = (request, response) => {
-    let TransaksiID = request.params.TransaksiID
-     transaksiModel.destroy({ where: { TransaksiID: TransaksiID } })
-        .then(result => {
-            transaksiModel.destroy({where: {TransaksiID:TransaksiID}})
-            .then(result => {
-                return response.json({
-                    success: true,
-                    message: `Data Transaksi has been updated`
-                })
-            })
-            .catch(error => {
-                return response.json({
-                    success: false,
-                    message: error.message
-                })
+                message: "Data Transaksi has been updated"
             })
         })
         .catch(error => {
@@ -150,4 +149,33 @@ exports.deleteTransaksi = (request, response) => {
                 message: error.message
             })
         })
+}
+
+exports.deleteTransaksi = async (request, response) => {
+    let TransaksiID = request.params.TransaksiID
+    let getId = await transaksiModel.findAll({
+        where: { //dicari 
+            [Op.and]: [{ id: TransaksiID }],
+        },
+    });
+
+    if (getId.length === 0) { //kalo ga ada yang sesuai
+        return response.status(400).json({
+            success: false,
+            message: "transaksi dengan id tersebut tidak ada",
+        });
     }
+    transaksiModel.destroy({ where: { id: TransaksiID } })
+        .then(result => {
+            return response.json({
+                success: true,
+                message: "Data Transaksi has been updated"
+            })
+        })
+        .catch(error => {
+            return response.json({
+                success: false,
+                message: error.message
+            })
+        })
+}

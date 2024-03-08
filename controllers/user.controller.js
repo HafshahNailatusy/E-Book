@@ -38,7 +38,7 @@ exports.RegisterCustomer = (request, response) => { //buat user baru yang belum 
             newUser.password === ""
         ) {
             const oldFotoUser = newUser.foto;
-            const patchFoto = path.join(__dirname, `../foto`, oldFotoUser); //fotonya disimpen di direktori yang itu
+            const patchFoto = path.join(__dirname, `../image`, oldFotoUser); //fotonya disimpen di direktori yang itu
             if (fs.existsSync(patchFoto)) { //ini kalo error soalnya ga semuanya keisi. footnya ga bakal ke upload klo masiha da yang blm diisi
                 fs.unlink(patchFoto, (error) => console.log(error));
             }
@@ -49,7 +49,7 @@ exports.RegisterCustomer = (request, response) => { //buat user baru yang belum 
         } else { //dia udah punya akun dan login nya pake data yg sama
             if (user.length > 0) {
                 const oldFotoUser = newUser.foto;
-                const patchFoto = path.join(__dirname, `../foto`, oldFotoUser);
+                const patchFoto = path.join(__dirname, `../image`, oldFotoUser);
                 if (fs.existsSync(patchFoto)) {
                     fs.unlink(patchFoto, (error) => console.log(error));
                 }
@@ -149,7 +149,7 @@ exports.addUser = (request, response) => { //hampir sama kayak register, tp klo 
         ) {
             //karena gagal, hapus foto yang masuk
             const oldFotoUser = newUser.foto;
-            const patchFoto = path.join(__dirname, `../foto`, oldFotoUser);
+            const patchFoto = path.join(__dirname, `../image`, oldFotoUser);
             if (fs.existsSync(patchFoto)) {
                 fs.unlink(patchFoto, (error) => console.log(error));
             }
@@ -163,7 +163,7 @@ exports.addUser = (request, response) => { //hampir sama kayak register, tp klo 
             if (user.length > 0) {
                 //karena gagal hapus foto yang masuk
                 const oldFotoUser = newUser.foto;
-                const patchFoto = path.join(__dirname, `../foto`, oldFotoUser);
+                const patchFoto = path.join(__dirname, `../image`, oldFotoUser);
                 if (fs.existsSync(patchFoto)) {
                     fs.unlink(patchFoto, (error) => console.log(error));
                 }
@@ -228,7 +228,7 @@ exports.updateUser = (request, response) => {
             });
 
             const oldFotoUser = selectedUser.foto;
-            const patchFoto = path.join(__dirname, `../foto`, oldFotoUser);
+            const patchFoto = path.join(__dirname, `../image`, oldFotoUser);
 
             if (fs.existsSync(patchFoto)) {
                 fs.unlink(patchFoto, (error) => console.log(error));
