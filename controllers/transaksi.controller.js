@@ -73,11 +73,11 @@ exports.addTransaksi = async (request, response) => {
 
 
 exports.updateTransaksi = async (request, response) => {
-    let TransaksiID = request.params.TransaksiID
+    let TransaksiID = request.params.id
 
     let getId = await transaksiModel.findAll({ //dicari usernya
         where: {
-            [Op.and]: [{ id: TransaksiID }],
+            [Op.and]: [{ TransaksiID: TransaksiID }],
         },
     });
 
@@ -107,7 +107,7 @@ exports.updateTransaksi = async (request, response) => {
         });
     }
 
-    transaksiModel.update(dataTransaksi, { where: { id: TransaksiID } })
+    transaksiModel.update(dataTransaksi, { where: { TransaksiID: TransaksiID } })
         .then(result => {
             return response.json({
                 success: true,
@@ -123,20 +123,20 @@ exports.updateTransaksi = async (request, response) => {
 }
 
 exports.deleteTransaksi = async (request, response) => {
-    let TransaksiID = request.params.TransaksiID
+    let TransaksiID = request.params.id
     let getId = await transaksiModel.findAll({
         where: { //dicari 
-            [Op.and]: [{ id: TransaksiID }],
+            [Op.and]: [{ TransaksiID: TransaksiID }],
         },
     });
 
-    if (getId.length === 0) { //kalo ga ada yang sesuai
-        return response.status(400).json({
-            success: false,
-            message: "transaksi dengan id tersebut tidak ada",
-        });
-    }
-    transaksiModel.destroy({ where: { id: TransaksiID } })
+    // if (getId.length === 0) { //kalo ga ada yang sesuai
+    //     return response.status(400).json({
+    //         success: false,
+    //         message: "transaksi dengan id tersebut tidak ada",
+    //     });
+    // }
+    transaksiModel.destroy({ where: { TransaksiID: TransaksiID } })
         .then(result => {
             return response.json({
                 success: true,
