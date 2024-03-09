@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(models.user)
       this.belongsTo(models.book)
-      this.hasMany(models.DetailTransaksi, {
+      this.hasMany(models.detailtransaksi, {
         foreignKey: `TransaksiID`, as:`detailtransaksi`
       })
     }
@@ -29,8 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     TglTransaksi: DataTypes.INTEGER,
     Total: DataTypes.INTEGER,
     MetodePay: DataTypes.STRING,
-    Status: DataTypes.ENUM("Lunas","Belum Lunas"),
-    AdminID: DataTypes.INTEGER
+    Status: DataTypes.ENUM("Lunas","Belum Lunas")
   }, {
     sequelize,
     modelName: 'transaksi',

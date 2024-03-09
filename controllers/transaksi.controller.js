@@ -1,11 +1,10 @@
 const { request, response } = require("express")
-const transaksi = require("../models/transaksi")
 
 const userModel = require("../models/index").user
 const bookModel = require("../models/index").book
 const transaksiModel = require("../models/index").transaksi
-const detailmodel = require('../models/index').detailtransaksi
-const Op = require(sequelize).Op
+const detailmodel = require("../models/index").detailtransaksi
+const Op = require("sequelize").Op
 
 exports.getAllTransaksi = async (request, response) => {
     let transaksis = await transaksiModel.findAll()
@@ -42,64 +41,36 @@ exports.findTransaksi = async (request, response) => {
         message: "All Transaksi have been loaded"
     })
 }
-
 exports.addTransaksi = async (request, response) => {
-    try {
-        const buku = await bookModel.findOne()
-        const harga = buku.harga //ambil harga
-        const user = await userModel.findOne()
-        const id = user.UserID //ambil id user
-        const idnyabuku = await bookModel.findOne()
-        const idbuku = idnyabuku.BookID //ambil id buku
-        const idtransaksi = await transaksiModel.findOne()
-        const idtrans = idtransaksi.TransaksiID //ambil id transaksi
-        const today = new Date()
-        const TglTransaksi = `${today.getFullYear()}-${today.getMonth() + 1}-
+    const today = new Date();
+    const TglTransaksi = `${today.getFullYear()}-${today.getMonth()}-
         ${today.getDate()}${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`
+    const transaksiData = {
+        UserID: request.body.UserID,
+        MetodePay: request.body.MetodePay,
+        TglTransaksi: TglTransaksi,
+    };
 
-        let data = {
-            UserID: id,
-            TglTransaksi: TglTransaksi,
-            Qty: request.body.jumlah,
-            MetodePay: request.body.MetodePay,
-            total: (Qty * harga)
+    try {
+        let result = await transaksiModel.create(transaksiData);
+        let id_pemesanan = result.TransaksiID;
+        let detailsoforder = request.body.detailsoforder;
+        for (let i = 0; i < detailsoforder.length; i++) {
+            detailsoforder[i].TransaksiID = id_pemesanan;
         }
-
-        let detail = {
-            UserID: id,
-            BookID: idbuku,
-            TransaksiID: idtrans
-        }
-
-        const transaction = await sequelize.transaction();
-
-        try {
-            const hasiltransaksi = await transaksiModel.create(data, { transaction })
-            detail.TransaksiID = hasiltransaksi.TransaksiID;
-            detail.BookID = buku.BookID;
-            await detailmodel.create(detail, { transaction });
-            await transaction.commit(); //simpan transaksi
-
-            return response.json({
-                success: true,
-                data: transaksiResult,
-                message: "New transaksi has been inserted"
-            });
-
-        } catch (error) {
-            await transaction.rollback(); //transaksi di cancel
-            return response.json({
-                success: false,
-                message: error.message
-            });
-        }
+        const detailtransaksi = await detailmodel.bulkCreate(detailsoforder);
+        response.status(201).json({
+            success: true,
+        });
     } catch (error) {
         return response.json({
             success: false,
-            message: error.message
+            message: error.message,
         });
     }
-}
+};
+
+
 
 exports.updateTransaksi = async (request, response) => {
     let TransaksiID = request.params.TransaksiID

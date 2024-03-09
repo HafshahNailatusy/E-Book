@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     Qyt: DataTypes.INTEGER
   }, {
     sequelize,
-    modelName: 'DetailTransaksi',
+    modelName: 'detailtransaksi',
   });
   return DetailTransaksi;
 };
