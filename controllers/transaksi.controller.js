@@ -58,7 +58,7 @@ exports.addTransaksi = async (request, response) => {
         for (let i = 0; i < detailsoforder.length; i++) {
             detailsoforder[i].TransaksiID = id_pemesanan;
         }
-        const detailtransaksi = await detailmodel.bulkCreate(detailsoforder);
+        await detailmodel.bulkCreate(detailsoforder);
         response.status(201).json({
             success: true,
         });
@@ -69,8 +69,6 @@ exports.addTransaksi = async (request, response) => {
         });
     }
 };
-
-
 
 exports.updateTransaksi = async (request, response) => {
     let TransaksiID = request.params.id
