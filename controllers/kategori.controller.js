@@ -1,6 +1,6 @@
 const { request, response } = require("express")
 const kategoriModel = require("../models/index").ketegori
-const Op = require(sequelize).Op
+const Op = require("sequelize").Op
 
 exports.getAllKategori = async(request, response) => {
     let kategoris = await kategoriModel.findAll() 
