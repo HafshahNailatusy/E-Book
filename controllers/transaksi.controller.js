@@ -13,7 +13,12 @@ const sequelize = new Sequelize("ebookta","root","",{
 
 exports.getAllTransaksi = async (request, response) => { //unknown column
     let transaksis = await transaksiModel.findAll()
-    if (transaksis.length === 0) {
+
+    const getId = await sequelize.query(
+        `SELECT * from transaksis`
+    )
+
+    if (getId[0].length === 0) {
         return response.status(400).json({
             success: false,
             message: "no transaction to show",
@@ -40,7 +45,16 @@ exports.findTransaksi = async (request, response) => { //unknown column
         }
     })
 
-    console.log("asdas: "+transaksis.TransaksiID)
+    const getKeyword = await sequelize.query(
+        `SELECT * from transaksis where ?`
+    )
+    if (getKeyword[0].length === 0) {
+        return response.status(400).json({
+            success: false,
+            message: "no transaction to show",
+        });
+    }
+
     return response.json({
         success: true,
         data: transaksis,
