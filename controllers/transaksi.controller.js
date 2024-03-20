@@ -49,16 +49,17 @@ exports.addTransaksi = async (request, response) => {
         UserID: request.body.UserID,
         MetodePay: request.body.MetodePay,
         TglTransaksi: TglTransaksi,
-    };
+    }; 
 
     try {
-        let result = await transaksiModel.create(transaksiData);
-        let id_pemesanan = result.TransaksiID;
-        let detailsoforder = request.body.detailsoforder;
+        let result = await transaksiModel.create(transaksiData); //masukin ke tabel transaksi
+        let id_pemesanan = result.TransaksiID; //ngambil id transaksi
+        let detailsoforder = request.body.detailsoforder; //ngisi detail of order
         for (let i = 0; i < detailsoforder.length; i++) {
             detailsoforder[i].TransaksiID = id_pemesanan;
         }
         await detailmodel.bulkCreate(detailsoforder);
+        
         response.status(201).json({
             success: true,
         });
