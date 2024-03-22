@@ -18,6 +18,9 @@ module.exports = {
       penulis: {
         type: Sequelize.STRING
       },
+      sinopsis: {
+        type: Sequelize.STRING
+      },
       foto:{
         type: Sequelize.STRING
       },

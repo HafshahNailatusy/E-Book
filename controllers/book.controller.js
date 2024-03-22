@@ -48,6 +48,7 @@ exports.addBook = (request, response) => {
     let newBook = {
         judul: request.body.Judul, 
         penulis: request.body.Penulis,
+        sinopsis: request.body.Sinopsis,
         foto: request.file.filename, 
         harga: request.body.harga, 
         KategoriID: request.body.KategoriID
@@ -85,6 +86,7 @@ exports.updateBook = (request, response) => {
             BookID: request.body.BookID,
             Judul: request.body.judul,
             Penulis: request.body.penulis,
+            Sinopsis: request.body.sinopsis,
             Harga: request.body.harga, 
             KategoriID: request.body.KategoriID
         }

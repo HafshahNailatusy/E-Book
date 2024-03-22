@@ -23,21 +23,11 @@ module.exports = {
       TglTransaksi: {
         type: Sequelize.INTEGER
       },
-      Total: {
-        type: Sequelize.INTEGER
-      },
       MetodePay: {
         type: Sequelize.STRING
       },
       Status: {
         type: Sequelize.ENUM("Lunas","Belum Lunas")
-      },
-      AdminID: {
-        type: Sequelize.INTEGER,
-        allowNull: {
-          model: 'admins',
-          key: 'AdminID'
-        }
       },
       createdAt: {
         allowNull: false,

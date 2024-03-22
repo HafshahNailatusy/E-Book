@@ -396,3 +396,43 @@ exports.deleteUser = async (request, response) => {
             });
         });
 }
+
+exports.resetpasswordUser = async (req, res) => {
+    let users = await userModel.findOne()
+    let id_user = req.params.id
+
+    if(users.id_user == id_user) {
+        let dataUser = {
+            password: md5(req.body.oldPassword),
+        }
+        if (users.password == dataUser.password) {
+            dataUser.password = md5(req.body.Newpassword)
+            userModel.update(dataUser, { where: { id_user: id_user } })
+                .then(result => {
+                    return res.json({
+                        success: true,
+                        data: dataUser,
+                        message: "Password has been updated"
+                    })
+                })
+                .catch(error => {
+                    return res.json({
+                        success: false,
+                        message: error.message
+                    })
+                })
+        }
+        else {
+            return res.json({
+                success: false,
+                message: "The old password doesn't match, please try again"
+            })
+        }
+    }
+    else {
+        return res.json({
+            success: false,
+            message: "The ID is undefined"
+        })
+    }
+}

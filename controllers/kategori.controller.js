@@ -1,5 +1,6 @@
 const { request, response } = require("express")
-const kategoriModel = require("../models/index").ketegori
+const app = require("../routes/transaksi.route")
+const kategoriModel = require("../models/index").kategori
 const Op = require("sequelize").Op
 
 exports.getAllKategori = async(request, response) => {
@@ -30,7 +31,7 @@ exports.findKategori = async (request, response) => {
     return response.json({
          success: true, 
          data: kategoris,
-         message: "All category have been loaded"
+         message: "Category have been loaded"
     })
 }
 
@@ -38,6 +39,8 @@ exports.addKategori = (request, response) => {
     let newKategori = {
         namaKat: request.body.namaKat
     }
+
+    console.log("apa:"+newKategori)
 
     kategoriModel.create(newKategori)
     .then(result => {
@@ -47,7 +50,7 @@ exports.addKategori = (request, response) => {
             message: "New Kategori has been inserted"
         })
     })
-    .catch(error => {
+    .catch(error => { 
         return response.json({
             success: false, 
             message: error.message

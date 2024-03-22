@@ -28,9 +28,6 @@ module.exports = {
         },
         allowNull: false
       },
-      Qyt: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

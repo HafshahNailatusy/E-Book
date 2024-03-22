@@ -1,7 +1,4 @@
 const { request, response } = require("express")
-
-const userModel = require("../models/index").user
-const bookModel = require("../models/index").book
 const transaksiModel = require("../models/index").transaksi
 const detailmodel = require("../models/index").detailtransaksi
 const Op = require("sequelize").Op
@@ -12,13 +9,11 @@ const sequelize = new Sequelize("ebookta","root","",{
 })
 
 exports.getAllTransaksi = async (request, response) => { //unknown column
-    let transaksis = await transaksiModel.findAll()
-
-    const getId = await sequelize.query(
+    const sql = await sequelize.query(
         `SELECT * from transaksis`
     )
 
-    if (getId[0].length === 0) {
+    if (sql[0].length === 0) {
         return response.status(400).json({
             success: false,
             message: "no transaction to show",
@@ -26,7 +21,7 @@ exports.getAllTransaksi = async (request, response) => { //unknown column
     }
     return response.json({
         success: true,
-        data: transaksis,
+        data: sql,
         message: "All Transaksi have been loaded"
     })
 }
@@ -45,10 +40,10 @@ exports.findTransaksi = async (request, response) => { //unknown column
         }
     })
 
-    const getKeyword = await sequelize.query(
-        `SELECT * from transaksis where ?`
+    const data = await sequelize.query(
+        `SELECT * from transaksis where UserID = ${UserID} or MetodePay = ${MetodePay} `
     )
-    if (getKeyword[0].length === 0) {
+    if (data[0].length === 0) {
         return response.status(400).json({
             success: false,
             message: "no transaction to show",
@@ -57,7 +52,7 @@ exports.findTransaksi = async (request, response) => { //unknown column
 
     return response.json({
         success: true,
-        data: transaksis,
+        data: data,
         message: "Data Transaksi have been loaded"
     })
 }
