@@ -28,20 +28,21 @@ exports.getAllTransaksi = async (request, response) => { //unknown column
 
 exports.findTransaksi = async (request, response) => { //unknown column
     let keyword = request.body.keyword
-    let transaksis = await transaksiModel.findAll({
-        where: {
-            [Op.or]: [
-                { TransaksiID: { [Op.substring]: keyword } },
-                { UserID: { [Op.substring]: keyword } },
-                { TglTransaksi: { [Op.substring]: keyword } },
-                { MetodePay: { [Op.substring]: keyword } },
-                { Status: { [Op.substring]: keyword } },
-            ]
-        }
-    })
+    let userId = request.body.userid
+    // let transaksis = await transaksiModel.findAll({
+    //     where: {
+    //         [Op.or]: [
+    //             { TransaksiID: { [Op.substring]: keyword } },
+    //             { UserID: { [Op.substring]: keyword } },
+    //             { TglTransaksi: { [Op.substring]: keyword } },
+    //             { MetodePay: { [Op.substring]: keyword } },
+    //             { Status: { [Op.substring]: keyword } },
+    //         ]
+    //     }
+    // })
 
     const data = await sequelize.query(
-        `SELECT * from transaksis where UserID = ${UserID} or MetodePay = ${MetodePay} `
+        `SELECT * from transaksis where UserID = '${userId}' OR MetodePay ='${keyword}' `
     )
     if (data[0].length === 0) {
         return response.status(400).json({

@@ -2,6 +2,11 @@ const { request, response } = require("express")
 const app = require("../routes/transaksi.route")
 const kategoriModel = require("../models/index").kategori
 const Op = require("sequelize").Op
+const Sequelize = require('sequelize')
+const sequelize = new Sequelize("ebookta","root","",{
+    host: "localhost",
+    dialect: "mysql"
+})
 
 exports.getAllKategori = async(request, response) => {
     let kategoris = await kategoriModel.findAll() 
@@ -19,18 +24,14 @@ exports.getAllKategori = async(request, response) => {
 }
     
 exports.findKategori = async (request, response) => {
-    let keyword = request.body.keyword
-    let kategoris = await kategoriModel.findAll({ 
-        where: {
-            [Op.or]: [
-                { KategoriID: { [Op.substring]: keyword } },
-                { namaKat: { [Op.substring]: keyword } }
-            ]
-        }
-    })
+    let namaKat = request.body.namaKat
+
+    const data = await sequelize.query(
+        `SELECT * from kategoris where namaKat = '${namaKat}' `
+    )
     return response.json({
          success: true, 
-         data: kategoris,
+         data: data,
          message: "Category have been loaded"
     })
 }

@@ -5,6 +5,11 @@ const fs = require(`fs`)
 const upload = require('./upload-image').single(`foto`)
 const md5 = require(`md5`)
 const jsonwebtoken = require('jsonwebtoken')
+const Sequelize = require('sequelize')
+const sequelize = new Sequelize("ebookta", "root", "", {
+    host: "localhost",
+    dialect: "mysql"
+})
 const SECRET_KEY = "jualbukuhalal"
 
 exports.RegisterCustomer = (request, response) => { //buat user baru yang belum pernah punya akun
@@ -272,7 +277,7 @@ exports.updateUser = (request, response) => {
         }
 
         userModel
-            .update(dataUser, { where: { UserID: UserID  } })
+            .update(dataUser, { where: { UserID: UserID } })
             .then((result) => {
                 return response.json({
                     success: true,
@@ -367,9 +372,9 @@ exports.findAllAdmin = async (request, response) => {
 exports.deleteUser = async (request, response) => {
     let UserID = request.params.id; //cari user berdasarkan ID
     let getId = await userModel.findOne({
-        where: 
-           { UserID: request.params.id }
-        
+        where:
+            { UserID: request.params.id }
+
     });
 
     const user = await userModel.findOne({ where: { UserID: UserID } }); //data sesuai id nya
@@ -398,41 +403,36 @@ exports.deleteUser = async (request, response) => {
 }
 
 exports.resetpasswordUser = async (req, res) => {
-    let users = await userModel.findOne()
-    let id_user = req.params.id
+    let UserID = req.params.id
+    const users = await sequelize.query(
+        `SELECT * from users where UserID = '${UserID}'`
+    )
 
-    if(users.id_user == id_user) {
-        let dataUser = {
-            password: md5(req.body.oldPassword),
-        }
-        if (users.password == dataUser.password) {
-            dataUser.password = md5(req.body.Newpassword)
-            userModel.update(dataUser, { where: { id_user: id_user } })
-                .then(result => {
-                    return res.json({
-                        success: true,
-                        data: dataUser,
-                        message: "Password has been updated"
-                    })
+    let dataUser = {
+        passwordlama: req.body.oldPassword,
+    }
+    if (users.passwordlama == dataUser.password) {
+        dataUser.password = md5(req.body.NewPassword)
+        userModel.update(dataUser, { where: { UserID: UserID } })
+            .then(result => {
+                return res.json({
+                    success: true,
+                    data: dataUser,
+                    message: "Password has been updated"
                 })
-                .catch(error => {
-                    return res.json({
-                        success: false,
-                        message: error.message
-                    })
-                })
-        }
-        else {
-            return res.json({
-                success: false,
-                message: "The old password doesn't match, please try again"
             })
-        }
+            .catch(error => {
+                return res.json({
+                    success: false,
+                    message: error.message
+                })
+            })
     }
     else {
         return res.json({
             success: false,
-            message: "The ID is undefined"
+            message: "The old password doesn't match, please try again"
         })
     }
+
 }

@@ -15,7 +15,7 @@ app.put("/:id", userController.updateUser)
 app.get("/findAllCustomer", checkRole(["admin"]), userController.findAllCustomer)
 app.get("/findAllAdmin", checkRole(["admin"]), userController.findAllAdmin)
 app.post("/RegisterCustomer", userController.RegisterCustomer)
-app.put("/resetpassword/:UserID",userController.resetpasswordUser)
+app.put("/resetpassword/:id",userController.resetpasswordUser)
 
 
 module.exports = app
