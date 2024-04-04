@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { LoginHandler } from "./LoginProses";
 import { useNavigate } from "react-router-dom";
+import './login.css';
+import { MdOutlineMail } from "react-icons/md";
+import { FiLock } from "react-icons/fi";
+import { AiOutlineEye } from "react-icons/ai";
+import { AiOutlineEyeInvisible } from "react-icons/ai";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
@@ -24,35 +29,39 @@ const Login = () => {
 
 	return (
 		<div>
-			<div>
+			<div className="wrapper">
 				<form onSubmit={submitHandler}>
-					<h1>Login</h1>
-					<div>
+					<h1>butopia.</h1>
+					<h5 className="teks">Email</h5>
+					<div className="input-box">
 						<input
 							type="email"
-							className="form-control"
+							className="input-box"
 							id="email"
 							placeholder="Email"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
 							required
 						/>
+						<MdOutlineMail className="icon" />
 					</div>
-					<div>
+					<h5 className="teks">Password</h5>
+					<div className="input-box">
 						<input
 							type="password"
-							className="form-control"
+							className="input-box"
 							id="password"
 							placeholder="Password"
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 							required
 						/>
+						<FiLock className="icon" />
 					</div>
-					<button type="submit">Login</button>
+					<button type="submit" className="buttoni">Login</button>
 					<div>
 						<p>
-							Anda belum memiliki akun? <a href="./register">Registrasi</a>
+						Don't have an account? <a href="./register">Registrasi</a>
 						</p>
 					</div>
 				</form>
