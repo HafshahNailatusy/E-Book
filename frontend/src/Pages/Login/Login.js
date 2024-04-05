@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { LoginHandler } from "./LoginProses";
 import { useNavigate } from "react-router-dom";
-import './login.css';
+import './Login.css';
 import { MdOutlineMail } from "react-icons/md";
 import { FiLock } from "react-icons/fi";
 import { AiOutlineEye } from "react-icons/ai";
@@ -61,7 +61,7 @@ const Login = () => {
 					<button type="submit" className="buttoni">Login</button>
 					<div>
 						<p>
-						Don't have an account? <a href="./register">Registrasi</a>
+						Don't have an account? <a href="/register">Register</a>
 						</p>
 					</div>
 				</form>
