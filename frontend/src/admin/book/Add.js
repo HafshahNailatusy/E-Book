@@ -1,14 +1,15 @@
-import { addByAdmin } from './ApiUser'
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { addBook } from "./ApiBook";
 
-function AddUser() {
-    const [nama, setNama] = useState("");
-    const [foto, setFoto] = useState(null);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+function AddBook() {
+    const [judul, setJudul] = useState("");
+    const [penulis, setPenulis] = useState(null);
+    const [sinopsis, setSinopsis] = useState("");
+    const [harga, setHarga] = useState("");
+    const [foto, setFoto] = useState("");
+    const [KategoriID, setKategoriID] = useState("");
     const [imagePreview, setImagePreview] = useState(null);
-
     const navigate = useNavigate()
 
     const saveFile = (e) => {
@@ -27,10 +28,12 @@ function AddUser() {
     const submitHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData();
-        formData.append("nama", nama);
-        formData.append("email", email);
-        formData.append("password", password);
+        formData.append("judul", judul);
+        formData.append("penulis", penulis);
+        formData.append("sinopsis", sinopsis);
+        formData.append("harga", harga);
         formData.append("foto", foto);
+        formData.append("ID Kategori", KategoriID);
 
         try {
             const res = await addByAdmin(formData);
@@ -39,7 +42,7 @@ function AddUser() {
                 navigate('/dashboard')
             }
         } catch (error) {
-            console.log("failed to add user", error);
+            console.log("failed to add book", error);
         }
     };
 
@@ -47,37 +50,61 @@ function AddUser() {
         <div>
             <div>
                 <form onSubmit={submitHandler}>
-                    <h1>Add User</h1>
+                    <h1>Add Book</h1>
                     <div>
                         <input
                             type="text"
                             className="form-control"
-                            id="nama"
-                            placeholder="Nama"
-                            value={nama}
-                            onChange={(e) => setNama(e.target.value)}
+                            id="judul"
+                            placeholder="Judul"
+                            value={judul}
+                            onChange={(e) => setJudul(e.target.value)}
                             required
                         />
                     </div>
                     <div>
                         <input
-                            type="email"
+                            type="text"
                             className="form-control"
-                            id="email"
-                            placeholder="Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            id="penulis"
+                            placeholder="Penulis"
+                            value={penulis}
+                            onChange={(e) => setPenulis(e.target.value)}
                             required
                         />
                     </div>
                     <div>
                         <input
-                            type="password"
+                            type="text"
                             className="form-control"
-                            id="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            id="sinopsis"
+                            placeholder="sinopsis"
+                            value={sinopsis}
+                            onChange={(e) => setSinopsis(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="number"
+                            min={0}
+                            className="form-control"
+                            id="harga"
+                            placeholder="harga"
+                            value={harga}
+                            onChange={(e) => setHarga(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type="number"
+                            min={0}
+                            className="form-control"
+                            id="KategoriID"
+                            placeholder="KategoriID"
+                            value={KategoriID}
+                            onChange={(e) => setKategoriID(e.target.value)}
                             required
                         />
                     </div>
@@ -117,5 +144,4 @@ function AddUser() {
     )
 }
 
-
-export default AddUser;
+export default AddBook;

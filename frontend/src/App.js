@@ -4,7 +4,8 @@ import Dashboard from './Pages/Dashboard'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Register from './Pages/Login/Register';
 import LoginAdmin from './Pages/Login/LoginAdmin';
-import Add from './admin/user/Add';
+import AddUser from './admin/user/Add';
+import AddKategori from './admin/kategori/Add';
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/loginadmin' element={<LoginAdmin/>}/>
         <Route path='/register' element={<Register/>}/>
-        <Route path='/adduser' element={<Add/>}/>
+        <Route path='/adduser' element={<AddUser/>}/>
+        <Route path='/addkategori' element={<AddKategori/>}/>
       </Routes>
     </BrowserRouter>
   );
