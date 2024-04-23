@@ -35,6 +35,19 @@ exports.findKategori = async (request, response) => {
     })
 }
 
+exports.findID = async (request, response) => {
+    let id = request.params.id
+
+    const data = await sequelize.query(
+        `SELECT * from kategoris where KategoriID = '${id}' `
+    )
+    return response.json({
+         status: true, 
+         data: data,
+         message: "Category have been loaded"
+    })
+}
+
 exports.addKategori = (request, response) => {
     let newKategori = {
         namaKat: request.body.namaKat

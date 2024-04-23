@@ -25,7 +25,7 @@ function AddKategori() {
         <div>
             <div>
                 <form onSubmit={submitHandler}>
-                    <h1>Add Category</h1>
+                    <h1>Add Kategori</h1>
                     <div>
                         <input
                             type="text"
