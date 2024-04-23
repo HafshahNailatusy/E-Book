@@ -149,6 +149,31 @@ const addByAdmin = async (values) => {
     }
 }
 
+const updateUser = async (values, id) => {
+    const URL = `${BASE_API}/user/updateuserAdmin/${id}`
+    const token = getTokenCookie()
+    try {
+        const data = await axios.post(URL, values, {
+            headers: {
+                Authorization: `Bearer ${token}`, // mengambil token dari local storage
+            }
+        })
+        const res = data.data;
+		console.log(res);
+
+        if (res.status === true) {
+            return ({
+                status: true,
+            })
+        }
+    } catch (error) {
+        return ({
+            status: "error",
+            data: error.response.data.message
+        })
+    }
+}
+
 const deleteUser = async (id) => {
     const URL = `${BASE_API}/user/delete/${id}`
     const token = getTokenCookie()
@@ -172,4 +197,4 @@ const deleteUser = async (id) => {
     }
 }
 
-export { getFoto , getAllUser, getAllAdmin, getAllCustomer, getByID, search, addByAdmin, deleteUser }
+export { getFoto , getAllUser, getAllAdmin, getAllCustomer, getByID, search, addByAdmin, deleteUser, updateUser }

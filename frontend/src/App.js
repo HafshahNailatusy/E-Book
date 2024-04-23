@@ -6,6 +6,7 @@ import Register from './Pages/Login/Register';
 import LoginAdmin from './Pages/Login/LoginAdmin';
 import AddUser from './admin/user/Add';
 import AddKategori from './admin/kategori/Add';
+import Update from './admin/user/Update';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='/register' element={<Register/>}/>
         <Route path='/adduser' element={<AddUser/>}/>
         <Route path='/addkategori' element={<AddKategori/>}/>
+        <Route path='/updateuser/:id' element={<Update/>}/>
       </Routes>
     </BrowserRouter>
   );
