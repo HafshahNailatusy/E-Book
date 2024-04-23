@@ -19,7 +19,6 @@ function Update() {
                 console.log(res)
                 const user = res.data;
                 setNama(user.nama);
-                setFoto(user.foto);
                 setEmail(user.email);
                 if (user.foto) {
                     setImagePreview(getFoto(user.foto));
@@ -51,13 +50,13 @@ function Update() {
         const formData = new FormData();
         formData.append("nama", nama);
         formData.append("email", email);
-        formData.append("foto", foto);
+        if (foto) {
+            formData.append("foto", foto[0]);
+        }
 
         try {
             console.log("update");
             const res = await updateUser(id, formData);
-            console.log(decode.UserID, "dec");
-            console.log(id, "id");
             if (id === decode.id_user.toString()) {
                 window.localStorage.removeItem('nama');
                 window.localStorage.setItem('nama', nama)
