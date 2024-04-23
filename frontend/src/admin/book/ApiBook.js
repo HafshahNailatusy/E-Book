@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { BASE_API } from '../../Pages/Etc/Http';
-import { getTokenCookie } from '../../Pages/Etc/Cookie';
+import { BASE_API } from '../../Etc/Http';
+import { getTokenCookie } from '../../Etc/Cookie';
 
 // app.get("/findBookAdmin", auth.authVerify, checkRole(["admin"]), bookController.findBook)
 

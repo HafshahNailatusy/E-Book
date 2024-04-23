@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { BASE_API } from '../../Pages/Etc/Http';
-import { getTokenCookie } from '../../Pages/Etc/Cookie';
+import { BASE_API } from '../../Etc/Http';
+import { getTokenCookie } from '../../Etc/Cookie';
 
 const getAllKategori = async () => {
     const URL = `${BASE_API}/kategori/getAllKategori`;
@@ -98,6 +98,32 @@ const updateKategori = async ({ values, id }) => {
     }
 }
 
+const getByID = async (id) => {
+    const URL = `${BASE_API}/kategori/findbyID/${id}`
+    const token = getTokenCookie()
+    try {
+        const data = await axios.get(URL, {
+            headers: {
+                Authorization: `Bearer ${token}`, // mengambil token dari local storage
+            }
+        })
+        const res = data.data;
+		console.log(res);
+
+        if (res.status === true) {
+            return ({
+                status: true,
+                data: res.data
+            })
+        }
+    } catch (error) {
+        return ({
+            status: "error",
+            data: error.response.data.message
+        })
+    }
+}
+
 const deletekategori = async (id) => {
     const URL = `${BASE_API}/kategori/${id}`
     const token = getTokenCookie()
@@ -121,4 +147,4 @@ const deletekategori = async (id) => {
     }
 }
 
-export { getAllKategori, search, addKategori, updateKategori, deletekategori }
+export { getAllKategori, search, addKategori, updateKategori, deletekategori, getByID }

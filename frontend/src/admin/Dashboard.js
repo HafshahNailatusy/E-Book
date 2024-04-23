@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { LOCAL_STORAGE_USER } from "./Etc/Http";
-import { getLocalStorage } from "./Etc/LocalStorage";
+import { LOCAL_STORAGE_USER } from "../Etc/Http";
+import { getLocalStorage } from "../Etc/LocalStorage";
 
 function Dashboard() {
     const [user, setUser] = useState(null);
