@@ -315,6 +315,7 @@ exports.searchUser = async (req, res) => {
         where: {
             [Op.or]: [ // query untuk mencari data user berdasarkan nama user
                 { nama: { [Op.like]: "%" + req.params.nama + "%" } },
+                { email: { [Op.like]: "%" + req.params.email + "%" } }
             ],
         },
     })

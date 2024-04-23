@@ -11,7 +11,7 @@ function AddKategori() {
         const formData = new FormData();
         formData.append("namaKat", namaKat);
         try {
-            const res = await addByAdmin(formData);
+            const res = await addKategori(formData);
             console.log(res)
             if (res.status === true) {
                 navigate('/dashboard')
