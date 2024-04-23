@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 import './Login.css';
 import { MdOutlineMail } from "react-icons/md";
 import { FiLock } from "react-icons/fi";
-import { AiOutlineEye } from "react-icons/ai";
-import { AiOutlineEyeInvisible } from "react-icons/ai";
+// import { AiOutlineEye } from "react-icons/ai";
+// import { AiOutlineEyeInvisible } from "react-icons/ai";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
@@ -38,7 +38,6 @@ const Login = () => {
 							type="email"
 							className="input-box"
 							id="email"
-							placeholder="Email"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
 							required
@@ -47,16 +46,16 @@ const Login = () => {
 					</div>
 					<h5 className="teks">Password</h5>
 					<div className="input-box">
-						<input
+				 		<input
 							type="password"
 							className="input-box"
 							id="password"
-							placeholder="Password"
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 							required
 						/>
 						<FiLock className="icon" />
+						
 					</div>
 					<button type="submit" className="buttoni">Login</button>
 					<div>
