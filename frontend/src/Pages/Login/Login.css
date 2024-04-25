@@ -15,12 +15,19 @@
     background: white ;
     display: flex;
 }
-.wrapper h1 {
+.butopia {
     font-size: 96px;
     text-align: center;
     position: relative;
-    margin-left: 20px;
+    margin-left: 41px;
     overflow-y: 195px;
+    margin-top: 10%;
+}
+.butopia2{
+    font-size: 90px;
+    text-align: center;
+    margin-left: 45px;
+    position: relative;
 }
 .wrapper h5 {
     font-size: 15px;
@@ -30,7 +37,7 @@
     font-weight: 500;
     font-style: normal;
     width: 15px;
-    line-height: 15px;
+    line-height: 0px;
     color: #495B40;
     letter-spacing: 3%;
     padding-bottom: 1px;
@@ -112,12 +119,12 @@ input:valid + .icon{
     
 }
 .wrapper .buttoni{
-    width: 310px;
-    height: 50px;
+    width: 349px;
+    height: 59px;
     border-radius: 30px;
     font-size: 20px;
     cursor: pointer;
-    margin-left: 30px;
+    margin-left: 50px;
     background-color: #79B3D3;
     font-family: "Fredoka", sans-serif;
     font-optical-sizing: auto;
@@ -139,7 +146,7 @@ code {
     font-family: "Poppins", sans-serif;
     font-size: 15px;
     text-align: center;
-    margin-left: 20px;
+    margin-left: 15px;
     margin: 10px;
 }
 .register-link p a{
