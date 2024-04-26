@@ -20,7 +20,7 @@ const Login = () => {
 			const res = await LoginHandler(values);
 			console.log(res);
 			if (res.success === true) {
-				navigate("/dashboard");
+				navigate("/dashboarduser");
 			}
 		} catch (error) {
 			console.error("error:", error);
