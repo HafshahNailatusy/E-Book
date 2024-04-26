@@ -56,9 +56,9 @@ const Login = () => {
 						<FiLock className="icon" />
 						
 					</div>
-					<button type="submit" className="buttoni">Sign In</button>
+					<button type="submit" className="buttoni">Login</button>
 					<div className="register-link">
-          				<p>Don't have an account?<a href="/register">Sign Up</a></p>
+          				<p>Don't have an account?<a href="/register">Register</a></p>
         			</div>
 				</form>
 			</div>
