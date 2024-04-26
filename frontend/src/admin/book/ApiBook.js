@@ -13,9 +13,6 @@ const getAllBook = async () => {
     const token = getTokenCookie()
     try {
         const data = await axios.get(URL, {
-            headers: {
-                Authorization: `Bearer ${token}`, // mengambil token dari local storage
-            }
         })
         const res = data.data
         if (res.status === true) {
@@ -36,9 +33,6 @@ const getByID = async (id) => {
     const token = getTokenCookie()
     try {
         const data = await axios.get(URL, {
-            headers: {
-                Authorization: `Bearer ${token}`, // mengambil token dari local storage
-            }
         })
         const res = data.data;
         console.log(res);
@@ -62,9 +56,6 @@ const getbyKategori = async (id) => {
     const token = getTokenCookie()
     try {
         const data = await axios.get(URL, {
-            headers: {
-                Authorization: `Bearer ${token}`, // mengambil token dari local storage
-            }
         })
         const res = data.data
         if (res.status === true) {
@@ -85,9 +76,6 @@ const getBook = async (keyword) => {
     const token = getTokenCookie()
     try {
         const data = await axios.get(URL, keyword, {
-            headers: {
-                Authorization: `Bearer ${token}`, // mengambil token dari local storage
-            }
         })
         const res = data.data
         if (res.status === true) {

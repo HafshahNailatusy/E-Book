@@ -28,7 +28,6 @@ module.exports = (sequelize, DataTypes) => {
     UserID: DataTypes.INTEGER,
     TglTransaksi: DataTypes.INTEGER,
     MetodePay: DataTypes.STRING,
-    Status: DataTypes.ENUM("Lunas","Belum Lunas")
   }, {
     sequelize,
     modelName: 'transaksi',

@@ -2,7 +2,7 @@ const { request, response } = require("express")
 const transaksiModel = require("../models/index").transaksi
 const detailmodel = require("../models/index").detailtransaksi
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize("ebookta","root","",{
+const sequelize = new Sequelize("ebookta", "root", "", {
     host: "localhost",
     dialect: "mysql"
 })
@@ -53,32 +53,50 @@ exports.addTransaksi = async (request, response) => {
         UserID: request.body.UserID,
         MetodePay: request.body.MetodePay,
         TglTransaksi: TglTransaksi,
-    }; 
+    };
+    transaksiModel.create(transaksiData)
+        .then(result => {
+            return response.json({
+                status: true,
+                data: result,
+                message: `New transaksi has been inserted`
+            })
+        })
 
-    try {
-        let result = await transaksiModel.create(transaksiData); //masukin ke tabel transaksi
-        let id_pemesanan = result.TransaksiID; //ngambil id transaksi
-        let detailsoforder = request.body.detailsoforder; //ngisi detail of order
-        for (let i = 0; i < detailsoforder.length; i++) {
-            detailsoforder[i].TransaksiID = id_pemesanan;
-        }
-        await detailmodel.bulkCreate(detailsoforder);
-        
-        response.status(201).json({
-            status: true,
-        });
-    } catch (error) {
-        return response.json({
-            status: false,
-            message: error.message,
-        });
-    }
+        .catch(error => {
+            return response.json({
+                status: false,
+                message: error.message
+            })
+        })
+};
+
+exports.addDetailTransaksi = async (request, response) => {
+    const data = {
+        TransaksiID: request.body.TransaksiID,
+        BookID: request.body.BookID,
+    };
+    transaksiModel.create(data)
+        .then(result => {
+            return response.json({
+                status: true,
+                data: result,
+                message: `New detail transaksi has been inserted`
+            })
+        })
+
+        .catch(error => {
+            return response.json({
+                status: false,
+                message: error.message
+            })
+        })
 };
 
 exports.updateTransaksi = async (request, response) => {
     let id = request.params.id
 
-    console.log("first: "+id)
+    console.log("first: " + id)
 
     const getId = await sequelize.query(
         `SELECT TransaksiID from transaksis where TransaksiID = ${id} `
@@ -99,7 +117,7 @@ exports.updateTransaksi = async (request, response) => {
 
     if ( //kalo ada yang kosong
         dataTransaksi.UserID === "" ||
-        dataTransaksi.MetodePay === "" 
+        dataTransaksi.MetodePay === ""
     ) {
         return response.status(400).json({
             success: false,
@@ -123,9 +141,9 @@ exports.updateTransaksi = async (request, response) => {
         })
 }
 
-exports.deleteTransaksi = async (request, response) => { 
-    let id = request.params.id 
-    
+exports.deleteTransaksi = async (request, response) => {
+    let id = request.params.id
+
     const getId = await sequelize.query(
         `SELECT TransaksiID from transaksis where TransaksiID = ${id} `
     )

@@ -73,6 +73,31 @@ const addTransaksi = async (values) => {
     }
 }
 
+const addDetailTransaksi = async (values) => {
+    const URL = `${BASE_API}/transaksi/addDetailTransaksi`
+    const token = getTokenCookie()
+    try {
+        const data = await axios.post(URL, values, {
+            headers: {
+                Authorization: `Bearer ${token}`, // mengambil token dari local storage
+            }
+        })
+        const res = data.data;
+        console.log(res);
+
+        if (res.status === true) {
+            return ({
+                status: true,
+            })
+        }
+    } catch (error) {
+        return ({
+            status: "error",
+            data: error.response.data.message
+        })
+    }
+}
+
 const updateTransaksi = async ({ values, id }) => {
     const URL = `${BASE_API}/transaksi/update/${id}`
     const token = getTokenCookie()
@@ -120,4 +145,4 @@ const deleteUser = async (id) => {
     }
 }
 
-export { getAllTransaksi, search, addTransaksi, updateTransaksi, deleteUser }
+export { getAllTransaksi, search, addTransaksi, updateTransaksi, deleteUser, addDetailTransaksi }
