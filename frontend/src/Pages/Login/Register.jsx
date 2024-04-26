@@ -2,6 +2,8 @@ import { useState } from "react";
 import { RegisterHandler } from "./LoginProses";
 import { useNavigate } from "react-router-dom";
 import './Login.css';
+import { MdOutlineMail } from "react-icons/md";
+import { FiLock } from "react-icons/fi";
 
 const Register = () => {
 	const [nama, setNama] = useState("");
@@ -25,52 +27,48 @@ const Register = () => {
 	};
 
 	return (
-		<div>
-			<div>
+		<div className="wrapper">
+			<div className="wrapper">
 				<form onSubmit={submitHandler}>
-					<h1>Register</h1>
+					<h1 className="butopia2">butopia.</h1>
+					<h5 className="teks">Name</h5>
 					<div className="input-box">
 						<input
 							type="text"
-							className="form-control"
-							id="username"
-							placeholder="Nama"
+							id="nama"
 							value={nama}
 							onChange={(e) => setNama(e.target.value)}
 							required
 						/>
+						
 					</div>
+					<h5 className="teks">Email</h5>
 					<div className="input-box">
 						<input
 							type="email"
-							className="form-control"
 							id="email"
-							placeholder="Email"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
 							required
 						/>
+						 <MdOutlineMail className="icon" />
 					</div>
+					<h5 className="teks">Password</h5>
 					<div className="input-box">
 						<input
 							type="password"
-							className="form-control"
 							id="password"
-							placeholder="Password"
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
 							required
 						/>
+						<FiLock className="icon" />
 					</div>
 
-					<button type="submit">
-						Registrasi
-					</button>
+					<button type="submit" className="buttoni">Sign Up</button>
 					<div className="register-link">
-						<p>
-							Anda sudah memiliki akun? <a href="/login">Login</a>
-						</p>
-					</div>
+          				<p>Already have an account??<a href="/">Sign In</a></p>
+        			</div>
 				</form>
 			</div>
 		</div>

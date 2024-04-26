@@ -28,15 +28,15 @@ const Login = () => {
 	};
 
 	return (
-		<div>
+		
 			<div className="wrapper">
 				<form onSubmit={submitHandler}>
-					<h1>butopia.</h1>
+					<h1 className="butopia">butopia.</h1>
+					<h2 className="jelas">-Sign In-</h2>
 					<h5 className="teks">Email</h5>
 					<div className="input-box">
 						<input
 							type="email"
-							className="input-box"
 							id="email"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
@@ -48,7 +48,6 @@ const Login = () => {
 					<div className="input-box">
 				 		<input
 							type="password"
-							className="input-box"
 							id="password"
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}
@@ -57,15 +56,13 @@ const Login = () => {
 						<FiLock className="icon" />
 						
 					</div>
-					<button type="submit" className="buttoni">Login</button>
-					<div>
-						<p>
-						Don't have an account? <a href="/register">Register</a>
-						</p>
-					</div>
+					<button type="submit" className="buttoni">Sign In</button>
+					<div className="register-link">
+          				<p>Don't have an account?<a href="/register">Sign Up</a></p>
+        			</div>
 				</form>
 			</div>
-		</div>
+		
 	);
 };
 
