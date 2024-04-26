@@ -9,7 +9,7 @@ const REGISTER_URL = BASE_API + "/user/RegisterCustomer";
 export const LoginHandler = async (userData) => {
 	try {
 		const res = await axios.post(LOGIN_URL, userData);
-		if (res.data.status === true) {
+		if (res.data.status === true && res.data.data.role === "user") {
 			const userData = {
 				email: res.data.data.email,
 				nama: res.data.data.nama,

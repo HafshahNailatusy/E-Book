@@ -27,6 +27,7 @@ const LoginAdmin = () => {
 		}
 	};
 
+
 	return (
 		
 			<div className="wrapper">
@@ -37,7 +38,7 @@ const LoginAdmin = () => {
 					<div className="input-box">
 						<input
 							type="email"
-							id="email"
+							id="email"   
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
 							required
@@ -61,7 +62,8 @@ const LoginAdmin = () => {
 				</form>
 			</div>
 		
-	);
+	);  
+
 };
 
 export default LoginAdmin;
