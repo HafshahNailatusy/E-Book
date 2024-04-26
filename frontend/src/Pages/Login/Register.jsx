@@ -19,7 +19,7 @@ const Register = () => {
 			const res = await RegisterHandler(values);
 			console.log(res);
 			if (res.success === true) {
-				navigate("/login");
+				navigate("/loginadmin");
 			}
 		} catch (error) {
 			console.error("error:", error);
@@ -65,9 +65,9 @@ const Register = () => {
 						<FiLock className="icon" />
 					</div>
 
-					<button type="submit" className="buttoni">Sign Up</button>
+					<button type="submit" className="buttoni">Register</button>
 					<div className="register-link">
-          				<p>Already have an account??<a href="/">Sign In</a></p>
+          				<p>Already have an account??<a href="/">Login</a></p>
         			</div>
 				</form>
 			</div>
