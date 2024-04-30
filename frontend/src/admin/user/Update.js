@@ -9,7 +9,7 @@ function Update() {
     const [foto, setFoto] = useState(null);
     const [email, setEmail] = useState("");
     const [imagePreview, setImagePreview] = useState(null);
-    const [decode, setDecode] = useState();
+    // const [decode, setDecode] = useState();
     const navigate = useNavigate()
 
     useEffect(() => {
