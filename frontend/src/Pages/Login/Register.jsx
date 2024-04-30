@@ -24,7 +24,7 @@ const Register = () => {
 			const res = await RegisterHandler(values);
 			console.log(res);
 			if (res.success === true) {
-				navigate("/loginadmin");
+				navigate("/");
 			}
 		} catch (error) {
 			console.error("error:", error);
@@ -89,7 +89,7 @@ const Register = () => {
 
 					<button type="submit" className="buttoni">Register</button>
 					<div className="register-link">
-          				<p>Already have an account??<a href="/">Login</a></p>
+          				<p>Already have an account?<a href="/">Login</a></p>
         			</div>
 				</form>
 			</div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LoginHandler } from "./LoginProses";
+import { AdminHandler } from "./LoginProses";
 import { useNavigate } from "react-router-dom";
 import './Login.css';
 import { MdOutlineMail } from "react-icons/md";
@@ -22,9 +22,9 @@ const LoginAdmin = () => {
 		const values = { email, password };
 
 		try {
-			const res = await LoginHandler(values);
+			const res = await AdminHandler(values);
 			console.log(res);
-			if (res.success === true) {
+			if (res.status === true) {
 				navigate("/dashboard");
 			}
 		} catch (error) {
