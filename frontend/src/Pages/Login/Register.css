@@ -35,7 +35,7 @@
 .butopia2{
     font-size: 90px;
     text-align: center;
-    margin-left: 45px;
+    margin-left: 4px;
     position: relative;
 }
 .wrapper h2{
@@ -205,19 +205,6 @@ code {
     margin-left: 20px;
 }
 
-.eyearea {
-    position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 20px;
-  cursor: pointer; /* Menambahkan cursor pointer untuk memberi tahu pengguna bahwa itu dapat diklik */
-}
-.eye-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
 i {
   position: absolute;
   color: #000000;
@@ -225,4 +212,9 @@ i {
 .fa-eye,
 .fa-eye-slash {
   font-size: 16px; /* Sesuaikan ukuran ikon mata sesuai kebutuhan */
+}
+.pw .iconbut{
+    margin-left: 86%;
+    margin-top: 60px;
+    color:#000000;
 }
