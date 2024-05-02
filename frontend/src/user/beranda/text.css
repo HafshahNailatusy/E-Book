@@ -1,0 +1,84 @@
+@font-face {
+  font-family: Fredoka;
+  src: url(../../Fredoka.ttf);
+}
+
+@font-face{
+  font-family: Freedoka-semibold;
+  src: url(../../Fredoka-SemiBold.ttf);
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url(../../Poppins.ttf);
+}
+
+  .butopia {
+    position: static;
+    width: 10px;
+    height: 44px;
+    left: 75px;
+    top: calc(50% - 44px/2);
+    font-family: Fredoka;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 43.56px;
+    display: flex;
+    align-items: center;
+    color: #79B3D3;
+    text-shadow: 4px 4px 16px rgba(182, 224, 247, 0.1);
+    text-decoration: none;
+    margin-right: 50px;
+  }
+
+  .headline {
+    position: static;
+    width: 600px;
+    line-height: 68px;
+    font-family: Freedoka-Semibold;
+    font-weight: bold;
+    font-size: 64px;
+    display: flex;
+    color: black;
+    margin-left: 75px;
+    margin-top: 265px;
+  }
+
+  .sub-headline{
+    position: static;
+    width: 600px;
+    line-height: 42px;
+    font-family: Poppins;
+    font-weight: bold;
+    font-size: 24px;
+    display: flex;
+    color: grey;
+    margin-left: 75px;
+    margin-top: 10px;
+  }
+
+  .headline-2 {
+    position: static;
+    width: 600px;
+    line-height: 68px;
+    font-family: Freedoka-Semibold;
+    font-weight: bold;
+    font-size: 64px;
+    display: flex;
+    color: black;
+    margin-left: 75px;
+    margin-top: 410px;
+  }
+
+  .see{
+    position: static;
+    font-family: Poppins;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    color: #79B3D3;
+    text-decoration: none;
+    justify-content: center;
+    margin-top: 32px;
+    margin-bottom: 68px;
+  }

@@ -1,0 +1,97 @@
+.modal {
+  display: flex;
+  width: auto;
+  height: auto; 
+  justify-content: end;
+  position: absolute;
+  right: 0;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  width: 500px;
+  height: 590px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  margin-top: 5rem;
+  margin-right: 3rem;
+}
+
+.closeModal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.profile{
+  width: 100px;
+  height: 100px;
+  margin-top: 1rem;
+}
+
+.mettu{
+  width:70px;
+  background: transparent;
+  color: #79B3D3;
+  height: 70px;
+  border-radius: 50%;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.ganti{
+  position: static;
+    font-family: Poppins;
+    font-size: 14px;
+    display: flex;
+    color: #79B3D3;
+    text-decoration: none;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.koleksi, .kenangan{
+  width: 410px;
+  height: 86px;
+  background-color: transparent;
+  border: 2px solid #79B3D3;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-family: Poppins;
+  font-size: 20px;
+  color: #79B3D3;
+}
+
+.kenangan{
+  margin-bottom: 7rem;
+}
+
+.keluar{
+  width: 410px;
+  height: 40px;
+  background-color: transparent;
+  border: 2px solid #79B3D3;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-family: Poppins;
+  font-size: 20px;
+  color: #F16D6D;
+}
+
+.nama, .email{
+  font-family: Poppins;
+}
+
+.nama{
+  font-weight: 700;
+}
+
+.email{
+  margin-bottom: 1rem;
+  font-weight: 500;
+}

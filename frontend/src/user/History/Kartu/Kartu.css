@@ -1,0 +1,115 @@
+@font-face {
+    font-family: Poppins;
+    src: url(../../../Poppins.ttf);
+  }
+    
+.card-container {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        height: 210px;
+        width: 633px;
+        border-radius: 8px;
+    }
+
+.text-container{
+    margin-top: 2rem
+    ;
+}
+
+.card-rapper{
+    padding-left: 75px;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+}
+    
+.jdl{
+    fill: black; /* Warna teks */
+    font-size: 20px; /* Ukuran teks */
+    text-anchor: middle; /* Pusatkan horizontal teks */
+    font-family: Poppins;
+    font-weight: bold;
+    width: 271px;
+    text-wrap: wrap;
+    max-width: 100%;
+    margin-top: 20px;
+    margin-left: 19px;
+}
+
+.wrtr{
+    fill: gray; /* Warna teks */
+    font-size: 16px; /* Ukuran teks */
+    font-family: Poppins;
+    text-anchor: middle; /* Pusatkan horizontal teks */
+    overflow-wrap: break-word;
+    margin-left: 19px;
+    width: 70px;
+    padding-left: 20px;
+}
+
+.card-link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.imageee{
+    margin-top: 30px;
+    width: 100px;
+}
+
+.writeer{
+    fill: gray; /* Warna teks */
+    font-size: 20px; /* Ukuran teks */
+    font-family: Poppins;
+    text-anchor: middle; /* Pusatkan horizontal teks */
+    overflow-wrap: break-word;
+    margin-left: 19px;
+    width: auto;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.penulis-nama-container {
+    display: flex;
+    justify-content: space-between; /* Memindahkan penulis ke kiri dan buy ke kanan */
+    align-items: center; /* Memastikan teks berada di tengah vertikal */
+}
+
+.ingpo {
+    display: flex;
+    justify-content: space-between; /* Memindahkan penulis ke kiri dan buy ke kanan */
+    align-items: center; /* Memastikan teks berada di tengah vertikal */
+    gap: 10rem;
+}
+
+.wrtr{
+    /* Gaya lainnya */
+    margin: 0; /* Atur margin */
+}
+
+.writeer, .pricee   {
+    margin: 0 0 1px;
+}
+
+.adit{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding-bottom: 9rem;
+}
+
+
+.image-container {
+    flex: 0 0 auto; /* Don't allow image container to grow */
+  }
+  
+.date{
+    font-family: Poppins;
+    color: #79B3D3;
+    padding-left: 75px;
+    padding-bottom: 1rem;
+    font-size: 18px;
+}

@@ -1,0 +1,34 @@
+@font-face {
+    font-family: Poppins;
+    src: url(../../Poppins.ttf);
+  }
+
+.book{
+    position: absolute;
+    top: 1030px;
+    left: 120px;
+    width: 330px;
+    height: 471px;
+    background-color: white; /* Warna latar belakang tombol */
+    border: none; /* Hapus border */
+    color: black; /* Warna teks */
+    font-family: Poppins;
+    font-size: 20px; /* Ukuran font */
+    border-radius: 10px; /* Membuat sudut tombol membulat */
+     filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.2));
+}
+
+.judul{
+  font-size: 20px;
+  font-family: Poppins;
+  font-weight: bold;
+	white-space: nowrap; /* Prevent the title from wrapping to a new line */
+	text-overflow: ellipsis; /* Add ellipsis (...) to indicate truncated text */
+}
+
+.penulis{
+  font-size: 16px;
+  font-family: Poppins;
+	white-space: nowrap; /* Prevent the title from wrapping to a new line */
+	text-overflow: ellipsis; /* Add ellipsis (...) to indicate truncated text */
+}

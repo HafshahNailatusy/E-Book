@@ -1,0 +1,43 @@
+@font-face {
+    font-family: Poppins;
+    src: url(../../Poppins.ttf);
+  }
+
+.container {
+    position: relative;
+  }
+  
+  .moving-image {
+    position: absolute;
+    top: 120px;
+    right: 70px;
+    width: 680px;
+    height: auto;
+  }
+
+  .rectangle-button {
+    position: absolute;
+    top: 515px;
+    left: 70px;
+    width: 211px; /* Lebar tombol */
+    height: 50px; /* Tinggi tombol */
+    background-color: #79B3D3; /* Warna latar belakang tombol */
+    border: none; /* Hapus border */
+    color: white; /* Warna teks */
+    font-family: Poppins;
+    font-size: 20px; /* Ukuran font */
+    padding: 10px 20px; /* Padding untuk memberikan ruang di dalam tombol */
+    border-radius: 10px; /* Membuat sudut tombol membulat */
+    cursor: pointer; /* Mengubah ikon kursor saat diarahkan ke tombol */
+    text-decoration: n0ne;
+  }
+  
+  .rectangle-button:hover{
+    background-color: #5d9ec2; /* Warna latar belakang tombol saat dihover */
+  } 
+
+  .button-icon {
+    width: 20px; /* Adjust the width of the image */
+    height: auto; /* Adjust the height of the image */
+    margin-left: 5px; /* Add some space between the image and the text */
+  }

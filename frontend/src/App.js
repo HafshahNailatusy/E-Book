@@ -1,26 +1,31 @@
 import './App.css';
-import Login from './Pages/Login/Login';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Register from './Pages/Login/Register';
-import LoginAdmin from './Pages/Login/LoginAdmin';
-import AddUser from './admin/user/Add';
-import AddKategori from './admin/kategori/Add';
-import Update from './admin/user/Update';
-import DashboardUser from './user/DashboardUser';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Login from './Login/Login/Login';
+import LoginAdmin from './Login/Login/LoginAdmin'
+import Register from './Login/Login/Register';
+import Dashboard from './user/beranda/Dashboard';
+import Collection from './user/Coll/Collection';
+import Detail from './user/Detail/detail';
+import History from './user/History/History';
+import Purchased from './user/Purschase/purchased';
+import Modal from './user/Modal/modal';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path='/' element={<Login/>}/>
-        <Route path='/loginadmin' element={<LoginAdmin/>}/>
-        <Route path='/register' element={<Register/>}/>
-        <Route path='/adduser' element={<AddUser/>}/>
-        <Route path='/addkategori' element={<AddKategori/>}/>
-        <Route path='/updateuser/:id' element={<Update/>}/>
-        <Route path='/dashboarduser' element={<DashboardUser/>}/>
-        
+        <Route exact path='/' element={<Login />} />
+        <Route path='/loginadmin' element={<LoginAdmin />} />
+        <Route path='/register' element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/collection" element={<Collection />} />
+        <Route path="/detail" element={<Detail />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/purchase" element={<Purchased />} />
+        <Route path="/modal" element={<Modal />} />
+
       </Routes>
     </BrowserRouter>
   );
