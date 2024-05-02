@@ -20,6 +20,7 @@ function App() {
         <Route path='/addkategori' element={<AddKategori/>}/>
         <Route path='/updateuser/:id' element={<Update/>}/>
         <Route path='/dashboarduser' element={<DashboardUser/>}/>
+        
       </Routes>
     </BrowserRouter>
   );

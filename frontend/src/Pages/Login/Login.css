@@ -33,10 +33,14 @@
 
 }
 .butopia2{
-    font-size: 90px;
+    font-size: 96px;
     text-align: center;
     margin-left: 45px;
     position: relative;
+    margin-top: 10%;
+    padding: auto;
+    margin-bottom: 5%;
+    overflow-y: 195px;
 }
 .wrapper h2{
     font-family: "Nunito", sans-serif;
