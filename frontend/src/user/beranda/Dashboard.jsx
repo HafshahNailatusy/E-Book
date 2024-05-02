@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "../beranda/Navbar";
 import Kaki from "./footer";
 import "./text.css";
 import "./image.css";
