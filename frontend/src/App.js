@@ -16,16 +16,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path='/' element={<Login />} />
-        <Route path='/loginadmin' element={<LoginAdmin />} />
-        <Route path='/register' element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/collection" element={<Collection />} />
-        <Route path="/detail" element={<Detail />} />
-        <Route path="/history" element={<History />} />
-        <Route path="/purchase" element={<Purchased />} />
-        <Route path="/modal" element={<Modal />} />
-
+        <Route exact path='/' element={<Login/>}/>
+        <Route path='/loginadmin' element={<LoginAdmin/>}/>
+        <Route path='/register' element={<Register/>}/>
+        <Route path='/adduser' element={<AddUser/>}/>
+        <Route path='/addkategori' element={<AddKategori/>}/>
+        <Route path='/updateuser/:id' element={<Update/>}/>
+        <Route path='/dashboarduser' element={<DashboardUser/>}/>
+        
       </Routes>
     </BrowserRouter>
   );
