@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 
-*{
+/* *{
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-}
+} */
 body {
   
   font-family: "Fredoka", sans-serif;
@@ -25,10 +25,10 @@ code {
 }
 
 
-* {
+/* * {
   box-sizing: border-box;
     font-family: "Varela";
-}
+} */
 
 body, #root {
   margin: 0;
