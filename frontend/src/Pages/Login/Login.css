@@ -31,6 +31,7 @@
     margin-bottom: 5%;
     font-family: "Fredoka", sans-serif;
     /* width: min-content; */
+    font-weight: bold;
 
 }
 .butopia2{
@@ -183,7 +184,7 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
-.wrapper .register-link{
+.wrapper .linkiy{
     font-family: "Poppins", sans-serif;
     font-size: 15px;
     text-align: center;
@@ -191,15 +192,17 @@ code {
     margin: 10px;
     text-align: center;
     padding-right: 10px;
+    font-weight: bold;
 
 }
-.register-link p a{
+.linkiy p a{
     color: #495B40;
     text-decoration: none;
     font-weight: 15px;
 }
-.register-link p a:hover{
+.linkiy p a:hover{
     text-decoration: underline;
+    color: #495B40;
 }
 .wrapper .p {
     position: center; 
