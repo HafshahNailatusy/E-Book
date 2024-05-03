@@ -13,11 +13,11 @@
   src: url(../../Poppins.ttf);
 }
 
-  .butopiaaa {
+  .butopia {
     position: static;
     width: 10px;
     height: 44px;
-    left: 10px;
+    left: 75px;
     top: calc(50% - 44px/2);
     font-family: Fredoka;
     font-weight: bold;
@@ -31,7 +31,7 @@
     margin-right: 50px;
   }
 
-  .headline{
+  .headline {
     position: static;
     width: 600px;
     line-height: 68px;

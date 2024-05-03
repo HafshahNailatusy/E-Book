@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <nav className="navbar px-5 py-3">
       <div className="d-flex w-100 justify-content-between justify-content-center align-items-center">
-        <a className="butopiaaa" href="/">
+        <a className="butopia" href="/">
           butopia.
         </a>
         <SearchForm />
