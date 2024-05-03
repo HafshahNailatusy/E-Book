@@ -12,20 +12,20 @@ const Dashboard = () => {
   return (
     <>
       <Navbar />
-      <h1 className="headline12">The easiest way to find the best e-book!</h1>
-      <h5 className="sub-headline12">
+      <h1 className="headline">The easiest way to find the best e-book!</h1>
+      <h5 className="sub-headline">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor.
       </h5>
+      <h1 className="headline-2">Update New Book</h1>
+      <img src={gambar} alt="buku" className="moving-image"></img>
       <button
-        className="rectangle-button123"
+        className="rectangle-button"
         onClick={() => (window.location.href = "/collection")}
       >
         Explore Book
         <img src={panah} alt="arrow" className="button-icon" />
       </button>
-      <h1 className="headline-2">Update New Book</h1>
-      <img src={gambar} alt="buku" className="moving-image"></img>
       <Card />
       <a href="collection" className="see">
         See More

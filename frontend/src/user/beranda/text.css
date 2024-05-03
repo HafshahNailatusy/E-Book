@@ -17,7 +17,7 @@
     position: static;
     width: 10px;
     height: 44px;
-    left: 75px;
+    left: 10px;
     top: calc(50% - 44px/2);
     font-family: Fredoka;
     font-weight: bold;
@@ -31,7 +31,7 @@
     margin-right: 50px;
   }
 
-  .headline12 {
+  .headline{
     position: static;
     width: 600px;
     line-height: 68px;
@@ -44,7 +44,7 @@
     margin-top: 265px;
   }
 
-  .sub-headline12{
+  .sub-headline{
     position: static;
     width: 600px;
     line-height: 42px;

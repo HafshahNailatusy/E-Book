@@ -3,6 +3,8 @@ import "../Modal/modal.css";
 import login from "../assets/Ellipse.png";
 import pp from "../assets/Ellipsee.png";
 import { Logout } from "../../Pages/Login/LoginProses";
+import { useNavigate } from "react-router-dom";
+
 
 const Modal = () => {
   const navigate = useNavigate();
