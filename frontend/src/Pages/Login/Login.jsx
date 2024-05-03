@@ -38,7 +38,7 @@ const Login = () => {
 		
 			<div className="wrapper">
 				<form onSubmit={submitHandler}>
-					<h1 className="butopia">butopia.</h1>
+					<h1 className="butopia123">butopia.</h1>
 					<h2 className="jelas">-Login-</h2>
 					<h5 className="teks">Email</h5>
 					<div className="input-box">
