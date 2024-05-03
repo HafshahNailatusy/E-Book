@@ -19,7 +19,7 @@
     justify-content: center;
 
 }
-.butopia123 {
+.butopia {
     font-size: 96px;
     text-align: center;
     position: relative;
@@ -29,9 +29,14 @@
     margin-top: 10%;
     padding: auto;
     margin-bottom: 5%;
-    font-family: "fredoka", "sans-serif";
     /* width: min-content; */
 
+}
+.butopia2{
+    font-size: 90px;
+    text-align: center;
+    margin-left: 45px;
+    position: relative;
 }
 .wrapper h2{
     font-family: "Nunito", sans-serif;

@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import "../Modal/modal.css";
 import login from "../assets/Ellipse.png";
 import pp from "../assets/Ellipsee.png";
-import { Logout } from "../../Login/Login/LoginProses";
-import { useNavigate } from "react-router-dom";
-
+import { Logout } from "../../Pages/Login/LoginProses";
 
 const Modal = () => {
   const navigate = useNavigate();

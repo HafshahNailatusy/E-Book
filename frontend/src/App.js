@@ -1,15 +1,15 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './Login/Login/Login';
-import LoginAdmin from './Login/Login/LoginAdmin'
-import Register from './Login/Login/Register';
+import Login from './Pages/Login/Login';
+import LoginAdmin from './Pages/Login/LoginAdmin'
+import Register from './Pages/Login/Register';
 import Dashboard from './user/beranda/Dashboard';
 import Collection from './user/Coll/Collection';
-import Detail from './user/Detail/detail';
-import History from './user/History/History';
-import Purchased from './user/Purschase/purchased';
-import Modal from './user/Modal/modal';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import Detail from './user/Detail/detail';
+// import History from './user/History/History';
+// import Purchased from './user/Purschase/purchased';
+// import Modal from './user/Modal/modal';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
