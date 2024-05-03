@@ -4,7 +4,7 @@ import Kaki from "../beranda/footer";
 import "../Coll/Text.css";
 import Kartu from "../History/Kartu/Kartu";
 
-const History = () => {
+const Dashboard = () => {
   return (
     <>
       <Navbar />
@@ -16,4 +16,4 @@ const History = () => {
   );
 };
 
-export default History;
+export default Dashboard;

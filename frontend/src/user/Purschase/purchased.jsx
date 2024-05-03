@@ -4,7 +4,7 @@ import Kaki from "../beranda/footer";
 import "../Coll/Text.css";
 import Kartuu from "./Kartuu/Kartuu";
 
-const Purchased = () => {
+const Dashboard = () => {
   return (
     <>
       <Navbar />
@@ -15,4 +15,4 @@ const Purchased = () => {
   );
 };
 
-export default Purchased;
+export default Dashboard;

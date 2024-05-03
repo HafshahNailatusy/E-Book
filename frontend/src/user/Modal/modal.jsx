@@ -2,28 +2,13 @@ import React, { useState } from "react";
 import "../Modal/modal.css";
 import login from "../assets/Ellipse.png";
 import pp from "../assets/Ellipsee.png";
-import { Logout } from "../../Pages/Login/LoginProses";
-import { useNavigate } from "react-router-dom";
-
 
 const Modal = () => {
-  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
-
-  const logout = async (e) => {
-		e.preventDefault();
-
-		try {
-			const res = await Logout;
-				navigate("/");
-		} catch (error) {
-			console.error("error:", error);
-		}
-	};
 
   return (
     <div>
@@ -61,7 +46,7 @@ const Modal = () => {
             </span>
             <button
               className="keluar"
-              onClick={logout}
+              onClick={() => (window.location.href = "/")}
             >
               Log Out
             </button>

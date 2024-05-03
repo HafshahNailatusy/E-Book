@@ -4,7 +4,7 @@ import Kaki from "../beranda/footer";
 import Card from "../beranda/card/card";
 import "../Coll/Text.css";
 
-const Collection = () => {
+const Dashboard = () => {
   return (
     <>
       <Navbar />
@@ -15,4 +15,4 @@ const Collection = () => {
   );
 };
 
-export default Collection;
+export default Dashboard;

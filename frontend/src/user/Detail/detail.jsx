@@ -1,31 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Navbar from "../beranda/Navbar";
 import Kaki from "../beranda/footer";
 import cover from "../assets/mystwick.png";
 import Modal2 from "../Modal/modal2/modal2";
 import "../Coll/Text.css";
-import { getByID } from "../../admin/book/ApiBook";
-import { useParams } from "react-router-dom";
 
-
-const Detail = () => {
-//   const { id } = useParams();
-//   const [book, setBook] = useState();
-
-//   useEffect(() => {
-//     const fetchdata = async () => {
-//         try {
-//             const res = await getByID(id);
-//             setBook(res.data)
-//         } catch (error) {
-//             console.log("Failed to fetch data");
-//         }
-//     };
-//     if (id) {
-//         fetchdata();
-//     }
-// }, [id]);
-
+const Dashboard = () => {
   return (
     <>
       <Navbar />
@@ -39,7 +19,7 @@ const Detail = () => {
           <Modal2 />
           <h5 className="Synopsis">
             Amelia Jones always dreamed of attending the Mystwick School of
-            Musicraft, where the world's most promising musicians learn to
+            Musicraft, where the world’s most promising musicians learn to
             create magic. So when Amelia botches her audition, she thinks her
             dream has met an abrupt and humiliating end—until the school agree s
             to give her a trial period. Amelia is determined to prove herself,
@@ -52,4 +32,4 @@ const Detail = () => {
   );
 };
 
-export default Detail;
+export default Dashboard;
