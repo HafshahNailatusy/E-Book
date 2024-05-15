@@ -75,28 +75,6 @@ exports.addTransaksi = async (request, response) => {
     }
 };
 
-exports.addDetailTransaksi = async (request, response) => {
-    const data = {
-        TransaksiID: request.body.TransaksiID,
-        BookID: request.body.BookID,
-    };
-    transaksiModel.create(data)
-        .then(result => {
-            return response.json({
-                status: true,
-                data: result,
-                message: `New detail transaksi has been inserted`
-            })
-        })
-
-        .catch(error => {
-            return response.json({
-                status: false,
-                message: error.message
-            })
-        })
-};
-
 exports.updateTransaksi = async (request, response) => {
     let id = request.params.id
 
