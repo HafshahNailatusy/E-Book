@@ -53,22 +53,26 @@ exports.addTransaksi = async (request, response) => {
         UserID: request.body.UserID,
         MetodePay: request.body.MetodePay,
         TglTransaksi: TglTransaksi,
-    };
-    transaksiModel.create(transaksiData)
-        .then(result => {
-            return response.json({
-                status: true,
-                data: result,
-                message: `New transaksi has been inserted`
-            })
-        })
+    }; 
 
-        .catch(error => {
-            return response.json({
-                status: false,
-                message: error.message
-            })
-        })
+    try {
+        let result = await transaksiModel.create(transaksiData); //masukin ke tabel transaksi
+        let id_pemesanan = result.TransaksiID; //ngambil id transaksi
+        let detailsoforder = request.body.detailsoforder; //ngisi detail of order
+        for (let i = 0; i < detailsoforder.length; i++) {
+            detailsoforder[i].TransaksiID = id_pemesanan;
+        }
+        await detailmodel.bulkCreate(detailsoforder);
+        
+        response.status(201).json({
+            status: true,
+        });
+    } catch (error) {
+        return response.json({
+            status: false,
+            message: error.message,
+        });
+    }
 };
 
 exports.addDetailTransaksi = async (request, response) => {
