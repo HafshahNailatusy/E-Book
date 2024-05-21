@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import Login from './Pages/Login/Login';
 // import LoginAdmin from './Pages/Login/LoginAdmin'
 // import Register from './Pages/Login/Register';
@@ -23,6 +23,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import LoginAdmin from './admin/Pages/Login';
 
 
+const Layout = () => (
+  <>
+    <Sidebar />
+    <main>
+      <Outlet />
+    </main>
+  </>
+);
+
+
 function App() {
   return (
     <BrowserRouter>
@@ -38,10 +48,12 @@ function App() {
         <Route path="/modal" element={<Modal />} />
 
       </Routes> */}
-      <Sidebar>
-      </Sidebar>
+     
       <Routes>
-        <Route path='/' exact element={
+      <Route path="/" element={<Layout />}>
+
+
+        <Route path='/home' exact element={
           <PrivateRoute>
             <Homepage />
           </PrivateRoute>
@@ -76,6 +88,7 @@ function App() {
             <AdminPanel />
           </AdminRoute>
         } />
+              </Route>
         <Route path='/login' element={
           <LoginRoute>
             <Login />

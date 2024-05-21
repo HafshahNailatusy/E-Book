@@ -16,7 +16,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchdata = async () => {
         try {
-            const res = await getAllBook;
+            const res = await getAllBook();
             console.log(res)
             const book = res.data;
             if (book.foto) {

@@ -83,7 +83,7 @@ function CalendarEvents() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5500/book", { withCredentials: true })
+      .get("http://localhost:8000/book", { withCredentials: true })
       .then((res) => {
         if (res.data != null) {
           setNewEventSubmitted(false);
@@ -92,7 +92,7 @@ function CalendarEvents() {
       });
 
       axios
-      .get("http://localhost:5500/categories", { withCredentials: true })
+      .get("http://localhost:8000/categories", { withCredentials: true })
       .then((res) => {
         if (res.data != null) {
           setCategory(res.data);
@@ -103,7 +103,7 @@ function CalendarEvents() {
   const addNewEvent = (eventData) => {
     axios
       .post(
-        "http://localhost:5500/book",
+        "http://localhost:8000/book",
         eventData,
         { withCredentials: true }
       )

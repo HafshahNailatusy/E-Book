@@ -5,7 +5,7 @@ export const AuthLoginInfo = createContext({});
 export function AuthLogin(props) {
   const [user, setUser] = useState();
   useEffect(() => {
-    axios.get("http://localhost:5500/user", { withCredentials: true}).then(res => {
+    axios.get("http://localhost:8000/user", { withCredentials: true}).then(res => {
       setUser(res.data)
     })
   }, []);

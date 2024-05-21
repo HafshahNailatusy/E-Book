@@ -23,7 +23,7 @@ function OrderPage() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5500/order_by_id?id=${orderId}&type=single`, {
+      .get(`http://localhost:8000/order_by_id?id=${orderId}&type=single`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -57,7 +57,7 @@ function OrderPage() {
   const saveOrderChanges = () => {
     axios
       .post(
-        "http://localhost:5500/updateorder",
+        "http://localhost:8000/updateorder",
         {
           clientDetails,
           orderId,

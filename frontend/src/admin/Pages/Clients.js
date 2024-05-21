@@ -25,7 +25,7 @@ function Clients() {
   useEffect(() => {
     setNewOrderSubmitted(false);
     axios
-      .get("http://localhost:5500/clients", { withCredentials: true })
+      .get("http://localhost:8000/clients", { withCredentials: true })
       .then((res) => {
         if (res.data != null) {
           setClientsData(
@@ -131,7 +131,7 @@ function Clients() {
     const addNewOrder = () => {
       axios
         .post(
-          "http://localhost:5500/newclient",
+          "http://localhost:8000/newclient",
           {
             clientDetails,
           },

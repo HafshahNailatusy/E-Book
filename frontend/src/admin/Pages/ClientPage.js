@@ -16,7 +16,7 @@ function ClientPage() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5500/client_by_id?id=${clientId}`, {
+      .get(`http://localhost:8000/client_by_id?id=${clientId}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -34,7 +34,7 @@ function ClientPage() {
   const saveOrderChanges = () => {
     axios
       .post(
-        "http://localhost:5500/updateclient",
+        "http://localhost:8000/updateclient",
         {
           clientDetails,
         },

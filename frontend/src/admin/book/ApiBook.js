@@ -18,6 +18,7 @@ const getAllBook = async () => {
         if (res.status === true) {
             return ({
                 status: true,
+                data: res
             })
         }
     } catch (error) {

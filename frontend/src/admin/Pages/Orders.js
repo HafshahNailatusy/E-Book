@@ -54,7 +54,7 @@ function Orders() {
   useEffect(() => {
     setNewOrderSubmitted(false);
     axios
-      .get("http://localhost:5500/orders", { withCredentials: true })
+      .get("http://localhost:8000/orders", { withCredentials: true })
       .then((res) => {
         if (res.data != null) {
           setOrdersData(res.data);
@@ -91,7 +91,7 @@ function Orders() {
   const addNewOrder = () => {
     axios
       .post(
-        "http://localhost:5500/neworder",
+        "http://localhost:8000/neworder",
         {
           clientDetails,
           isNewClient,
@@ -126,7 +126,7 @@ function Orders() {
 
   const getAllClientsFromDatabase = () => {
     axios
-      .get("http://localhost:5500/clients", { withCredentials: true })
+      .get("http://localhost:8000/clients", { withCredentials: true })
       .then((res) => {
         setAllClientsData(res.data[0]);
       });

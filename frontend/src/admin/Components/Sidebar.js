@@ -13,7 +13,7 @@ import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 const logout = () => {
   window.location.href = "/login";
   axios
-    .get("http://localhost:5500/logout", {
+    .get("http://localhost:8000/logout", {
       withCredentials: true,
     })
     .then((res) => {

@@ -21,7 +21,7 @@ function UsersSetting() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5500/getusers`, { withCredentials: true })
+      .get(`http://localhost:8000/getusers`, { withCredentials: true })
       .then((res) => {
         if (res.data != null) {
           setUsersUpdated(false);
@@ -40,7 +40,7 @@ function UsersSetting() {
   const deleteUserById = (userId) => {
     axios
       .post(
-        "http://localhost:5500/deleteuser",
+        "http://localhost:8000/deleteuser",
         {
           userId,
         },
@@ -207,7 +207,7 @@ function UsersSetting() {
     const addNewUser = () => {
       axios
         .post(
-          "http://localhost:5500/newuser",
+          "http://localhost:8000/newuser",
           {
             userDetails,
           },

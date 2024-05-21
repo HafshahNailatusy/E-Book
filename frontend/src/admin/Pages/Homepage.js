@@ -26,7 +26,7 @@ function Homepage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5500/dashboard_data", { withCredentials: true })
+      .get("http://localhost:8000/dashboard_data", { withCredentials: true })
       .then((res) => {
         if (res.data != null) {
           setDashboardData(res.data);
