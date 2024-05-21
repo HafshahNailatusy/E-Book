@@ -19,7 +19,7 @@ const Dashboard = () => {
           <Modal2 />
           <h5 className="Synopsis">
             Amelia Jones always dreamed of attending the Mystwick School of
-            Musicraft, where the world’s most promising musicians learn to
+            Musicraft, where the world's most promising musicians learn to
             create magic. So when Amelia botches her audition, she thinks her
             dream has met an abrupt and humiliating end—until the school agree s
             to give her a trial period. Amelia is determined to prove herself,

@@ -1,7 +1,26 @@
 import "../card/card.css";
-import cover from "../../assets/mystwick.png";
+import { getAllBook, getFoto } from "../../../admin/book/ApiBook";
+import { useEffect, useState } from "react";
 
 const Card = ({ collection }) => {
+  const [data, setData] = useState([])
+  const [imagePreview, setImagePreview] = useState(null);
+
+  useEffect(() => {
+    const fetchdata = async () => {
+        try {
+            const res = await getAllBook;
+            console.log(res)
+            const book = res.data;
+            if (book.foto) {
+                setImagePreview(getFoto(book.foto));
+            }
+        } catch (error) {
+            console.log("Failed to fetch data");
+        }
+    };
+        fetchdata();
+}, []);
   return (
     <div
       className={
@@ -12,16 +31,16 @@ const Card = ({ collection }) => {
     >
       <a href="detail" className="card-link">
         <div className="product-card-wrapper shadow">
-          <img src={cover} className="image" alt="..." />
-          <h5 className="judul">The Mystwick School of Musicraft</h5>
+          <img src={data.cover} className="image" alt="..." />
+          <h5 className="judul">{data.judul}</h5>
           <hr className="garis"></hr>
           <p className="penulis-name-container">
             <span className="penulis">Writer</span>
             <span className="buy">Buy Now</span>
           </p>
           <p className="ingpo-container">
-            <span className="writer">Jessica Khoury</span>
-            <span className="price">Rp. 160000</span>
+            <span className="writer">{data.penulis}</span>
+            <span className="price">Rp. {data.harga}</span>
           </p>
         </div>
       </a>

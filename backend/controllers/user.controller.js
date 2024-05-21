@@ -6,7 +6,6 @@ const upload = require('./upload-image').single(`foto`)
 const md5 = require(`md5`)
 const jsonwebtoken = require('jsonwebtoken')
 const Sequelize = require('sequelize')
-const { param } = require('../routes/transaksi.route')
 const sequelize = new Sequelize("ebookta", "root", "", {
     host: "localhost",
     dialect: "mysql"

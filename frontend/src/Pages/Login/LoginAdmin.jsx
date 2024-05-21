@@ -24,8 +24,8 @@ const LoginAdmin = () => {
 		try {
 			const res = await AdminHandler(values);
 			console.log(res);
-			if (res.status === true) {
-				navigate("/dashboard");
+			if (res.success === true) {
+				navigate("/adminDashboard");
 			}
 		} catch (error) {
 			console.error("error:", error);

@@ -7,20 +7,30 @@ import "./book.css";
 import Card from "./card/card";
 // import gambar from "../assets/pict1.png";
 import panah from "../assets/arrow.png";
-import axios from "axios";
+import { getAllBook, getFoto } from "../../admin/book/ApiBook";
 
 const Dashboard = () => {
   const [data, setData] = useState([])
+  const [imagePreview, setImagePreview] = useState(null);
 
-  useEffect(()=>{
-    fecthData()
-  },[])
+  useEffect(() => {
+    const fetchdata = async () => {
+        try {
+            const res = await getAllBook;
+            console.log(res)
+            const book = res.data;
+            if (book.foto) {
+                setImagePreview(getFoto(book.foto));
+            }
+        } catch (error) {
+            console.log("Failed to fetch data");
+        }
+    };
+     {
+        fetchdata();
+    }
+}, []);
 
-  const fecthData = async() => {
-    const response = await axios.get("http://localhost:3000/book/getAllBook")
-    setData(response)
-    console.log(response)
-  }
   return (
     <>
       <Navbar />
