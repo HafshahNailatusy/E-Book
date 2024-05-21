@@ -35,7 +35,6 @@ const Login = () => {
 	  };
 
 	return (
-		
 			<div className="wrapper">
 				<form onSubmit={submitHandler}>
 					<h1 className="butopia123">butopia.</h1>
