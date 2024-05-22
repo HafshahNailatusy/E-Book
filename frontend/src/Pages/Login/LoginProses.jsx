@@ -9,7 +9,7 @@ const REGISTER_URL = BASE_API + "/user/RegisterCustomer";
 export const LoginHandler = async (userData) => {
 	try {
 		const res = await axios.post(LOGIN_URL, userData);
-		if (res.data.status === true && res.data.data.role === "user") {
+		if (res.data.status === true) {
 			const userData = {
 				email: res.data.data.email,
 				nama: res.data.data.nama,
@@ -41,9 +41,10 @@ export const AdminHandler = async (userData) => {
 			setTokenCookie(token);
 			setLocalStorage(LOCAL_STORAGE_USER, userData);
 			return { res: res.data.data, success: true };
-		} else {
-			return { res: res, success: false };  
-		}
+		} 
+		// else {
+		// 	return { res: res, success: false };  
+		// }
 	} catch (error) {
 		console.error(error);
 		return { error: "Failed to fetch data" };

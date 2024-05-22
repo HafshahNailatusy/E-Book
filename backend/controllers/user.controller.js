@@ -422,13 +422,13 @@ exports.deleteUser = async (request, response) => {
 
         .then((result) => {
             return response.json({
-                success: true,
+                status: true,
                 message: `data user has ben delete where id :` + UserID,
             });
         })
         .catch((error) => {
             return response.status(400).json({
-                success: false,
+                status: false,
                 message: error.message,
             });
         });

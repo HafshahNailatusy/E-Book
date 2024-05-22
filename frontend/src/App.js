@@ -1,17 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './Pages/Login/Register';
-import Dashboard from './user/beranda/Dashboard';
 import Collection from './user/Coll/Collection';
 import Detail from './user/Detail/detail';
 import History from './user/History/History';
 import Purchased from './user/Purschase/purchased';
 import Login from './Pages/Login/Login';
-import LoginAdmin from './Pages/Login/LoginAdmin';
 import Modal from './user/Modal/modal';
-import DashboardAdmin from './admin/Pages/DashboardAdmin';
-import DaftarBuku from './admin/Pages/DaftarBuku';
-import AddTransaksi from './admin/Pages/AddTransaksi';
+import LoginAdmin from './Pages/Login/LoginAdmin';
+import User from './admin/Pages/UserAdmin'
 
 
 // const Layout = () => (
@@ -28,10 +25,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/login' element={<Login />} />
+        <Route exact path='/' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/collection' element={<Collection />} />
-        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/userPanel' element={<User />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/history" element={<History />} />
         <Route path="/purchase" element={<Purchased />} />

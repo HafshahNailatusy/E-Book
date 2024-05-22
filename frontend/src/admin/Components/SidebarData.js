@@ -27,7 +27,7 @@ export const SidebarData = [
     link: "/calendar"
   },
   {
-    title: "Admin pannel",
+    title: "Admin Panel",
     icon: <AdminPanelSettingsRoundedIcon />,
     link: "/adminPannel",
     role: "admin"
