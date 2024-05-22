@@ -66,6 +66,7 @@ export const RegisterHandler = async (userData) => {
 
 export const Logout = async () => {
 	try {
+		const res = await axios.post(REGISTER_URL);
 		removeLocalStorage(LOCAL_STORAGE_USER);
 		removeTokenCookie();
 	} catch (error) {

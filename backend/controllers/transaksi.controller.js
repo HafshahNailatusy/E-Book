@@ -75,6 +75,30 @@ exports.addTransaksi = async (request, response) => {
     }
 };
 
+exports.orderHistory = async (req, res) => {
+    try {
+        let data = await order.findAll({
+            include:
+                [
+                    {
+                        model: detailmodel,
+                        as: 'book'
+                    }
+                ]
+        })
+        return res.status(200).json({
+            status: true,
+            data: data,
+            message: "Order list has been loaded"
+        })
+    } catch (error) {
+        return res.status(500).json({
+            status: false,
+            message: error.message
+        });
+    }
+}
+
 exports.updateTransaksi = async (request, response) => {
     let id = request.params.id
 

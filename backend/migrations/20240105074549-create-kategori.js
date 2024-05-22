@@ -12,7 +12,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      namaKat: {
+      kategori: {
         type: Sequelize.STRING
       },
       createdAt: {

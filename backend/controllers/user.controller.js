@@ -468,3 +468,13 @@ exports.resetpasswordUser = async (req, res) => {
     }
 
 }
+
+exports.Logout = async (req, res) => {
+    try {
+        req.user.token = null;
+        await req.user.save();
+        res.send();
+      } catch (error) {
+        res.status(500).send();
+      }
+}

@@ -35,8 +35,8 @@ exports.findBook = async (request, response) => {
 
 exports.findByKategori = async (req, res) => {
     await bookModel.findAll({
-        where: { KategoriID: req.params.id },
-        include: [{ kategoriModel, as: 'kategori' }]
+        where: { kategori: req.body.kategori },
+        include: [kategoriModel]
     })
         .then(result => {
             return res.json({

@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    namaKat: DataTypes.STRING
+    kategori: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'kategori',

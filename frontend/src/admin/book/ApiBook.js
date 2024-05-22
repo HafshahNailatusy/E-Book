@@ -9,8 +9,7 @@ const getFoto = (foto) => {
 }
 
 const getAllBook = async () => {
-    const URL = `${BASE_API}/book/getBookAdmin`;
-    const token = getTokenCookie()
+    const URL = `${BASE_API}/book/getAllBook`;
     try {
         const data = await axios.get(URL, {
         })
@@ -31,7 +30,6 @@ const getAllBook = async () => {
 
 const getByID = async (id) => {
     const URL = `${BASE_API}/book/findByID/${id}`
-    const token = getTokenCookie()
     try {
         const data = await axios.get(URL, {
         })
@@ -54,7 +52,6 @@ const getByID = async (id) => {
 
 const getbyKategori = async (id) => {
     const URL = `${BASE_API}/book/findByKategoriAdmin/${id}`
-    const token = getTokenCookie()
     try {
         const data = await axios.get(URL, {
         })
@@ -74,7 +71,6 @@ const getbyKategori = async (id) => {
 
 const getBook = async (keyword) => {
     const URL = `${BASE_API}/book/findBookAdmin`
-    const token = getTokenCookie()
     try {
         const data = await axios.get(URL, keyword, {
         })

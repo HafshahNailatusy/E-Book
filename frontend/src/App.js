@@ -1,14 +1,17 @@
-import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import LoginAdmin from './Pages/Login/LoginAdmin'
 import Register from './Pages/Login/Register';
 import Dashboard from './user/beranda/Dashboard';
 import Collection from './user/Coll/Collection';
 import Detail from './user/Detail/detail';
 import History from './user/History/History';
 import Purchased from './user/Purschase/purchased';
-// import Sidebar from './admin/Components/Sidebar';
 import Login from './Pages/Login/Login';
+import LoginAdmin from './Pages/Login/LoginAdmin';
+import Modal from './user/Modal/modal';
+import DashboardAdmin from './admin/Pages/DashboardAdmin';
+import DaftarBuku from './admin/Pages/DaftarBuku';
+import AddTransaksi from './admin/Pages/AddTransaksi';
 
 
 // const Layout = () => (

@@ -18,6 +18,7 @@ app.post("/login", userController.Login)
 app.put("/:id", userController.updateUser)
 app.post("/RegisterCustomer", userController.RegisterCustomer)
 app.put("/resetpassword/:id", userController.resetpasswordUser)
+app.post("/logout", userController.Logout)
 
 
 module.exports = app
