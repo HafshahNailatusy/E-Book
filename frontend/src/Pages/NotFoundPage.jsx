@@ -1,5 +1,5 @@
 import { CustomButton } from "../components";
-import { handleBackHome } from "./../../utils/helpers/Response";
+import { handleBackHome } from "./../utils/helpers/Response";
 
 const NotFoundPage = () => {
   const handlePrev = () => {

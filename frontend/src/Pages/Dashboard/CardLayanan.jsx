@@ -1,4 +1,4 @@
-import CustomButton from "@/components/Button";
+import CustomButton from "./../../components/Button";
 
 export const CardLayanan = ({ id, image, nama, harga, deskripsi, onPesan }) => {
   return (

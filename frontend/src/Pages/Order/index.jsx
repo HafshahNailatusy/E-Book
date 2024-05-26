@@ -1,4 +1,4 @@
-import { AppliactionSection } from "./AppliactionSection";
+import { AppliactionSection, BookSection } from "./BookSection";
 import { selectorBayar } from "./MetodeBayar";
 import { useOrderData } from "./useOrder";
 
@@ -16,7 +16,7 @@ const Order = () => {
 
   return (
     <main className="w-full min-h-screen bg-background flex flex-col md:flex-row justify-center md:gap-12 py-12">
-      <AppliactionSection
+      <BookSection
         book={book}
         info={info}
         setInfo={setInfo}

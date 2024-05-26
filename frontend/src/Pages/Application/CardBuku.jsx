@@ -1,7 +1,7 @@
 import CustomButton from "./../../components/Button";
 import { imageURL } from "./../../Config";
 
-const CardBuku = (props) => {
+const AnuBuku = (props) => {
   return (
     <div
       key={props.id}
@@ -52,4 +52,4 @@ const CardBuku = (props) => {
   );
 };
 
-export default CardBuku;
+export default AnuBuku;

@@ -30,7 +30,7 @@ export const useOrderData = () => {
     if (result.status === 404) {
       navigate("/notfound");
     }
-    setApplication(result);
+    setBook(result);
   };
 
   const handleOrder = async (e) => {

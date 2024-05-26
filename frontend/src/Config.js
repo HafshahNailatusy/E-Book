@@ -1,7 +1,7 @@
 import AuthHelpers from "./utils/helpers/AuthHelpers";
 
 export const config = () => {
-  const myToken = AuthHelpers.GetAuth("tokenUser");
+  const myToken = AuthHelpers.GetAuth("token");
   return {
     headers: { Authorization: `Bearer ${myToken}` },
   };

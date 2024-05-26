@@ -1,4 +1,4 @@
-import { NavbarAdmin } from "../Navbar/NavbarAdmin";
+import NavbarAdmin from "../Navbar/NavbarAdmin";
 
 const AdminLayout = ({ children }) => {
   return (

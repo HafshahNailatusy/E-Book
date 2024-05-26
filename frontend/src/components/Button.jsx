@@ -1,4 +1,4 @@
-import { Button } from "@material-tailwind/react";
+import { Button } from "@mui/material";
 
 const CustomButton = ({ children, className, loading, onClick, type }) => {
   return (

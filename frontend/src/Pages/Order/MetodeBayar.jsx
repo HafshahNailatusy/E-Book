@@ -28,7 +28,7 @@ export const selectorBayar = ({
                   id={option.value}
                   name="duration"
                   value={option.value}
-                  checked={duration === option.value}
+                  checked={bayar === option.value}
                   onChange={() => setbayar(option.value)}
                   className="sr-only"
                 />

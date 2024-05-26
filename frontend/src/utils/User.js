@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { LOCAL_STORAGE_USER } from "./helpers/Http";
 import { getLocalStorage } from "./helpers/Localstorage";
 
-export const getMe = () => {
+export const GetMe = () => {
   const [user, setUser] = useState(null);
 
     useEffect(() => {
@@ -14,17 +14,17 @@ export const getMe = () => {
     }, []);
 }
 
-// export const login = async (email, password) => {
-//   try {
-//     const response = await axios.post(baseURL + "/user/login", {
-//       email,
-//       password,
-//     });
-//     return response.data;
-//   } catch (error) {
-//     return handleApiError(error);
-//   }
-// };
+export const login = async (email, password) => {
+  try {
+    const response = await axios.post(baseURL + "/user/login", {
+      email,
+      password,
+    });
+    return response.data;
+  } catch (error) {
+    return handleApiError(error);
+  }
+};
 
 export const fetchAllUsers = async () => {
   try {

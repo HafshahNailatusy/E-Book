@@ -23,7 +23,7 @@ const Login = () => {
 			const res = await AdminHandler(values);
 			console.log(res);
 			if (res.success === true) {
-					navigate(`/userPanel`);
+					navigate(`/admin/buku`);
 			}
 		} catch (error) {
 			console.error("error:", error);

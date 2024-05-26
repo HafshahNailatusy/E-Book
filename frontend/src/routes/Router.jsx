@@ -6,7 +6,7 @@ import LoadingSpinner from "../components/Loading";
 
 const Login = lazy(() => import("../pages/Login/Login"));
 const LoginAdmin = lazy(() => import("../pages/Login/LoginAdmin"));
-const Register = lazy(() => import("../pages/Register"));
+const Register = lazy(() => import("../pages/Login/Register"));
 const DashboardUser = lazy(() => import("../pages/Dashboard"));
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
 const ForbiddenPage = lazy(() => import("../pages/ForbiddenPage"));
@@ -55,7 +55,7 @@ const Router = () => {
         />
 
         <Route
-          path="/admin/aplikasi"
+          path="/admin/buku"
           element={
             <AdminRoute>
               <Aplikasi />

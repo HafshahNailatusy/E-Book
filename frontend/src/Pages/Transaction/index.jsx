@@ -1,7 +1,7 @@
 import { AdminLayout } from "./../../components/Layouts";
 import { CustomButton } from "./../../components";
 import { useTransaksi } from "./useTransaksi";
-import { TableTransaction } from "./../../component/TableTransaction";
+import { TableTransaction } from ".//TableTransaction";
 
 const Transaksi = () => {
   const {

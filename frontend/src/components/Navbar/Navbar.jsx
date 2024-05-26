@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { IoMenu } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import AuthHelper from "../../utils/helpers/AuthHelpers";
-import { CustomButton, CustomDropdown, NavbarMobile } from "../";
+import NavbarMobile from "./NavbarMobile";
+import CustomButton from "../Button";
+import Dropdown from "../Dropdown";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -70,7 +72,7 @@ const Navbar = () => {
         <h1
           className={`${scrolled ? "text-white" : "text-primary"} font-extrabold text-3xl`}
         >
-          Lorem
+          Butopia
         </h1>
         <div className="hidden md:flex space-x-12 items-center">
           <ul className="flex space-x-12 items-center">
@@ -82,7 +84,7 @@ const Navbar = () => {
                   handleScrollToSection("layanan");
                 }}
               >
-                Layanan
+                Buku
               </a>
             </li>
             <li className="my-6">
@@ -115,7 +117,7 @@ const Navbar = () => {
                   handleScrollToSection("caraPesan");
                 }}
               >
-                Cara Pesan
+                Cara Beli
               </a>
             </li>
 
@@ -132,7 +134,7 @@ const Navbar = () => {
           </ul>
 
           {logged ? (
-            <CustomDropdown handleLogout={handleLogout} />
+            <Dropdown handleLogout={handleLogout} />
           ) : (
             <CustomButton
               className="bg-gradient-to-tr from-primary to-secondary text-white w-[150px]"

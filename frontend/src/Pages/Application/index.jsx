@@ -1,12 +1,10 @@
 import Modal from "react-modal";
-
-import { AdminLayout } from "../../components/Layouts/AdminLayout";
-import { CustomButton, CustomSearch } from "./../../components/Button";
 import { imageURL } from "./../../Config";
-import { CardBuku } from './CardBuku';
 import { IoCamera } from "react-icons/io5";
 import { IsiBuku } from "./IsiBuku";
-
+import { AdminLayout } from "../../components/Layouts";
+import { CustomButton, CustomSearch } from "../../components";
+import AnuBuku from './CardBuku'
 
 const Book = () => {
   const {
@@ -64,7 +62,7 @@ const Book = () => {
       <main className="flex flex-wrap justify-center gap-8">
         {buku && buku.length > 0 ? (
           buku.map((data) => (
-            <CardBuku
+            <AnuBuku
               key={data.idbuku}
               judul={data.judul}
               penulis={data.penulis}
@@ -221,7 +219,7 @@ const Book = () => {
                   type="number"
                   className="block w-full px-4 py-2 text-sm text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                   onChange={(e) =>
-                    setNewAplikasi({ ...newBuku, harga: e.target.value })
+                    setNewBuku({ ...newBuku, harga: e.target.value })
                   }
                   value={newBuku.harga}
                   required

@@ -1,7 +1,7 @@
 import axios from "axios";
-import { BASE_API, LOCAL_STORAGE_USER } from "../../Etc/Http";
-import { setTokenCookie, removeTokenCookie } from "../../Etc/Cookie";
-import { setLocalStorage, removeLocalStorage } from "../../Etc/LocalStorage";
+import { BASE_API, LOCAL_STORAGE_USER } from "./../../utils/helpers/Http";
+import { setTokenCookie, removeTokenCookie } from "../../utils/helpers/Cookie";
+import { setLocalStorage, removeLocalStorage } from "../../utils/helpers/Localstorage";
 
 const LOGIN_URL = BASE_API + "/user/login";
 const REGISTER_URL = BASE_API + "/user/RegisterCustomer";

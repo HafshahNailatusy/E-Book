@@ -23,7 +23,7 @@ const Login = () => {
 			const res = await LoginHandler(values);
 			console.log(res);
 			if (res.success === true) {
-					navigate(`/register`);
+					navigate(`/`);
 			}
 		} catch (error) {
 			console.error("error:", error);

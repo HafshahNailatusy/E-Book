@@ -13,12 +13,12 @@ export const IsiBuku = () => {
   const [action, setAction] = useState("");
 
   useEffect(() => {
-    fetchApp();
+    getall();
   }, []);
 
   const getall = async () => {
     const databuku = await getallbook();
-    setAplikasi(databuku);
+    setBuku(databuku);
   };
 
   const handleSearch = async (e) => {
@@ -68,7 +68,7 @@ export const IsiBuku = () => {
         }
       }
 
-      fetchApp();
+      getall();
     }
   };
 
@@ -76,11 +76,11 @@ export const IsiBuku = () => {
     e.preventDefault();
 
     let data = new FormData();
-    data.append("judul", newAplikasi.judul);
-    data.append("penulis", newAplikasi.penulis);
-    data.append("sinopsis", newAplikasi.sinopsis);
-    data.append("foto", newAplikasi.foto);
-    data.append("harga", newAplikasi.harga);
+    data.append("judul", newBuku.judul);
+    data.append("penulis", newBuku.penulis);
+    data.append("sinopsis", newBuku.sinopsis);
+    data.append("foto", newBuku.foto);
+    data.append("harga", newBuku.harga);
 
     let response;
     if (action === "add") {
@@ -92,7 +92,7 @@ export const IsiBuku = () => {
     handleApiResponse(response, () => {
       setModalIsOpen(false);
       setNewBuku(initialNewbookState);
-      fetchApp();
+      getall();
     });
   };
 

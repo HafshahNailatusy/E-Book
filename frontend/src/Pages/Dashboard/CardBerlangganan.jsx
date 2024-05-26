@@ -1,23 +1,23 @@
 const cardData = [
   {
     icon: "pesanIcon.svg",
-    text: "Pesan Layanan",
+    text: "Pilih BUku",
   },
   {
     icon: "pembayaranIcon.svg",
-    text: "Pembayaran",
+    text: "Bayar",
   },
   {
     icon: "prosesIcon.svg",
-    text: "Menunggu Proses",
+    text: "Tunggu",
   },
   {
     icon: "pesananIcon.svg",
-    text: "Pesanan Diterima",
+    text: "Selesai Beli",
   },
   {
     icon: "selesaiIcon.svg",
-    text: "Selesai Layanan",
+    text: "Silakan Baca",
   },
 ];
 
@@ -30,7 +30,7 @@ export const CardBerlangganan = () => {
       className="flex flex-col items-center justify-center py-8 md:py-24"
     >
       <h1 className="text-3xl md:text-4xl text-primary-dark font-bold mb-6">
-        Cara Berlangganan
+        Cara Beli
       </h1>
 
       <div className="flex flex-wrap justify-center gap-8 md:gap-12">

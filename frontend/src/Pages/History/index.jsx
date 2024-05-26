@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import AuthHelpers from "./../../utils/helpers/AuthHelpers";
 import ProfileLayout from "./../../components/Layouts/ProfileLayout";
 import { TableHistory } from "./TableHistory";
+import { findtransaksi } from "../../utils/Transaksi";
 
 const History = () => {
   const [history, setHistory] = useState([]);
@@ -14,7 +15,7 @@ const History = () => {
 
   const fetchHistory = async () => {
     const userID = AuthHelpers.GetAuth("userID");
-    const dataHistory = await fetchAllTransaksiById(userID);
+    const dataHistory = await findtransaksi(userID);
 
     setUserID(userID);
     setHistory(dataHistory);

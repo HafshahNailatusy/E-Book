@@ -1,12 +1,11 @@
-import { imageURL } from "@/Config";
-import { MainLayout } from "@/components/Layouts";
-import { CustomButton, CustomSearch } from "@/components";
+import { imageURL } from "./../../Config";
+import { MainLayout } from "./../../components/Layouts";
+import { CustomButton, CustomSearch } from "../../components";
 
-import { useDashboardData } from "./hook/useDashboard";
-import { CardBenefit } from "./component/CardBenefit";
-import { CardLayanan } from "./component/CardLayanan";
-import { CardStatistik } from "./component/CardStatistik";
-import { CardBerlangganan } from "./component/CardBerlangganan";
+import { useDashboardData } from "./useDashboard";
+import { CardBenefit } from "./CardBenefit";
+import { CardLayanan } from "./CardLayanan";
+import { CardBerlangganan } from "./CardBerlangganan";
 
 const Dashboard = () => {
   const { layanan, search, setSearch, handleSearch, handlePesan } =
@@ -22,10 +21,10 @@ const Dashboard = () => {
           className="w-full md:w-[600px]"
         >
           <h1 className="text-primary-dark font-extrabold text-4xl md:text-6xl mb-6">
-            Patungan Layanan Premium Legal
+            Butopia
           </h1>
           <p className="text-primary text-xl font-medium mb-6">
-            Cek pilihan layanan di Lorem sekarang
+            Ayo baca buku di Butopia
           </p>
           <div data-aos="fade-up" data-aos-duration="2000">
             <CustomButton
@@ -36,7 +35,7 @@ const Dashboard = () => {
                 caraPesanSection.scrollIntoView({ behavior: "smooth" });
               }}
             >
-              Lihat Layanan
+              Lihat Daftar Buku
             </CustomButton>
           </div>
         </section>
@@ -62,15 +61,13 @@ const Dashboard = () => {
           className="text-center md:w-[680px] mb-14"
         >
           <h1 className="text-3xl md:text-4xl md:text-white text-primary-dark font-bold mb-6">
-            Jadilah Bagian Dari Lorem!
+            Ayo beli buku di Butopia
           </h1>
           <p className="text-lg md:text-xl text-primary md:text-white md:font-semibold">
-            Dapatkan manfaat Patungan Berlangganan. Nikmati layanan premium
-            dengan lebih hemat, aman dan legal
+            Kita semua cinta Butopia 
           </p>
         </header>
 
-        <CardStatistik />
       </section>
       {/* End Information Section */}
 
@@ -80,7 +77,7 @@ const Dashboard = () => {
       >
         <div data-aos="fade-down" data-aos-duration="2000">
           <h1 className="text-2xl md:text-4xl text-primary-dark font-bold py-12 text-center">
-            Beragam Manfaat <br /> Yang Bisa Kamu Dapatkan
+            Kita bahagia <br /> Saat melihat TA (Butopia)
           </h1>
 
           <CardBenefit />
@@ -94,7 +91,7 @@ const Dashboard = () => {
       >
         <header className="w-full mb-12">
           <h1 className="text-2xl md:text-4xl text-primary-dark font-bold mb-6">
-            Belangganan Produk Digital
+            Beli Buku Digital
           </h1>
           <form
             className="flex items-center text-gray-100 px-4 w-full md:w-[500px] h-[40px] rounded-md border-2 border-primary bg-white p-4"
@@ -108,19 +105,19 @@ const Dashboard = () => {
           {layanan && layanan.length > 0 ? (
             layanan.map((data) => (
               <CardLayanan
-                key={data.aplikasiID}
-                id={data.aplikasiID}
-                nama={data.nama}
+                key={data.BookID}
+                id={data.BookID}
+                nama={data.judul}
                 harga={data.harga}
-                deskripsi={data.deskripsi}
-                image={imageURL + data.image || null}
-                onPesan={() => handlePesan(data.aplikasiID)}
+                sinopsis={data.sinopsis}
+                image={imageURL + data.foto || null}
+                onPesan={() => handlePesan(data.BookID)}
               />
             ))
           ) : (
             <div className="w-full h-[420px] flex flex-col rounded-xl shadow justify-center items-center bg-slate-50 p-7">
               <h1 className="text-4xl font-semibold text-center text-gray-500">
-                Tidak ada aplikasi yang ditemukan.
+                Tidak ada buku yang ditemukan.
               </h1>
             </div>
           )}

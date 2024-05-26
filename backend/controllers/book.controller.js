@@ -91,9 +91,9 @@ exports.addBook = (request, response) => {
         }
 
         let newBook = {
-            judul: request.body.Judul,
-            penulis: request.body.Penulis,
-            sinopsis: request.body.Sinopsis,
+            judul: request.body.judul,
+            penulis: request.body.penulis,
+            sinopsis: request.body.sinopsis,
             foto: request.file.filename,
             harga: request.body.harga,
             KategoriID: request.body.KategoriID

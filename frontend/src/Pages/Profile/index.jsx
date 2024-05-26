@@ -1,7 +1,7 @@
 import { IoPersonCircleSharp } from "react-icons/io5";
-import { CustomButton } from "@/components";
+import { CustomButton } from "./../../components/Button";
 import { useProfileData } from "./useProfile";
-import { ProfileModal } from "./component/ProfileModal";
+import { ProfileModal } from "./ProfileModal";
 import ProfileLayout from "./../../components/Layouts/ProfileLayout";
 
 const Profile = () => {

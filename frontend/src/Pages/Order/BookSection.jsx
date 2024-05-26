@@ -1,6 +1,6 @@
 import { imageURL } from "./../../Config";
 
-export const AppliactionSection = ({ book, info, setInfo }) => {
+export const BookSection = ({ book, info, setInfo }) => {
   return (
     <section className="w-full md:w-[560px]">
       {/* Application Detail */}
@@ -60,7 +60,7 @@ export const AppliactionSection = ({ book, info, setInfo }) => {
                   1
                 </span>{" "}
                 Pilih buku
-                {application?.nama}
+                {book?.nama}
               </div>
               <div className="flex items-center gap-4 w-full">
                 <span className="w-8 h-8 rounded-full flex justify-center items-center bg-secondary text-white">

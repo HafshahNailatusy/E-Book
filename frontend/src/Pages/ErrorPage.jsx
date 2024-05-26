@@ -1,4 +1,4 @@
-import { handleBackHome } from "./../../utils/helpers/Response";
+import { handleBackHome } from "./../utils/helpers/Response";
 import { CustomButton } from "../components";
 
 const ErrorPage = () => {

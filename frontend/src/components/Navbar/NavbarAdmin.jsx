@@ -12,10 +12,10 @@ const NavbarAdmin = () => {
         </li>
         <li className="my-6">
           <a
-            href="/admin/aplikasi"
+            href="/admin/buku"
             className="text-lg text-white hover:text-slate-300 font-semibold duration-500"
           >
-            Aplikasi
+            Buku
           </a>
         </li>
         <li className="my-6">
@@ -23,7 +23,7 @@ const NavbarAdmin = () => {
             href="/admin/user"
             className="text-lg text-white hover:text-slate-300 font-semibold duration-500"
           >
-            Pengguna
+            User
           </a>
         </li>
         <li className="my-6">

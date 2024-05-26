@@ -1,14 +1,14 @@
 const SetAuth = (data) => {
-  const idString = JSON.stringify(data.id);
+  const idString = JSON.stringify(data.UserID);
   const roleString = JSON.stringify(data.role);
   const namaString = JSON.stringify(data.nama);
   const tokenString = JSON.stringify(data.token);
 
   localStorage.setItem("logged", "true");
-  localStorage.setItem("userID", idString);
-  localStorage.setItem("namaUser", namaString);
-  localStorage.setItem("roleUser", roleString);
-  localStorage.setItem("tokenUser", tokenString);
+  localStorage.setItem("UserID", idString);
+  localStorage.setItem("nama", namaString);
+  localStorage.setItem("role", roleString);
+  localStorage.setItem("token", tokenString);
 };
 
 const GetAuth = (key) => {

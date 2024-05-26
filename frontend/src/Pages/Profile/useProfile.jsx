@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { handleApiResponse } from "@/utils/helpers/Response";
-import { getMe } from "../../utils/User";
+import { handleApiResponse } from "../../utils/helpers/Response";
+import { GetMe } from "../../utils/User";
 
 export const useProfileData = () => {
   const [user, setUser] = useState({});
@@ -11,14 +11,14 @@ export const useProfileData = () => {
   }, []);
 
   const fetchMe = async () => {
-    const result = await getMe();
+    const result = await GetMe();
     setUser(result);
   };
 
   const handleSave = async (e) => {
     e.preventDefault();
 
-    handleApiResponse(response, () => {
+    handleApiResponse( () => {
       toggleModal();
       fetchMe();
     });
