@@ -3,10 +3,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import { useNavigate } from "react-router-dom";
-import { fetchAllApp, fetchStatistik, findApp } from "@/utils/Aplikasi";
+import { findbook, getallbook } from "../../utils/Buku";
+// 
 
 export const useDashboardData = () => {
-  const [statistik, setStatistik] = useState({});
   const [layanan, setLayanan] = useState([]);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
@@ -18,18 +18,16 @@ export const useDashboardData = () => {
 
   const fetchData = async () => {
     const [dataStatistik, dataLayanan] = await Promise.all([
-      fetchStatistik(),
-      fetchAllApp(),
+      getallbook(),
     ]);
 
-    setStatistik(dataStatistik);
     setLayanan(dataLayanan);
   };
 
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
-      const result = await findApp(search);
+      const result = await findbook(search);
       setLayanan(result);
     } catch (error) {
       console.error(error);
@@ -37,8 +35,8 @@ export const useDashboardData = () => {
   };
 
   const handlePesan = (id) => {
-    navigate(`/pesan?id=${id}`);
+    navigate(`/transaksi/add?id=${id}`);
   };
 
-  return { statistik, layanan, search, setSearch, handleSearch, handlePesan };
+  return { layanan, search, setSearch, handleSearch, handlePesan };
 };

@@ -26,11 +26,10 @@ exports.getAllTransaksi = async (request, response) => { //unknown column
 }
 
 exports.findTransaksi = async (request, response) => { //unknown column
-    let keyword = request.body.keyword
-    let userId = request.body.userid
+    let id = request.params.id
 
     const data = await sequelize.query(
-        `SELECT * from transaksis where UserID = '${userId}' OR MetodePay ='${keyword}' `
+        `SELECT from transaksis where TransaksiID = '${id}'`
     )
     if (data[0].length === 0) {
         return response.status(400).json({
@@ -45,6 +44,27 @@ exports.findTransaksi = async (request, response) => { //unknown column
         message: "Data Transaksi have been loaded"
     })
 }
+
+exports.findTransaksi2 = async (request, response) => { //unknown column
+    let keyword = request.body.keyword
+
+    const data = await sequelize.query(
+        `SELECT * from transaksis where UserID = '${keyword}' OR MetodePay ='${keyword}' `
+    )
+    if (data[0].length === 0) {
+        return response.status(400).json({
+            status: false,
+            message: "no transaction to show",
+        });
+    }
+
+    return response.json({
+        status: true,
+        data: data,
+        message: "Data Transaksi have been loaded"
+    })
+}
+
 exports.addTransaksi = async (request, response) => {
     const today = new Date();
     const TglTransaksi = `${today.getFullYear()}-${today.getMonth()}-

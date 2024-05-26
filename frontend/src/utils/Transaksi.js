@@ -11,6 +11,30 @@ export const getAllTransaksi = async () => {
   }
 };
 
+export const findtransaksi = async (id) => {
+  try {
+    const response = await axios.get(
+      baseURL + "/transaksi/findTransaksi/" + id,
+      config(),
+    );
+    return response.data.data;
+  } catch (error) {
+    return handleApiError(error);
+  }
+};
+
+export const searchTrans = async (keyword) => {
+  try {
+    const response = await axios.get(
+      baseURL + "/transaksi/findTransaksi/" + keyword,
+      config(),
+    );
+    return response.data.data;
+  } catch (error) {
+    return handleApiError(error);
+  }
+};
+
 export const addTransaksi = async (data) => {
   try {
     const response = await axios.post(baseURL + "/transaksi/add", data, config());

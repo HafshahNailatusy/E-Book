@@ -4,7 +4,8 @@ import ProtectRoute from "./ProtectedRoute";
 import AdminRoute from "./AdminRoute";
 import LoadingSpinner from "../components/Loading";
 
-const Login = lazy(() => import("../pages/Login"));
+const Login = lazy(() => import("../pages/Login/Login"));
+const LoginAdmin = lazy(() => import("../pages/Login/LoginAdmin"));
 const Register = lazy(() => import("../pages/Register"));
 const DashboardUser = lazy(() => import("../pages/Dashboard"));
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
@@ -22,6 +23,7 @@ const Router = () => {
     <Suspense fallback={<LoadingSpinner />}>
       <Routes>
         <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<LoginAdmin />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<DashboardUser />} />
 
@@ -35,7 +37,7 @@ const Router = () => {
         />
 
         <Route
-          path="/pesanan"
+          path="/histori"
           element={
             <ProtectRoute>
               <History />

@@ -1,12 +1,10 @@
 import Modal from "react-modal";
-import CustomButton from "@/components/Button";
+import CustomButton from "./../../components/Button";
 
 export const ProfileModal = ({
   modalIsOpen,
   toggleModal,
   handleSave,
-  saldo,
-  setSaldo,
 }) => {
   return (
     <Modal

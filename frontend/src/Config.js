@@ -8,7 +8,7 @@ export const config = () => {
 };
 
 export const baseURL = "http://localhost:8000";
-export const imageURL = baseURL + "/images/";
+export const imageURL = baseURL + "/image/";
 export const initialRegisterState = {
   nama: "",
   email: "",

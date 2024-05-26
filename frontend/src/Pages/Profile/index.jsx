@@ -1,11 +1,11 @@
 import { IoPersonCircleSharp } from "react-icons/io5";
 import { CustomButton } from "@/components";
-import { useProfileData } from "./hook/useProfile";
+import { useProfileData } from "./useProfile";
 import { ProfileModal } from "./component/ProfileModal";
-import ProfileLayout from "@/components/Layouts/ProfileLayout";
+import ProfileLayout from "./../../components/Layouts/ProfileLayout";
 
 const Profile = () => {
-  const { user, modalIsOpen, saldo, setSaldo, handleSave, toggleModal } =
+  const { user, modalIsOpen, handleSave, toggleModal } =
     useProfileData();
 
   return (
@@ -17,7 +17,7 @@ const Profile = () => {
           <div className="flex gap-6">
             <div>
               <h5 className="text-gray-400 text-xl font-medium leading-normal">
-                Username
+                Email
               </h5>
               <h5 className="text-gray-400 text-xl font-medium leading-normal">
                 Nama
@@ -25,13 +25,10 @@ const Profile = () => {
               <h5 className="text-gray-400 text-xl font-medium leading-normal">
                 Role
               </h5>
-              <h5 className="text-gray-400 text-xl font-medium leading-normal">
-                Saldo
-              </h5>
             </div>
             <div>
               <h5 className="text-primary text-lg font-normal leading-normal mb-1">
-                {user.username}
+                {user.email}
               </h5>
               <h5 className="text-primary text-lg font-normal leading-normal mb-1">
                 {user.nama}
@@ -39,27 +36,15 @@ const Profile = () => {
               <h5 className="text-primary text-lg font-normal leading-normal mb-1">
                 {user.role}
               </h5>
-              <h5 className="text-primary text-lg font-normal leading-normal">
-                {user.saldo}
-              </h5>
             </div>
           </div>
         </div>
-        <CustomButton
-          className="mt-14 w-full bg-gradient-to-r from-primary-dark to-secondary text-white md:text-base"
-          type="button"
-          onClick={toggleModal}
-        >
-          Top Up
-        </CustomButton>
       </section>
 
       <ProfileModal
         modalIsOpen={modalIsOpen}
         toggleModal={toggleModal}
         handleSave={handleSave}
-        saldo={saldo}
-        setSaldo={setSaldo}
       />
     </ProfileLayout>
   );

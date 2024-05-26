@@ -1,4 +1,4 @@
-import CustomButton from "@/components/Button";
+import CustomButton from "./../../components/Button";
 
 export const TableHistory = ({ history, checkOut }) => {
   const formatDate = (isoDate) => {
@@ -13,7 +13,7 @@ export const TableHistory = ({ history, checkOut }) => {
   return (
     <section className="w-full md:w-[840px] h-full bg-white shadow-xl rounded-xl p-12">
       <h1 className="text-2xl font-bold whitespace-nowrap text-secondary">
-        Pesanan
+        Histori Transaksi
       </h1>
 
       <div className="overflow-auto max-h-[400px]">
@@ -21,7 +21,7 @@ export const TableHistory = ({ history, checkOut }) => {
           <thead className="bg-secondary w-full text-lg text-white">
             <tr>
               <th className="p-3">No</th>
-              <th className="py-3">Nama</th>
+              <th className="py-3">Judul Buku</th>
               <th className="py-3">Total</th>
               <th className="py-3">Tanggal</th>
               <th className="py-3">Pembayaran</th>
@@ -32,23 +32,10 @@ export const TableHistory = ({ history, checkOut }) => {
               history.map((item, index) => (
                 <tr key={index} className="hover:bg-slate-50">
                   <th className="p-3">{index + 1}</th>
-                  <td align="center">{item.namaAplikasi}</td>
-                  <td align="center">Rp. {item.totalHarga}</td>
-                  <td align="center">{formatDate(item.tgl)}</td>
-                  <td align="center" className="h-full justify-center py-4">
-                    {item.status == "draft" ? (
-                      <CustomButton
-                        onClick={() => checkOut(item.transaksiID)}
-                        className="bg-yellow-300 text-yellow-700 w-28"
-                      >
-                        Check Out
-                      </CustomButton>
-                    ) : (
-                      <CustomButton className="bg-green-300 cursor-not-allowed text-green-700 w-28">
-                        Lunas
-                      </CustomButton>
-                    )}
-                  </td>
+                  <td align="center">{item.judul}</td>
+                  <td align="center">Rp. {item.harga}</td>
+                  <td align="center">{formatDate(item.TglTransaksi)}</td>
+                  <td align="center">{item.MetodePay}</td>
                 </tr>
               ))
             ) : (
@@ -63,7 +50,7 @@ export const TableHistory = ({ history, checkOut }) => {
                       />
                     </div>
                     <h1 className="pb-6 text-xl">
-                      <strong>Oooops!</strong> Sepertinya Keranjang Anda Kosong
+                      <strong>Oooops!</strong> Anda belum pernah membeli
                     </h1>
                   </div>
                 </td>

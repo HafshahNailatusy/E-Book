@@ -1,7 +1,7 @@
 const SetAuth = (data) => {
   const idString = JSON.stringify(data.id);
   const roleString = JSON.stringify(data.role);
-  const namaString = JSON.stringify(data.username);
+  const namaString = JSON.stringify(data.nama);
   const tokenString = JSON.stringify(data.token);
 
   localStorage.setItem("logged", "true");

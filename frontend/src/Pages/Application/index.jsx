@@ -82,7 +82,7 @@ const Book = () => {
           <div className="w-full h-[280px] rounded-xl shadow bg-slate-50 flex flex-col p-7">
             <div className="flex items-center justify-center h-full">
               <h1 className="text-4xl font-semibold text-center text-gray-500">
-                Tidak ada aplikasi yang ditemukan.
+                Tidak ada buku yang ditemukan.
               </h1>
             </div>
           </div>
@@ -242,4 +242,4 @@ const Book = () => {
   );
 };
 
-export default Aplikasi;
+export default Book;

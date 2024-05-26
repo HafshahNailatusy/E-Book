@@ -1,5 +1,5 @@
-import { imageURL } from "@/Config";
-import CustomButton from "@/components/Button";
+import { imageURL } from "./../../Config";
+import CustomButton from "./../../components/Button";
 
 export const TableTransaction = ({ transaksi }) => {
   const formatDate = (isoDate) => {
@@ -18,10 +18,8 @@ export const TableTransaction = ({ transaksi }) => {
           <th className="p-3">No</th>
           <th className="py-3">Transaksi</th>
           <th className="py-3">Harga</th>
-          <th className="py-3">Total</th>
           <th className="py-3">User</th>
           <th className="py-3">Tanggal</th>
-          <th className="py-3">Status</th>
         </tr>
       </thead>
       <tbody className="bg-white divide-y divide-gray-300 text-base">
@@ -32,26 +30,14 @@ export const TableTransaction = ({ transaksi }) => {
               <td className="py-2 w-[20rem]">
                 <div className="flex items-center gap-4 ">
                   <div className="w-14 h-14 rounded">
-                    <img src={imageURL + item.imageApp} alt={item.namaApp} />
+                    <img src={imageURL + item.foto} alt={item.judul} />
                   </div>
-                  <h1 className="font-bold">{item.namaApp}</h1>
+                  <h1 className="font-bold">{item.judul}</h1>
                 </div>
               </td>
               <td align="center">Rp. {item.harga}</td>
-              <td align="center">Rp. {item.totalHarga}</td>
-              <td align="center">{item.username}</td>
-              <td align="center">{formatDate(item.tgl)}</td>
-              <td align="center" className="h-full justify-center py-4">
-                {item.status == "draft" ? (
-                  <CustomButton className="bg-yellow-300 cursor-default text-yellow-600 w-28">
-                    Draft
-                  </CustomButton>
-                ) : (
-                  <CustomButton className="bg-green-300 cursor-default text-green-600 w-28">
-                    Lunas
-                  </CustomButton>
-                )}
-              </td>
+              <td align="center">{item.nama}</td>
+              <td align="center">{formatDate(item.TglTransaksi)}</td>
             </tr>
           ))
         ) : (

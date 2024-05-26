@@ -1,7 +1,7 @@
 import Modal from "react-modal";
-import { AdminLayout } from "@/components/Layouts";
-import { CustomButton, CustomSearch } from "@/components";
-import { useUserData } from "./hook/useUser";
+import { AdminLayout } from "./../../components/Layouts";
+import { CustomButton, CustomSearch } from "./../../components";
+import { useUserData } from "./useUser";
 
 const User = () => {
   const {
@@ -56,8 +56,7 @@ const User = () => {
             <th className="p-3">No</th>
             <th className="py-3">Nama</th>
             <th className="py-3">role</th>
-            <th className="py-3">Username</th>
-            <th className="py-3">Saldo</th>
+            <th className="py-3">Email</th>
             <th className="py-3">Action</th>
           </tr>
         </thead>
@@ -73,10 +72,7 @@ const User = () => {
                   <p className="text-lg">{item.role}</p>
                 </td>
                 <td align="center">
-                  <p className="text-lg">{item.username}</p>
-                </td>
-                <td align="center">
-                  <p className="text-lg">{item.saldo}</p>
+                  <p className="text-lg">{item.email}</p>
                 </td>
                 <td align="center" className="h-full w-96 justify-center">
                   <div className="flex justify-center items-center gap-2">
@@ -84,7 +80,7 @@ const User = () => {
                       className="bg-primary rounded-full hover:bg-secondary text-white w-28 my-2"
                       onClick={() => {
                         handleEdit(item);
-                        setUserID(item.userID);
+                        setUserID(item.UserID);
                       }}
                     >
                       Edit
@@ -94,7 +90,7 @@ const User = () => {
                     ) : (
                       <CustomButton
                         className="bg-red-400 rounded-full hover:bg-red-500 text-white w-28"
-                        onClick={() => handleDelete(item.userID)}
+                        onClick={() => handleDelete(item.UserID)}
                       >
                         Delete
                       </CustomButton>
@@ -188,14 +184,14 @@ const User = () => {
 
             <div className="mb-3">
               <label className="text-base font-semibold text-gray-800">
-                Username
+                Email
               </label>
               <input
-                type="text"
-                placeholder="Username"
-                value={newUser.username}
+                type="email"
+                placeholder="Email"
+                value={newUser.email}
                 onChange={(e) =>
-                  setNewUser({ ...newUser, username: e.target.value })
+                  setNewUser({ ...newUser, email: e.target.value })
                 }
                 className="w-[22rem] px-4 py-2 text-base text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
               />
@@ -210,20 +206,6 @@ const User = () => {
                 placeholder="Password"
                 onChange={(e) =>
                   setNewUser({ ...newUser, password: e.target.value })
-                }
-                className="w-[22rem] px-4 py-2 text-base text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-              />
-            </div>
-
-            <div className="mb-3">
-              <label className="text-base font-semibold text-gray-800">
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                placeholder="Password"
-                onChange={(e) =>
-                  setNewUser({ ...newUser, confirmPassword: e.target.value })
                 }
                 className="w-[22rem] px-4 py-2 text-base text-gray-700 bg-white border border-gray-300 rounded-md focus:border-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
               />

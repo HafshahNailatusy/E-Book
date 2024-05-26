@@ -6,9 +6,9 @@ import {
   fetchAllUsers,
   findUser,
   updateUser,
-} from "@/utils/User";
-import { initialNewUserState } from "@/Config";
-import { handleApiResponse } from "@/utils/helpers/Response";
+} from "./../../utils/User";
+import { initialNewUserState } from "./../../Config";
+import { handleApiResponse } from "./../../utils/helpers/Response";
 
 export const useUserData = () => {
   const [user, setUser] = useState([]);
@@ -45,11 +45,10 @@ export const useUserData = () => {
     setModalIsOpen(true);
     setAction("edit");
     setNewUser({
-      username: "",
+      email: "",
       nama: item.nama,
       role: item.role,
       password: "",
-      confirmPassword: "",
     });
     setUserID(item.userID);
   };

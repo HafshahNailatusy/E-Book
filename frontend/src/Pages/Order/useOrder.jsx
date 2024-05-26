@@ -1,31 +1,32 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { addTransaksi } from "@/utils/Transaksi";
-import { findAppByID } from "@/utils/Aplikasi";
-import AuthHelpers from "@/utils/helpers/AuthHelpers";
-import { handleApiResponse } from "@/utils/helpers/Response";
+import AuthHelpers from "./../../utils/helpers/AuthHelpers";
+import { handleApiResponse } from "./../../utils/helpers/Response";
+import { findbyID } from "../../utils/Buku";
+import { addTransaksi } from "../../utils/Transaksi";
+
 
 export const useOrderData = () => {
-  const [application, setApplication] = useState({});
-  const [duration, setDuration] = useState(1);
+  const [book, setBook] = useState({});
   const [total, setTotal] = useState(0);
+  const [metodePay, setMetode] = useState("");
   const [loading, setLoading] = useState(false);
   const [info, setInfo] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    retrieveApplication();
+    getallbook();
   }, []);
 
   useEffect(() => {
-    setTotal(application.harga * duration);
-  }, [duration, application]);
+    setTotal(book.harga);
+  }, [book]);
 
-  const retrieveApplication = async () => {
+  const getallbook = async () => {
     const queryParams = new URLSearchParams(window.location.search);
-    const aplikasiID = queryParams.get("id");
+    const bookID = queryParams.get("id");
 
-    const result = await findAppByID(aplikasiID);
+    const result = await findbyID(bookID);
     if (result.status === 404) {
       navigate("/notfound");
     }
@@ -35,11 +36,11 @@ export const useOrderData = () => {
   const handleOrder = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const userID = AuthHelpers.GetAuth("userID");
+    const UserID = AuthHelpers.GetAuth("UserID");
     const newTransaksi = {
-      userID: userID,
-      aplikasiID: application.aplikasiID,
-      durasi: duration,
+      UserID: UserID,
+      bookID: book.bookID,
+      MetodePay: metodePay,
     };
 
     const response = await addTransaksi(newTransaksi);
@@ -52,12 +53,12 @@ export const useOrderData = () => {
   };
 
   return {
-    application,
-    duration,
+    book,
+    metodePay,
     total,
     loading,
     info,
-    setDuration,
+    setMetode,
     setInfo,
     handleOrder,
   };

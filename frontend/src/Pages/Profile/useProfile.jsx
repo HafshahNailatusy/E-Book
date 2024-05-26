@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { getMe, topUp } from "@/utils/User";
 import { handleApiResponse } from "@/utils/helpers/Response";
+import { getMe } from "../../utils/User";
 
 export const useProfileData = () => {
   const [user, setUser] = useState({});
-  const [saldo, setSaldo] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   useEffect(() => {
@@ -19,9 +18,7 @@ export const useProfileData = () => {
   const handleSave = async (e) => {
     e.preventDefault();
 
-    const response = await topUp(saldo);
     handleApiResponse(response, () => {
-      setSaldo(0);
       toggleModal();
       fetchMe();
     });
@@ -31,9 +28,7 @@ export const useProfileData = () => {
 
   return {
     user,
-    saldo,
     modalIsOpen,
-    setSaldo,
     handleSave,
     toggleModal,
   };
