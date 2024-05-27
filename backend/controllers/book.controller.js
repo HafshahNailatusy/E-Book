@@ -1,11 +1,10 @@
 const { request, response } = require("express")
 
-const upload = require('./upload-image').single('filename')
+const upload = require('./upload-image').single('foto')
 const bookModel = require(`../models/index`).book
 const Op = require(`sequelize`).Op
 const path = require('path')
 const fs = require(`fs`)
-const kategoriModel = require(`../models/kategori`).kategori
 
 exports.getAllBook = async (request, response) => {
     let books = await bookModel.findAll()
@@ -22,6 +21,7 @@ exports.findBook = async (request, response) => {
         where: {
             [Op.or]: [
                 { judul: { [Op.like]: "%" + keyword + "%" } } ||
+                { kategori: { [Op.like]: "%" + keyword + "%" } } ||
                 { penulis: { [Op.like]: "%" + keyword + "%" } } 
             ]
         }
@@ -35,8 +35,7 @@ exports.findBook = async (request, response) => {
 
 exports.findByKategori = async (req, res) => {
     await bookModel.findAll({
-        where: { kategori: req.body.kategori },
-        include: [kategoriModel]
+        where: { kategori: req.body.kategori }
     })
         .then(result => {
             return res.json({
@@ -96,7 +95,7 @@ exports.addBook = (request, response) => {
             sinopsis: request.body.sinopsis,
             foto: request.file.filename,
             harga: request.body.harga,
-            KategoriID: request.body.KategoriID
+            kategori: request.body.kategori
         }
 
         console.log(newBook)
@@ -193,7 +192,6 @@ exports.deleteBook = async (request, response) => {
             })
         })
         .catch(error => {
-            /** if update's process fail */
             return response.json({
                 status: false,
                 message: error.message

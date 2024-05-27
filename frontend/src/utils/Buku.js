@@ -13,8 +13,19 @@ export const getallbook = async () => {
 
 export const findbook = async (keyword) => {
   try {
-    const response = await axios.post(
-      baseURL + `/book/findBookCustom/` + keyword,
+    const response = await axios.get(
+      baseURL + `/book/findBookCustom/${keyword}` ,
+    );
+    return response.data.data;
+  } catch (error) {
+    return handleApiError(error);
+  } 
+};
+
+export const byKategori = async (kategori) => {
+  try {
+    const response = await axios.get(
+      baseURL + `/book/findByKategori/${kategori}` ,
     );
     return response.data.data;
   } catch (error) {
@@ -24,7 +35,7 @@ export const findbook = async (keyword) => {
 
 export const findbyID = async (id) => {
   try {
-    const response = await axios.post(
+    const response = await axios.get(
       baseURL + `/book/findByID`+ id,
       config(),
     );
@@ -45,7 +56,7 @@ export const addBook = async (data) => {
 
 export const updateBook = async (id, data) => {
   try {
-    const response = await axios.put(baseURL + "/book/update" + id, data, config());
+    const response = await axios.put(baseURL + `/book/update/${id}`,data, config());
     return response.data;
   } catch (error) {
     return handleApiError(error);
@@ -54,7 +65,7 @@ export const updateBook = async (id, data) => {
 
 export const deleteBook = async (id) => {
   try {
-    const response = await axios.delete(baseURL + "/book/delete" + id, config());
+    const response = await axios.delete(baseURL + `/book/delete/${id}` , config());
     return response.data;
   } catch (error) {
     return handleApiError(error);

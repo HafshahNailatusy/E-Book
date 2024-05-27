@@ -33,7 +33,6 @@ export const IsiBuku = () => {
 
   const handleAdd = () => {
     setAction("add");
-    setNewBuku(initialNewbookState);
     setModalIsOpen(true);
   };
 
@@ -46,6 +45,7 @@ export const IsiBuku = () => {
       sinopsis: item.sinopsis,
       foto: item.foto,
       harga: item.harga,
+      kategori: item.kategori,
     });
   };
 
@@ -53,11 +53,14 @@ export const IsiBuku = () => {
     if (window.confirm("Yakin mau hapus?")) {
       const response = await deleteBook(id);
       if (response.success == true) {
-        toast.success(response.message, {
-          autoClose: 3000,
-        });
+        try {
+          await deleteBook(id);
+          getallbook();
+        } catch (error) {
+          console.log(error);
+        }
       } else {
-        if (response.data.errors.name == "SequelizeForeignKeyConstraintError")
+        if (response.message == "SequelizeForeignKeyConstraintError")
           toast.info("Ada transaksi pake data ini", {
             autoClose: 3000,
           });
@@ -81,32 +84,34 @@ export const IsiBuku = () => {
     data.append("sinopsis", newBuku.sinopsis);
     data.append("foto", newBuku.foto);
     data.append("harga", newBuku.harga);
+    data.append("kategori", newBuku.kategori);
 
     let response;
     if (action === "add") {
       response = await addBook(data);
+      console.log(response)
     } else if (action === "edit") {
       response = await updateBook(idbuku, data);
+      console.log(response)
     }
 
     handleApiResponse(response, () => {
-      setModalIsOpen(false);
       setNewBuku(initialNewbookState);
+      setModalIsOpen(false);
       getall();
     });
   };
 
   const handleClose = () => {
     setAction("");
+    setidbuku("")
+    setNewBuku(initialNewbookState)
     setModalIsOpen(false);
   };
 
-  const handleSelectPhoto = () => {
-    document.getElementById("fileInput").click();
-  };
-
-  const handleFileInputChange = (e) => {
-    setNewBuku({ ...newBuku, foto: e.target.files[0] });
+  const handleFileInputChange = (foto) => {
+    console.log(foto)
+    setNewBuku({ ...newBuku, foto: foto });
   };
 
   return {
@@ -129,7 +134,6 @@ export const IsiBuku = () => {
     handleDelete,
     handleSave,
     handleClose,
-    handleSelectPhoto,
     handleFileInputChange,
   };
 };

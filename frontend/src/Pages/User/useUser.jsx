@@ -18,6 +18,7 @@ export const useUserData = () => {
   const [userID, setUserID] = useState("");
   const [action, setAction] = useState("");
 
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -36,6 +37,7 @@ export const useUserData = () => {
     }
   };
 
+  
   const handleAdd = () => {
     setModalIsOpen(true);
     setAction("add");
@@ -57,11 +59,14 @@ export const useUserData = () => {
     if (window.confirm("Apakah kamu yakin ingin menghapus data user ini?")) {
       const response = await deleteUser(id);
       if (response.success == true) {
-        toast.success(response.message, {
-          autoClose: 3000,
-        });
+        try {
+          await deleteUser(id);
+          fetchAllUsers();
+        } catch (error) {
+          console.log(error);
+        }
       } else {
-        if (response.data.errors.name == "SequelizeForeignKeyConstraintError")
+        if (response.message == "SequelizeForeignKeyConstraintError")
           toast.info("Terdapat transaksi menggunakan data ini", {
             autoClose: 3000,
           });
@@ -73,11 +78,23 @@ export const useUserData = () => {
   const handleSave = async (e) => {
     e.preventDefault();
 
+    const formData = new FormData();
+			formData.append("nama", newUser.nama);
+			formData.append("email", newUser.email);
+			formData.append("password", newUser.password);
+			formData.append("foto", newUser.foto);
+			formData.append("role", newUser.role);
+
+
     let response;
     if (action === "add") {
-      response = await addUser(newUser);
+      response = await addUser(formData);
+      console.log(newUser)
+
+      console.log(response)
     } else if (action === "edit") {
       response = await updateUser(userID, newUser);
+      console.log(response)
     }
 
     handleApiResponse(response, () => {
@@ -94,8 +111,14 @@ export const useUserData = () => {
     setModalIsOpen(false);
   };
 
+  const handleFileInputChange = (foto) => {
+    console.log(foto)
+    setNewUser({ ...newUser, foto: foto });
+  };
+
   return {
     user,
+    handleFileInputChange,
     ModalIsOpen,
     newUser,
     search,

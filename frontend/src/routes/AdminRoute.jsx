@@ -6,9 +6,9 @@ const AdminRoute = ({ children }) => {
   const location = useLocation();
   const isAdminUrl = location.pathname.startsWith("/admin");
 
-  // if (isAdminUrl && roleUser !== "admin") {
-  //   return <Navigate to="/forbidden" state={{ from: location }} replace />;
-  // }
+  if (isAdminUrl && roleUser !== "admin") {
+    return <Navigate to="/forbidden" state={{ from: location }} replace />;
+  }
 
   return children;
 };

@@ -26,13 +26,13 @@ export const handleApiResponse = (
     toast.success(response.message, { autoClose: 2000 });
     additionalSuccessAction();
   } else {
-    const errorMessage = response.data.errors
-      ? response.data.errors
+    const errorMessage = response.message
+      ? response.error
       : ["Terjadi kesalahan pada server"];
 
-    errorMessage.forEach((message) => {
-      toast.error(message, { autoClose: 2000 });
-    });
+
+      toast.error(response.message, { autoClose: 2000 });
+
   }
 };
 

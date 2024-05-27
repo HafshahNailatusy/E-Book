@@ -1,14 +1,16 @@
-const SetAuth = (data) => {
-  const idString = JSON.stringify(data.UserID);
-  const roleString = JSON.stringify(data.role);
-  const namaString = JSON.stringify(data.nama);
-  const tokenString = JSON.stringify(data.token);
+const SetAuth = (res) => {
+  const roleString = res.res.role;
+  const namaString = res.res.nama;
+  const tokenString = res.res.token;
+  
 
   localStorage.setItem("logged", "true");
-  localStorage.setItem("UserID", idString);
   localStorage.setItem("nama", namaString);
   localStorage.setItem("role", roleString);
   localStorage.setItem("token", tokenString);
+
+  if(roleString === "admin"){
+    return { res: "admin", success: true };  }
 };
 
 const GetAuth = (key) => {
@@ -16,7 +18,7 @@ const GetAuth = (key) => {
 
   if (itemString) {
     try {
-      return JSON.parse(itemString);
+      return itemString;
     } catch (error) {
       console.error(`Error parsing ${key} from local storage:`, error);
     }

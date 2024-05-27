@@ -27,10 +27,12 @@ export const initialNewbookState = {
   sinopsis: "",
   foto: null,
   harga: 0,
+  kategori: ""
 };
 export const initialNewUserState = {
   nama: "",
   email: "",
   password: "",
+  foto: null,
   role: "",
 };

@@ -8,6 +8,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import AuthHelpers from "../../utils/helpers/AuthHelpers";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
@@ -22,13 +23,19 @@ const Login = () => {
 		try {
 			const res = await AdminHandler(values);
 			console.log(res);
-			if (res.success === true) {
+			if (res.res.role === "admin") {
+
+				const isAdmin = await AuthHelpers.SetAuth(res);
+				if(isAdmin.res === "admin"){
 					navigate(`/admin/buku`);
+
+				} 
 			}
 		} catch (error) {
+			AuthHelpers.ClearAuth()
 			console.error("error:", error);
 		}
-	};
+	};	
 	const handleClickShowPassword = () => setShowPassword((show) => !show);
 	const handleMouseDownPassword = (event) => {
 		event.preventDefault();

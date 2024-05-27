@@ -24,7 +24,7 @@ const Register = () => {
 			const res = await RegisterHandler(values);
 			console.log(res);
 			if (res.success === true) {
-				navigate("/");
+				navigate("/login");
 			}
 		} catch (error) {
 			console.error("error:", error);

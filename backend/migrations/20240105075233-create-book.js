@@ -27,13 +27,8 @@ module.exports = {
       harga: {
         type: Sequelize.INTEGER
       },
-      KategoriID: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'kategoris',
-          key: 'KategoriID'
-        }
+      kategori: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

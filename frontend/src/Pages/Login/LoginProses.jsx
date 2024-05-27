@@ -37,7 +37,11 @@ export const AdminHandler = async (userData) => {
 				nama: res.data.data.nama,
 				role: res.data.data.role,
 			};
+			
 			const token = res.data.data.token;
+			console.log(token)
+			console.log(res)
+
 			setTokenCookie(token);
 			setLocalStorage(LOCAL_STORAGE_USER, userData);
 			return { res: res.data.data, success: true };
