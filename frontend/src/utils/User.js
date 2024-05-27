@@ -1,18 +1,6 @@
 import axios from "axios";
 import { config, baseURL } from "../Config";
 import { handleApiError } from "./helpers/Response";
-import React, { useEffect, useState } from "react";
-import { LOCAL_STORAGE_USER } from "./helpers/Http";
-import { getLocalStorage } from "./helpers/Localstorage";
-
-export const GetMe = () => {
-  const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        const user = getLocalStorage(LOCAL_STORAGE_USER);
-        setUser(user);
-    }, []);
-}
 
 export const login = async (email, password) => {
   try {

@@ -13,7 +13,7 @@ const ProfileLayout = ({ children }) => {
     <main className="h-screen bg-background flex flex-col justify-center items-center">
       <div className="w-full md:max-w-[1260px] mx-auto">
         <header className="flex justify-between mb-4 md:mb-12">
-          <h1 className="text-primary font-extrabold text-3xl">Lorem</h1>
+          <h1 className="text-primary font-extrabold text-3xl">Butopia</h1>
           <button onClick={handleBack}>
             <IoExit className="text-4xl text-secondary" />
           </button>

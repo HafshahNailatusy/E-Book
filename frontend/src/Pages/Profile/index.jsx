@@ -1,5 +1,4 @@
 import { IoPersonCircleSharp } from "react-icons/io5";
-import { CustomButton } from "./../../components/Button";
 import { useProfileData } from "./useProfile";
 import { ProfileModal } from "./ProfileModal";
 import ProfileLayout from "./../../components/Layouts/ProfileLayout";
@@ -32,9 +31,6 @@ const Profile = () => {
               </h5>
               <h5 className="text-primary text-lg font-normal leading-normal mb-1">
                 {user.nama}
-              </h5>
-              <h5 className="text-primary text-lg font-normal leading-normal mb-1">
-                {user.role}
               </h5>
             </div>
           </div>

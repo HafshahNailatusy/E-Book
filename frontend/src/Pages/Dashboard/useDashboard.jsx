@@ -35,7 +35,7 @@ export const useDashboardData = () => {
   };
 
   const handlePesan = (id) => {
-    navigate(`/transaksi/add?id=${id}`);
+    navigate(`/transaksi/add/${id}`);
   };
 
   return { layanan, search, setSearch, handleSearch, handlePesan };

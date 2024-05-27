@@ -1,6 +1,6 @@
 import CustomButton from "./../../components/Button";
 
-export const CardLayanan = ({ id, image, nama, harga, deskripsi, onPesan }) => {
+export const CardBuku = ({ id, image, judul, harga, sinopsis, nama, onPesan }) => {
   return (
     <div
       key={id}
@@ -14,11 +14,11 @@ export const CardLayanan = ({ id, image, nama, harga, deskripsi, onPesan }) => {
             className="object-contain w-full h-full"
           />
         </div>
-        <h1 className="text-2xl font-semibold text-primary-dark">{nama}</h1>
+        <h1 className="text-2xl font-semibold text-primary-dark">{judul}</h1>
         <h2 className="text-lg font-semibold md:text-2xl md:font-bold text-primary mb-2">
           Rp.{harga} <span className="text-gray-400 text-base">/bulan</span>
         </h2>
-        <p className="text-lg text-gray-500">{deskripsi}</p>
+        <p className="text-lg text-gray-500">{sinopsis}</p>
       </div>
       <CustomButton
         className="bg-gradient-to-r from-primary-dark to-secondary text-white w-full h-12 mt-auto md:text-base"

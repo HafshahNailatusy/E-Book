@@ -4,7 +4,7 @@ import { CustomButton, CustomSearch } from "../../components";
 
 import { useDashboardData } from "./useDashboard";
 import { CardBenefit } from "./CardBenefit";
-import { CardLayanan } from "./CardLayanan";
+import { CardBuku } from "./CardBuku";
 import { CardBerlangganan } from "./CardBerlangganan";
 
 const Dashboard = () => {
@@ -104,7 +104,7 @@ const Dashboard = () => {
         <main className="flex flex-wrap items-start gap-8 md:gap-20 w-full md:w-[1270px]">
           {layanan && layanan.length > 0 ? (
             layanan.map((data) => (
-              <CardLayanan
+              <CardBuku
                 key={data.BookID}
                 id={data.BookID}
                 nama={data.judul}

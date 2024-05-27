@@ -30,7 +30,7 @@ const Dropdown = ({ handleLogout }) => {
               Profil
             </a>
             <a
-              href="/pesanan"
+              href="/pesan"
               className="block px-4 py-2 text-primary font-semibold h-1/3 hover:bg-gray-100"
             >
               Transaksi

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { handleApiResponse } from "../../utils/helpers/Response";
-import { GetMe } from "../../utils/User";
+import GetMe from "../../utils/GetMe";
 
 export const useProfileData = () => {
   const [user, setUser] = useState({});
