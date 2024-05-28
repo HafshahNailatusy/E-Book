@@ -4,8 +4,8 @@ import ProtectRoute from "./ProtectedRoute";
 import AdminRoute from "./AdminRoute";
 
 import LoadingSpinner from "../components/Loading";
+import BookDetail from "../Pages/Order/BookDetail";
 
-<<<<<<< HEAD
 const Login = lazy(() => import("../Pages/Login/Login"));
 const LoginAdmin = lazy(() => import("../Pages/Login/LoginAdmin"));
 const Register = lazy(() => import("../Pages/Login/Register"));
@@ -13,28 +13,13 @@ const DashboardUser = lazy(() => import("../Pages/Dashboard"));
 const NotFoundPage = lazy(() => import("../Pages/NotFoundPage"));
 const ForbiddenPage = lazy(() => import("../Pages/ForbiddenPage"));
 const Aplikasi = lazy(() => import("../Pages/Books"));
+// const BookDetail = lazy(()=>import("../Pages/Order/BookDetail"));
 const User = lazy(() => import("../Pages/User"));
 const Transaksi = lazy(() => import("../Pages/Transaction"));
 const Profile = lazy(() => import("../Pages/Profile"));
 const History = lazy(() => import("../Pages/History"));
 const Order = lazy(() => import("../Pages/Order"));
 const ErrorPage = lazy(() => import("../Pages/ErrorPage"));
-=======
-const Login = lazy(() => import("../pages/Login/Login"));
-const LoginAdmin = lazy(() => import("../pages/Login/LoginAdmin"));
-const Register = lazy(() => import("../pages/Login/Register"));
-const DashboardUser = lazy(() => import("../pages/Dashboard"));
-const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
-const ForbiddenPage = lazy(() => import("../pages/ForbiddenPage"));
-const Aplikasi = lazy(() => import("../pages/Books"));
-const User = lazy(() => import("../pages/User"));
-const Transaksi = lazy(() => import("../pages/Transaction"));
-const Profile = lazy(() => import("../pages/Profile"));
-const History = lazy(() => import("../pages/History"));
-const Order = lazy(() => import("../pages/Order"));
-const ErrorPage = lazy(() => import("../pages/ErrorPage"));
-const BookDetail = lazy(() => import("../pages/Order/BookDetail"));
->>>>>>> a982c1b53d91dca8b4ba7bcddce518d2419f8bea
 
 const Router = () => {
   return (
@@ -67,7 +52,7 @@ const Router = () => {
           path="/bookDetail/:id"
           element={
             <ProtectRoute>
-              <BookDetail />
+             <BookDetail/>
             </ProtectRoute>
           }
         />

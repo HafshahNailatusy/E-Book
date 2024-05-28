@@ -14,13 +14,13 @@ const Dashboard = () => {
   return (
     <MainLayout>
       {/* Landing Page */}
-      <main className="min-h-screen flex flex-col-reverse sm:flex-row items-center justify-center mb-12 md:mb-0">
+      <main className="min-h-screen flex flex-col-reverse sm:flex-row  justify-center mb-12 md:mb-0">
         <section
           data-aos="fade-right"
           data-aos-duration="1500"
-          className="w-full md:w-[600px]"
+          className="w-full md:w-[600px] px-[5vw] py-[20vh] "
         >
-          <h1 className="text-primary-dark font-extrabold text-4xl md:text-6xl mb-6">
+          <h1 className="text-primary-dark font-extrabold text-4xl font-fredoka md:text-6xl mb-6">
             Butopia
           </h1>
           <p className="text-primary text-xl font-medium mb-6">

@@ -6,6 +6,7 @@ import NavbarMobile from "./NavbarMobile";
 import CustomButton from "../Button";
 import Dropdown from "../Dropdown";
 
+
 const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [logged, setLogged] = useState(false);
@@ -69,28 +70,17 @@ const Navbar = () => {
   return (
     <>
     {console.log(logged)}
-      <header className="w-full fixed top-0 h-24 flex justify-between items-center px-4 md:px-8 lg:px-16 bg-transparent backdrop-blur-xl z-50">
+      <header className="w-full font-fredoka fixed top-0 h-24 flex justify-between items-center px-4 md:px-8 lg:px-16 bg-transparent backdrop-blur-xl z-50">
         <h1
-          className={`${scrolled ? "text-white" : "text-primary"} font-extrabold text-3xl`}
+          className={`${scrolled ? "text-white" : "text-[#79B3D3]"}   text-[40px]   flex font-bold ml-6 `}
         >
           Butopia
         </h1>
         <div className="hidden md:flex space-x-12 items-center">
-          <ul className="flex space-x-12 items-center">
+          <ul className="flex text[15px] space-x-12 items-center font-poppins">
             <li className="my-6">
               <a
-                className={`text-xl cursor-pointer font-semibold duration-500 ${scrolled ? "hover:text-slate-200 text-white" : "hover:text-primary-dark text-primary"}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleScrollToSection("layanan");
-                }}
-              >
-                Buku
-              </a>
-            </li>
-            <li className="my-6">
-              <a
-                className={`text-xl cursor-pointer font-semibold duration-500 ${scrolled ? "hover:text-slate-200 text-white" : "hover:text-primary-dark text-primary"}`}
+                className={`text-lg cursor-pointer font-semibold duration-500 ${scrolled ? "hover:text-slate-200 text-white" : "hover:text-primary-dark text-primary"}`}
                 onClick={(e) => {
                   e.preventDefault();
                   handleScrollToSection("pengguna");
@@ -101,7 +91,7 @@ const Navbar = () => {
             </li>
             <li className="my-6">
               <a
-                className={`text-xl cursor-pointer font-semibold duration-500 ${scrolled ? "hover:text-slate-200 text-white" : "hover:text-primary-dark text-primary"}`}
+                className={`text-lg cursor-pointer font-semibold duration-500 ${scrolled ? "hover:text-slate-200 text-white" : "hover:text-primary-dark text-primary"}`}
                 onClick={(e) => {
                   e.preventDefault();
                   handleScrollToSection("benefit");
@@ -112,7 +102,19 @@ const Navbar = () => {
             </li>
             <li className="my-6">
               <a
-                className={`text-xl cursor-pointer font-semibold duration-500 ${scrolled ? "hover:text-slate-200 text-white" : "hover:text-primary-dark text-primary"}`}
+                className={`text-lg cursor-pointer font-semibold duration-500 ${scrolled ? "hover:text-slate-200 text-white" : "hover:text-primary-dark text-primary"}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleScrollToSection("layanan");
+                }}
+              >
+                Buku
+              </a>
+            </li>
+           
+            <li className="my-6">
+              <a
+                className={`text-lg cursor-pointer font-semibold duration-500 ${scrolled ? "hover:text-slate-200 text-white" : "hover:text-primary-dark text-primary"}`}
                 onClick={(e) => {
                   e.preventDefault();
                   handleScrollToSection("caraPesan");
@@ -125,7 +127,7 @@ const Navbar = () => {
             {role === "admin" && (
               <li className="my-6">
                 <a
-                  className={`text-xl cursor-pointer font-semibold duration-500 ${scrolled ? "hover:text-slate-200 text-white" : "hover:text-primary-dark text-primary"}`}
+                  className={`text-lg cursor-pointer font-semibold duration-500 ${scrolled ? "hover:text-slate-200 text-white" : "hover:text-primary-dark text-primary"}`}
                   href="/admin/aplikasi"
                 >
                   Admin Panel
