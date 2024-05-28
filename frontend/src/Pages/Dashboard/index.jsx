@@ -64,7 +64,7 @@ const Dashboard = () => {
       >
         <div data-aos="fade-down" data-aos-duration="2000">
           <h1 className="text-2xl md:text-4xl text-primary-dark font-bold py-12 text-center font-fredoka">
-            Kita bahagia <br /> Saat melihat Butopia
+          Butopia's Advantages
           </h1>
 
           <CardBenefit />

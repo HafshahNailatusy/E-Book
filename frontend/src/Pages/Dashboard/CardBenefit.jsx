@@ -7,6 +7,8 @@ import {
   IoNotifications,
 } from "react-icons/io5";
 
+import Gambar from "../../assets/reading.jpg"
+
 const benefits = [
   {
     icon: <IoCut className="text-black text-md md:text-2xl"/>,
@@ -38,8 +40,8 @@ export const CardBenefit = () => {
   return (
     <div>
       <img
-        src="benefitPhoto.svg"
-        alt="Benefit Photo"
+        src={Gambar}
+        alt=""
         className="sm:block md:hidden pb-4"
       />
 
@@ -63,11 +65,11 @@ export const CardBenefit = () => {
           ))}
         </div>
 
-        <img
-          src="benefitPhoto.svg"
+        {/* <img
+          src={Gambar}
           alt="Benefit Photo"
-          className="hidden md:block"
-        />
+          className="hidden md:block max-w-[200px]"
+        /> */}
 
         <div className="flex-col space-y-12 md:space-y-24">
           {benefits.slice(3).map((benefit, index) => (

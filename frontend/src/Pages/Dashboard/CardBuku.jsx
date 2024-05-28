@@ -1,11 +1,16 @@
 import CustomButton from "./../../components/Button";
+import { useNavigate } from "react-router-dom";
 import "./card.css"
 
 
 export const CardBuku = ({ id, foto, judul, harga, kategori, penulis, onPesan }) => {
+  const navigate= useNavigate()
+  const handleDetailClick = (id) => {
+    navigate(`/bookDetail/${id}`); // Mengirimkan ID buku ke parent component
+  };
   return (
     <div className="product-card-container-collection">
-    <a href="detail" className="card-link">
+    <div className="card-link">
         <div className="product-card-wrapper shadow">
           <img src={foto} className="image w-[200px] h-[300px]" alt="..." />
           <h5 className="judul">{judul}</h5>
@@ -18,8 +23,15 @@ export const CardBuku = ({ id, foto, judul, harga, kategori, penulis, onPesan })
             <span className="writer">{penulis}</span>
             <span className="price">{harga}</span>
           </p>
+          <div className=" w-full flex justify-center items-center px-2"><button
+              className={` hover:scale-105 text-sm font-poppins font-semibold mx-auto whitespace-nowrapmd:text-base bg-[#79B3D3] text-white w-[160px] md:w-full h-[40px] md:h-8 rounded-2xl mt-[5%]`}
+              onClick={()=>{handleDetailClick(id)}}
+            >
+              Beli Buku
+            </button></div>
+          
         </div>
-      </a>
+      </div>
       </div>
     // <div
     //   key={id}

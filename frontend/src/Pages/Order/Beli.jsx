@@ -92,7 +92,7 @@ const BookDetail = () => {
         <h2 className="text-3xl font-bold leading-tight tracking-wide">
         </h2>
         <button onClick={() => handleCloseModal()}/>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-col flex-wrap gap-2">
           {opsibayar.map((option) => (
             <div className="flex items-center w-[200px]" key={option.value}>
               <input

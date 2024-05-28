@@ -12,7 +12,7 @@ const DashboardUser = lazy(() => import("../Pages/Dashboard"));
 const NotFoundPage = lazy(() => import("../Pages/NotFoundPage"));
 const ForbiddenPage = lazy(() => import("../Pages/ForbiddenPage"));
 const Aplikasi = lazy(() => import("../Pages/Books"));
-// const BookDetail = lazy(()=>import("../Pages/Order/BookDetail"));
+const BookDetail = lazy(()=>import("../Pages/Order/Beli"));
 const User = lazy(() => import("../Pages/User"));
 const Transaksi = lazy(() => import("../Pages/Transaction"));
 const Profile = lazy(() => import("../Pages/Profile"));
@@ -51,7 +51,7 @@ const Router = () => {
           path="/bookDetail/:id"
           element={
             <ProtectRoute>
-             {/* <BookDetail/> */}
+             <BookDetail/>
             </ProtectRoute>
           }
         />
