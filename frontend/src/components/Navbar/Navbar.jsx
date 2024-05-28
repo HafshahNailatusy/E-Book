@@ -78,7 +78,7 @@ const Navbar = () => {
         </h1>
         <div className="hidden md:flex space-x-12 items-center">
           <ul className="flex text[15px] space-x-12 items-center font-poppins">
-            <li className="my-6">
+            {/* <li className="my-6">
               <a
                 className={`text-lg cursor-pointer font-semibold duration-500 ${scrolled ? "hover:text-slate-200 text-white" : "hover:text-primary-dark text-primary"}`}
                 onClick={(e) => {
@@ -88,7 +88,7 @@ const Navbar = () => {
               >
                 Pengguna
               </a>
-            </li>
+            </li> */}
             <li className="my-6">
               <a
                 className={`text-lg cursor-pointer font-semibold duration-500 ${scrolled ? "hover:text-slate-200 text-white" : "hover:text-primary-dark text-primary"}`}

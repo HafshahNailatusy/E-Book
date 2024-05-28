@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import ProtectRoute from "./ProtectedRoute";
 import AdminRoute from "./AdminRoute";
 import LoadingSpinner from "../components/Loading";
-import BookDetail from "../Pages/Order/BookDetail";
+// import BookDetail from "../Pages/Order/BookDetail";
 
 const Login = lazy(() => import("../Pages/Login/Login"));
 const LoginAdmin = lazy(() => import("../Pages/Login/LoginAdmin"));
@@ -51,7 +51,7 @@ const Router = () => {
           path="/bookDetail/:id"
           element={
             <ProtectRoute>
-             <BookDetail/>
+             {/* <BookDetail/> */}
             </ProtectRoute>
           }
         />

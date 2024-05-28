@@ -9,27 +9,27 @@ import {
 
 const benefits = [
   {
-    icon: <IoCut className="text-white text-md md:text-2xl" />,
+    icon: <IoCut className="text-black text-md md:text-2xl"/>,
     title: "Ga perlu ke toko buku",
   },
   {
-    icon: <IoLockClosed className="text-white text-md md:text-2xl" />,
+    icon: <IoLockClosed className="text-black text-md md:text-2xl"/>,
     title: "Mager Friendly",
   },
   {
-    icon: <IoCall className="text-white text-md md:text-2xl" />,
+    icon: <IoCall className="text-black text-md md:text-2xl"/>,
     title: "Praktis, tinggal klik",
   },
   {
-    icon: <IoCard className="text-white text-md md:text-2xl" />,
+    icon: <IoCard className="text-black text-md md:text-2xl" />,
     title: "Bayar pake apa aja OK",
   },
   {
-    icon: <IoCheckmark className="text-white text-md md:text-2xl" />,
+    icon: <IoCheckmark className="text-black text-md md:text-2xl" />,
     title: "Bukan buku bajakan",
   },
   {
-    icon: <IoNotifications className="text-white text-md md:text-2xl" />,
+    icon: <IoNotifications className="text-black text-md md:text-2xl" />,
     title: "Sangat keren",
   },
 ];

@@ -1,3 +1,4 @@
+import { FaBorderAll } from "react-icons/fa6";
 const cardData = [
   {
     icon: "pesanIcon.svg",
@@ -39,7 +40,8 @@ export const CardBerlangganan = () => {
             key={index}
             className="w-full md:w-48 h-56 text-center mb-8 md:mb-0"
           >
-            <img src={card.icon} alt="icon" className="mx-auto mb-2" />
+            <FaBorderAll className=" text-[#79B3D3] w-[200px]" size={200}/>
+            {/* <img src={card.icon} alt="icon" className="mx-auto mb-2" /> */}
             <h3 className="text-primary text-2xl font-semibold">{card.text}</h3>
           </div>
         ))}
