@@ -8,7 +8,7 @@ import { CardBuku } from "./CardBuku";
 import { CardBerlangganan } from "./CardBerlangganan";
 
 const Dashboard = () => {
-  const { buku, search, setSearch, handleSearch, handlePesan } =
+  const { buku, search, setSearch, handleSearch, handleDetailClick } =
     useDashboardData();
 
   return (
@@ -113,7 +113,7 @@ const Dashboard = () => {
                 sinopsis={data.sinopsis}
                 kategori={data.kategori}
                 image={imageURL + data.foto || null}
-                onPesan={() => handlePesan(data.BookID)}
+                onPesan={() => handleDetailClick(data.BookID)}
               /></>
             ))
           ) : (

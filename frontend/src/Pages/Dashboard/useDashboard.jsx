@@ -33,9 +33,10 @@ export const useDashboardData = () => {
     }
   };
 
-  const handlePesan = (id) => {
-    navigate(`/pesan/add/${id}`);
+  const handleDetailClick = (id) => {
+    navigate(`/bookDetail/${id}`); // Mengirimkan ID buku ke parent component
   };
 
-  return { buku, search, setSearch, handleSearch, handlePesan };
+
+  return { buku, search, setSearch, handleSearch, handleDetailClick };
 };

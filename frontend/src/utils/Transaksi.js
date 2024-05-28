@@ -37,7 +37,7 @@ export const searchTrans = async (keyword) => {
 
 export const addTransaksi = async (data) => {
   try {
-    const response = await axios.post(baseURL + "/transaksi/add", data, config());
+    const response = await axios.post(baseURL + "/transaksi/add", data);
     return response.data;
   } catch (error) {
     return handleApiError(error);

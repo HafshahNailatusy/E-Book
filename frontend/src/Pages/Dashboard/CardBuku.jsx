@@ -27,7 +27,7 @@ export const CardBuku = ({ id, image, judul, harga, kategori, nama, onPesan }) =
         type="button"
         onClick={onPesan}
       >
-        Pesan
+        Beli
       </CustomButton>
     </div>
   );

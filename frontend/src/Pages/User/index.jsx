@@ -28,10 +28,10 @@ const User = () => {
   const [foto, setFoto] = useState()
 
   const handleImageChange = (e) => {
-		const file = e.target.files[0];
-		setFoto(file);
+    const file = e.target.files[0];
+    setFoto(file);
     handleFileInputChange(file)
-	};
+  };
 
 
   return (
@@ -224,25 +224,25 @@ const User = () => {
             </div>
 
             <img
-                src={
-                  newUser.foto
-                    ? typeof newUser.foto === "string"
-                      ? imageURL + newUser.foto
-                      : URL.createObjectURL(newUser.foto)
-                    : "https://via.placeholder.com/300x300"
-                }
-                alt={newUser.foto}
-                className="max-w-xs rounded-md object-contain"
-                width={300}
-                height={300}
-              />
-              <input
-                type="file"
-                onChange={handleImageChange}
-                key={foto}
-                className="w-full whitespace-nowrap py-2 px-4 bg-primary hover:bg-secondary mt-2 flex items-center text-white text-2xl gap-4 rounded-full"
-              />
-                <IoCamera /> <span className="text-base">Select Photo</span>
+              src={
+                newUser.foto
+                  ? typeof newUser.foto === "string"
+                    ? imageURL + newUser.foto
+                    : URL.createObjectURL(newUser.foto)
+                  : "https://via.placeholder.com/300x300"
+              }
+              alt={newUser.foto}
+              className="max-w-xs rounded-md object-contain"
+              width={300}
+              height={300}
+            />
+            <input
+              type="file"
+              onChange={handleImageChange}
+              key={foto}
+              className="w-full whitespace-nowrap py-2 px-4 bg-primary hover:bg-secondary mt-2 flex items-center text-white text-2xl gap-4 rounded-full"
+            />
+            <IoCamera /> <span className="text-base">Select Photo</span>
             <CustomButton
               className="bg-gradient-to-r from-primary-dark to-secondary font-bold text-white w-full h-[40px] md:h-12"
               type="submit"
