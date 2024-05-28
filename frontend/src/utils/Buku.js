@@ -5,6 +5,7 @@ import { handleApiError } from "./helpers/Response";
 export const getallbook = async () => {
   try {
     const response = await axios.get(baseURL + "/book/getAllBook");
+    console.log(response.data.data)
     return response.data.data;
   } catch (error) {
     return handleApiError(error);

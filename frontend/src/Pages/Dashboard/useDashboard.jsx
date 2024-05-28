@@ -7,7 +7,7 @@ import { findbook, getallbook } from "../../utils/Buku";
 
 
 export const useDashboardData = () => {
-  const [layanan, setLayanan] = useState([]);
+  const [buku, setBuku] = useState([]);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
@@ -17,26 +17,25 @@ export const useDashboardData = () => {
   }, []);
 
   const fetchData = async () => {
-    const [dataStatistik, dataLayanan] = await Promise.all([
-      getallbook(),
-    ]);
+    const res = await getallbook()
+    console.log(res)
 
-    setLayanan(dataLayanan);
+    setBuku(res);
   };
 
   const handleSearch = async (e) => {
     e.preventDefault();
     try {
       const result = await findbook(search);
-      setLayanan(result);
+      setBuku(result);
     } catch (error) {
       console.error(error);
     }
   };
 
   const handlePesan = (id) => {
-    navigate(`/transaksi/add/${id}`);
+    navigate(`/pesan/add/${id}`);
   };
 
-  return { layanan, search, setSearch, handleSearch, handlePesan };
+  return { buku, search, setSearch, handleSearch, handlePesan };
 };

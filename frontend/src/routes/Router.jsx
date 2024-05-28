@@ -10,7 +10,7 @@ const Register = lazy(() => import("../pages/Login/Register"));
 const DashboardUser = lazy(() => import("../pages/Dashboard"));
 const NotFoundPage = lazy(() => import("../pages/NotFoundPage"));
 const ForbiddenPage = lazy(() => import("../pages/ForbiddenPage"));
-const Aplikasi = lazy(() => import("../pages/Application"));
+const Aplikasi = lazy(() => import("../pages/Books"));
 const User = lazy(() => import("../pages/User"));
 const Transaksi = lazy(() => import("../pages/Transaction"));
 const Profile = lazy(() => import("../pages/Profile"));

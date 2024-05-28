@@ -18,7 +18,7 @@ const Navbar = () => {
   }, []);
 
   const getLogin = async () => {
-    const status = await AuthHelper.GetAuth("logged");
+    const status = await AuthHelper.GetAuth("ebook/user");
     setLogged(status);
 
     const role = AuthHelper.GetAuth("roleUser");
@@ -45,29 +45,30 @@ const Navbar = () => {
     }
   };
 
-  useEffect(() => {
-    function handleScroll() {
-      let scrollPosition = window.scrollY;
-      const sectionPosition = document.getElementById("pengguna").offsetTop;
-      const navbarHeight = document.querySelector("header").offsetHeight;
-      if (
-        scrollPosition >= sectionPosition - navbarHeight &&
-        scrollPosition <= 1600
-      ) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    }
+  // useEffect(() => {
+  //   function handleScroll() {
+  //     let scrollPosition = window.scrollY;
+  //     const sectionPosition = document.getElementById("pengguna").offsetTop;
+  //     const navbarHeight = document.querySelector("header").offsetHeight;
+  //     if (
+  //       scrollPosition >= sectionPosition - navbarHeight &&
+  //       scrollPosition <= 1600
+  //     ) {
+  //       setScrolled(true);
+  //     } else {
+  //       setScrolled(false);
+  //     }
+  //   }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   return (
     <>
+    {console.log(logged)}
       <header className="w-full fixed top-0 h-24 flex justify-between items-center px-4 md:px-8 lg:px-16 bg-transparent backdrop-blur-xl z-50">
         <h1
           className={`${scrolled ? "text-white" : "text-primary"} font-extrabold text-3xl`}

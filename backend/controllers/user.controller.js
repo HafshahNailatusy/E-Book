@@ -108,6 +108,7 @@ exports.Login = async (request, response) => {
         return response.status(200).json({
             status: true, //klo bisa, muncul pesan "hore uhuy bisa"
             message: "Success login",
+            logged: true,
             data: { //yang login siapa
                 token: token,
                 id_user: findUser.id_user,

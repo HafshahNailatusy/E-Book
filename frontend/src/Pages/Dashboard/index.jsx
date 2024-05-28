@@ -8,7 +8,7 @@ import { CardBuku } from "./CardBuku";
 import { CardBerlangganan } from "./CardBerlangganan";
 
 const Dashboard = () => {
-  const { layanan, search, setSearch, handleSearch, handlePesan } =
+  const { buku, search, setSearch, handleSearch, handlePesan } =
     useDashboardData();
 
   return (
@@ -31,7 +31,7 @@ const Dashboard = () => {
               className="md:text-base bg-gradient-to-r from-primary-dark to-secondary text-white w-[160px] md:w-[220px] h-[40px] md:h-12"
               onClick={(e) => {
                 e.preventDefault();
-                const caraPesanSection = document.getElementById("layanan");
+                const caraPesanSection = document.getElementById("buku");
                 caraPesanSection.scrollIntoView({ behavior: "smooth" });
               }}
             >
@@ -52,7 +52,7 @@ const Dashboard = () => {
 
       {/* Information Section */}
       <section
-        id="pengguna"
+        id="user"
         className="flex flex-col min-h-screen justify-center items-center bg-inherit md:bg-gradient-to-b md:from-primary-dark md:to-secondary"
       >
         <header
@@ -102,17 +102,19 @@ const Dashboard = () => {
         </header>
 
         <main className="flex flex-wrap items-start gap-8 md:gap-20 w-full md:w-[1270px]">
-          {layanan && layanan.length > 0 ? (
-            layanan.map((data) => (
+          {buku? (
+            buku.map((data) => (
+              <>{console.log(data)}
               <CardBuku
                 key={data.BookID}
                 id={data.BookID}
-                nama={data.judul}
+                judul={data.judul}
                 harga={data.harga}
                 sinopsis={data.sinopsis}
+                kategori={data.kategori}
                 image={imageURL + data.foto || null}
                 onPesan={() => handlePesan(data.BookID)}
-              />
+              /></>
             ))
           ) : (
             <div className="w-full h-[420px] flex flex-col rounded-xl shadow justify-center items-center bg-slate-50 p-7">
