@@ -9,10 +9,10 @@ import { handleApiResponse } from "../../utils/helpers/Response";
 
 const BookDetail = () => {
   const opsibayar = [
-    { value: 1, label: "Gopay" },
-    { value: 2, label: "ShopeePay" },
-    { value: 3, label: "Dana" },
-    { value: 4, label: "Mobile Banking" },
+    { value: "Gopay", label: "Gopay" },
+    { value: "ShopeePay", label: "ShopeePay" },
+    { value: "Dana", label: "Dana" },
+    { value: "Mobile Banking", label: "Mobile Banking" },
   ];
   const [book, setBook] = useState([])
   const [bayar, setBayar] = useState('')
@@ -22,7 +22,7 @@ const BookDetail = () => {
   const [loading, setLoading] = useState("")
   const { id } = useParams();
   const navigate = useNavigate();
-  const today = new Date()
+  
   
 
   useEffect(() => {
@@ -45,10 +45,13 @@ const BookDetail = () => {
   const handleOrder = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const UserID = AuthHelpers.GetAuth("UserID");
+    const UserID = AuthHelpers.GetAuth("id");
+    const idbuku = id
+    const today = new Date()
     const TglTransaksi = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`
     const newTransaksi = {
       UserID: UserID,
+      BookID : idbuku,
       TglTransaksi: TglTransaksi,
       MetodePay: metodePay,
     };
@@ -95,10 +98,10 @@ const BookDetail = () => {
               <input
                 type="radio"
                 id={option.value}
-                name="metodebayar"
+                name="metodePay"
                 value={option.value}
-                checked={bayar === option.value}
-                onChange={() => setBayar(option.value)}
+                checked={metodePay === option.value}
+                onChange={() => setMetode(option.value)}
                 className="sr-only"
               />
               <label

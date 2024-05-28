@@ -17,7 +17,7 @@ const Profile = lazy(() => import("../pages/Profile"));
 const History = lazy(() => import("../pages/History"));
 const Order = lazy(() => import("../pages/Order"));
 const ErrorPage = lazy(() => import("../pages/ErrorPage"));
-const BookDetail = lazy(() => import("../pages/Order/BookDetail"));
+const BookDetail = lazy(() => import("../pages/Order/Beli"));
 
 const Router = () => {
   return (

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { searchTrans, getAllTransaksi } from "../../utils/Transaksi";
-
+import { findbyID } from "../../utils/Buku";
+import AuthHelpers from "../../utils/helpers/AuthHelpers";
 
 export const useTransaksi = () => {
   const [transaksi, setTransaksi] = useState([]);
-  // const [totalPendapatan, setTotalPendapatan] = useState(0);
   const [keyword, setKeyword] = useState("");
-  // const [endDate, setEndDate] = useState("");
+  const [buku, setBuku] = useState([])
 
   useEffect(() => {
     fetchTransaksi();
@@ -16,7 +16,14 @@ export const useTransaksi = () => {
   const fetchTransaksi = async () => {
     try {
       const dataTransaksi = await getAllTransaksi();
+      const bukuList = [];
 
+      for (const data of dataTransaksi) {
+        const book = await findbyID(data.BukuID);
+        bukuList.push(book);
+      }
+
+      setBuku(bukuList);
       setTransaksi(dataTransaksi);
     } catch (error) {
       console.error(error);
@@ -26,9 +33,8 @@ export const useTransaksi = () => {
   const search = async () => {
     try {
       if(!keyword){
-        return toast.error("Harus mengisi end date", { autoClose: 2000 })
+        return toast.error("Harus mengisi keyword", { autoClose: 2000 })
       }
-
       const filteredTransaksi = await searchTrans(keyword);
 
       setTransaksi(filteredTransaksi);
