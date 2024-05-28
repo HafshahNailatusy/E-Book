@@ -8,21 +8,16 @@ import { addTransaksi } from "../../utils/Transaksi";
 
 export const useOrderData = () => {
   const [book, setBook] = useState({});
-  const [total, setTotal] = useState(0);
   const [metodePay, setMetode] = useState("");
   const [loading, setLoading] = useState(false);
   const [info, setInfo] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    getallbook();
+    getbook();
   }, []);
 
-  useEffect(() => {
-    setTotal(book.harga);
-  }, [book]);
-
-  const getallbook = async () => {
+  const getbook = async () => {
     const queryParams = new URLSearchParams(window.location.search);
     const bookID = queryParams.get("id");
 
@@ -55,7 +50,6 @@ export const useOrderData = () => {
   return {
     book,
     metodePay,
-    total,
     loading,
     info,
     setMetode,

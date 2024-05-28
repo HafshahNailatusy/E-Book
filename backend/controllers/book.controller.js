@@ -56,10 +56,10 @@ exports.findBookID = async (request, response) => {
     if (!BookID) { 
         return response.status(400).json({
             status: false,
-            message: "masukkan id user di url",
+            message: "masukkan id buku di url",
         });
     } else { 
-        let user = await userModel.findOne({
+        let user = await bookModel.findOne({
             where: {
                 [Op.and]: [{ BookID: BookID }],
             },

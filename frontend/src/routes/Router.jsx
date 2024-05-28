@@ -17,6 +17,7 @@ const Profile = lazy(() => import("../pages/Profile"));
 const History = lazy(() => import("../pages/History"));
 const Order = lazy(() => import("../pages/Order"));
 const ErrorPage = lazy(() => import("../pages/ErrorPage"));
+const BookDetail = lazy(() => import("../pages/Order/BookDetail"));
 
 const Router = () => {
   return (
@@ -41,6 +42,15 @@ const Router = () => {
           element={
             <ProtectRoute>
               <History />
+            </ProtectRoute>
+          }
+        />
+
+        <Route
+          path="/bookDetail/:id"
+          element={
+            <ProtectRoute>
+              <BookDetail />
             </ProtectRoute>
           }
         />

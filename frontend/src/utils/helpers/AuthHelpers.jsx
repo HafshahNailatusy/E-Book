@@ -1,10 +1,12 @@
 const SetAuth = (res) => {
+  console.log(res)
   const roleString = res.res.role;
   const namaString = res.res.nama;
   const tokenString = res.res.token;
-  
+  const idstring = res.res.UserID
 
   localStorage.setItem("logged", "true");
+  localStorage.setItem("id", idstring)
   localStorage.setItem("nama", namaString);
   localStorage.setItem("role", roleString);
   localStorage.setItem("token", tokenString);

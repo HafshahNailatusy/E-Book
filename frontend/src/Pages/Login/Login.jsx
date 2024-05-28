@@ -8,6 +8,8 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
+import AuthHelpers from "../../utils/helpers/AuthHelpers";
+
 
 const Login = () => {
 	const [email, setEmail] = useState("");
@@ -23,6 +25,7 @@ const Login = () => {
 			const res = await LoginHandler(values);
 			console.log(res);
 			if (res.success === true) {
+				AuthHelpers.SetAuth(res)
 					navigate(`/`);
 			}
 		} catch (error) {

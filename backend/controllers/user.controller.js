@@ -98,7 +98,6 @@ exports.Login = async (request, response) => {
             });
         }
         let tokenPayLoad = { //bikin payload biar bisa dpt token
-            UserID: findUser.id,
             email: findUser.email,
             role: findUser.role,
             nama: findUser.nama
@@ -111,7 +110,7 @@ exports.Login = async (request, response) => {
             logged: true,
             data: { //yang login siapa
                 token: token,
-                id_user: findUser.id_user,
+                UserID: findUser.UserID,
                 nama: findUser.nama,
                 email: findUser.email,
                 role: findUser.role

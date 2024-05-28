@@ -37,7 +37,7 @@ export const byKategori = async (kategori) => {
 export const findbyID = async (id) => {
   try {
     const response = await axios.get(
-      baseURL + `/book/findByID`+ id,
+      baseURL + `/book/findByID/${id}`,
       config(),
     );
     return response.data.data;
