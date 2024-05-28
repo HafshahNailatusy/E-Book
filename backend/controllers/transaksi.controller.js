@@ -73,51 +73,26 @@ exports.addTransaksi = async (request, response) => {
         UserID: request.body.UserID,
         MetodePay: request.body.MetodePay,
         TglTransaksi: TglTransaksi,
-    }; 
+    };
 
-    try {
-        let result = await transaksiModel.create(transaksiData); //masukin ke tabel transaksi
-        let id_pemesanan = result.TransaksiID; //ngambil id transaksi
-        let detailsoforder = request.body.detailsoforder; //ngisi detail of order
-        for (let i = 0; i < detailsoforder.length; i++) {
-            detailsoforder[i].TransaksiID = id_pemesanan;
-        }
-        await detailmodel.bulkCreate(detailsoforder);
-        
-        response.status(201).json({
-            status: true,
-        });
-    } catch (error) {
-        return response.json({
-            status: false,
-            message: error.message,
-        });
-    }
-};
-
-exports.orderHistory = async (req, res) => {
-    try {
-        let data = await order.findAll({
-            include:
-                [
-                    {
-                        model: detailmodel,
-                        as: 'book'
-                    }
-                ]
+    transaksiModel
+        .create(transaksiData)
+        .then((result) => {
+            return response.json({
+                status: true,
+                data: result,
+                message: `New transaksi has been inserted`,
+            });
         })
-        return res.status(200).json({
-            status: true,
-            data: data,
-            message: "Order list has been loaded"
-        })
-    } catch (error) {
-        return res.status(500).json({
-            status: false,
-            message: error.message
+        .catch((error) => {
+            return response.status(400).json({
+                status: false,
+                message: error.message,
+            });
         });
-    }
 }
+;
+
 
 exports.updateTransaksi = async (request, response) => {
     let id = request.params.id

@@ -2,7 +2,6 @@ import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import ProtectRoute from "./ProtectedRoute";
 import AdminRoute from "./AdminRoute";
-
 import LoadingSpinner from "../components/Loading";
 import BookDetail from "../Pages/Order/BookDetail";
 

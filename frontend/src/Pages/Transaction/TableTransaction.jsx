@@ -1,5 +1,4 @@
 import { imageURL } from "./../../Config";
-import CustomButton from "./../../components/Button";
 
 export const TableTransaction = ({ transaksi }) => {
   const formatDate = (isoDate) => {
@@ -16,7 +15,7 @@ export const TableTransaction = ({ transaksi }) => {
       <thead className="bg-secondary w-full text-lg text-white">
         <tr>
           <th className="p-3">No</th>
-          <th className="py-3">Transaksi</th>
+          <th className="py-3">Buku</th>
           <th className="py-3">Harga</th>
           <th className="py-3">User</th>
           <th className="py-3">Tanggal</th>
@@ -26,18 +25,12 @@ export const TableTransaction = ({ transaksi }) => {
         {transaksi && transaksi.length > 0 ? (
           transaksi.map((item, index) => (
             <tr key={index} className="hover:bg-slate-50">
-              <th className="p-3">{index + 1}</th>
-              <td className="py-2 w-[20rem]">
-                <div className="flex items-center gap-4 ">
-                  <div className="w-14 h-14 rounded">
-                    <img src={imageURL + item.foto} alt={item.judul} />
-                  </div>
-                  <h1 className="font-bold">{item.judul}</h1>
-                </div>
-              </td>
+              <td className="p-3">{index + 1}</td>
+              <td>{buku[index].judul}</td>
               <td align="center">Rp. {item.harga}</td>
               <td align="center">{item.nama}</td>
               <td align="center">{formatDate(item.TglTransaksi)}</td>
+              
             </tr>
           ))
         ) : (

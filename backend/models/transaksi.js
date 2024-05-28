@@ -13,9 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(models.user)
       this.belongsTo(models.book)
-      this.hasMany(models.detailtransaksi, {
-        foreignKey: `TransaksiID`, as:`detailtransaksi`
-      })
+   
     }
   }
   transaksi.init({
@@ -25,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
+    BookID: DataTypes.INTEGER,
     UserID: DataTypes.INTEGER,
     TglTransaksi: DataTypes.INTEGER,
     MetodePay: DataTypes.STRING,
