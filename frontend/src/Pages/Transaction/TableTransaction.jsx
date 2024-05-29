@@ -11,48 +11,46 @@ export const TableTransaction = ({ transaksi }) => {
   };
 
   return (
-    <table className="w-full my-5 border-collapse overflow-scroll md:overflow-hidden rounded-2xl shadow-lg">
-      <thead className="bg-secondary w-full text-lg text-white">
-        <tr>
-          <th className="p-3">No</th>
-          <th className="py-3">Buku</th>
-          <th className="py-3">Harga</th>
-          <th className="py-3">User</th>
-          <th className="py-3">Tanggal</th>
+    <table className="w-full my-5 border-collapse overflow-scroll md:overflow-hidden rounded-lg shadow-lg">
+  <thead className="bg-secondary text-lg text-white">
+    <tr>
+      <th className="p-4">No</th>
+      <th className="p-4">Buku</th>
+      <th className="p-4">Harga</th>
+      <th className="p-4">User</th>
+      <th className="p-4">Tanggal</th>
+    </tr>
+  </thead>
+  <tbody className="bg-white divide-y divide-gray-300 text-base">
+    {transaksi && transaksi.length > 0 ? (
+      transaksi.map((item, index) => (
+        <tr key={index} className="hover:bg-gray-100 transition-colors">
+          <td className="p-4">{index + 1}</td>
+          <td className="p-4">{item.book?.judul}</td>
+          <td className="p-4" align="center">Rp. {item.book?.harga}</td>
+          <td className="p-4" align="center">{item.nama}</td>
+          <td className="p-4" align="center">{formatDate(item.TglTransaksi)}</td>
         </tr>
-      </thead>
-      <tbody className="bg-white divide-y divide-gray-300 text-base">
-        {transaksi && transaksi.length > 0 ? (
-          transaksi.map((item, index) => (
-            <tr key={index} className="hover:bg-slate-50">
-              <td className="p-3">{index + 1}</td>
-              <td>{item.book?.judul}</td>
-              <td align="center">Rp. {item.book?.harga}</td>
-              <td align="center">{item.nama}</td>
-              <td align="center">{formatDate(item.TglTransaksi)}</td>
-              
-            </tr>
-          ))
-        ) : (
-          <tr>
-            <td colSpan="7">
-              <div className="flex flex-col justify-center items-center">
-                <div className="w-60 h-60">
-                  <img
-                    src="/notFound.svg"
-                    alt="troly kosong"
-                    className="mt-6"
-                  />
-                </div>
-                <h1 className="pb-6 text-xl">
-                  <strong>Oooops!</strong> Sepertinya tidak ada transaksi yang
-                  ditemukan
-                </h1>
-              </div>
-            </td>
-          </tr>
-        )}
-      </tbody>
-    </table>
+      ))
+    ) : (
+      <tr>
+        <td colSpan="5">
+          <div className="flex flex-col items-center justify-center py-10">
+            <img
+              src="/notFound.svg"
+              alt="troly kosong"
+              className="w-40 h-40 mb-4"
+            />
+            <h1 className="text-lg text-gray-700 text-center">
+              <strong>Oooops!</strong> Sepertinya tidak ada transaksi yang
+              ditemukan
+            </h1>
+          </div>
+        </td>
+      </tr>
+    )}
+  </tbody>
+</table>
+
   );
 };

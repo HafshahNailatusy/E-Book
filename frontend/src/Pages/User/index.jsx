@@ -39,7 +39,7 @@ const User = () => {
     <AdminLayout>
     {/* Header */}
     <header className="mb-10">
-      <h1 className="text-center text-4xl md:text-5xl text-primary-dark font-extrabold mb-12">
+      <h1 className="text-center text-4xl md:text-5xl text-primary-dark font-fredoka font-extrabold mb-12">
         User Panel
       </h1>
       <div className="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 md:space-x-4">
