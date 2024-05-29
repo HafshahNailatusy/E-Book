@@ -35,32 +35,33 @@ const User = () => {
 
 
   return (
-    <AdminLayout>
-      {/* Header */}
-      <header className="mb-6">
-        <h1 className="text-center text-3xl md:text-4xl text-primary-dark font-bold mb-16">
-          User Panel
-        </h1>
-        <div className="flex flex-col md:flex-row justify-around">
-          {/* Search */}
-          <form
-            className="flex items-center text-gray-100 px-4 w-full md:w-[500px] h-[40px] rounded-md border-2 border-primary bg-white p-4 mb-4"
-            onSubmit={handleSearch}
-          >
-            <CustomSearch search={search} setSearch={setSearch} />
-          </form>
-          {/* End Search */}
 
-          <CustomButton
-            className="bg-gradient-to-r from-primary-dark to-secondary text-white w-full md:w-[220px] h-[40px] md:h-12 md:text-base"
-            type="button"
-            onClick={() => handleAdd()}
-          >
-            Tambah
-          </CustomButton>
-        </div>
-      </header>
-      {/* End Header */}
+    <AdminLayout>
+    {/* Header */}
+    <header className="mb-10">
+      <h1 className="text-center text-4xl md:text-5xl text-primary-dark font-extrabold mb-12">
+        User Panel
+      </h1>
+      <div className="flex flex-col md:flex-row items-center justify-around space-y-4 md:space-y-0 md:space-x-4">
+        {/* Search */}
+        <form
+          className="flex items-center text-gray-700 w-full md:w-[500px] h-12 rounded-md border-2 border-primary bg-white shadow-lg"
+          onSubmit={handleSearch}
+        >
+          <CustomSearch search={search} setSearch={setSearch} />
+        </form>
+        {/* End Search */}
+
+        <CustomButton
+          className="bg-gradient-to-r from-primary-dark to-secondary text-white w-full md:w-[220px] h-12 rounded-md shadow-lg"
+          type="button"
+          onClick={handleAdd}
+        >
+          Tambah
+        </CustomButton>
+      </div>
+    </header>
+    {/* End Header */}
 
       <table className="w-full my-5 border-collapse overflow-scroll md:overflow-hidden rounded-2xl shadow-lg">
         <thead className="bg-secondary w-full text-lg text-white">

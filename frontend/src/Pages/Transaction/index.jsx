@@ -13,45 +13,43 @@ const Transaksi = () => {
 
   return (
     <AdminLayout>
-      {/* Header */}
-      <header className="mb-6">
-        <h1 className="text-center text-3xl md:text-4xl text-primary-dark font-bold mb-12">
-          Transaksi Panel
-        </h1>
+    {/* Header */}
+    <header className="mb-10">
+      <h1 className="text-center text-4xl md:text-5xl text-primary-dark font-extrabold mb-12">
+        Transaksi Panel
+      </h1>
 
-        {/* Search */}
-        <div className="flex justify-between">
-          <div>
-            <div className="flex gap-2 mb-4">
-              <div>
-                <label
-                  htmlFor="startDate"
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                >
-                  Keyword:
-                </label>
-                <input
-                  id="keyword"
-                  type="text"
-                  value={keyword}
-                  onChange={(e) => setKeyword(e.target.value)}
-                  className="border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
-                />
-              </div>
-            </div>
-
-            <CustomButton
-              onClick={search}
-              className="bg-blue-400 hover:bg-blue-500 text-white w-28 md:text-base"
-              type={"submit"}
+      {/* Search */}
+      <div className="flex justify-center md:justify-between items-center mb-6">
+        <div className="flex gap-4 items-center w-full md:w-auto">
+          <div className="w-full">
+            <label
+              htmlFor="keyword"
+              className="block text-gray-700 text-sm font-bold mb-2"
             >
-              Search
-            </CustomButton>
+              Keyword:
+            </label>
+            <input
+              id="keyword"
+              type="text"
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+              className="border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:border-blue-300 w-full"
+            />
           </div>
+
+          <CustomButton
+            onClick={search}
+            className="bg-gradient-to-r from-primary-dark to-secondary text-white px-6 py-2 rounded-md hover:from-primary hover:to-secondary-light transition-all duration-300 ease-in-out"
+            type="submit"
+          >
+            Search
+          </CustomButton>
         </div>
-        {/* End Search */}
-      </header>
-      {/* End Header */}
+      </div>
+      {/* End Search */}
+    </header>
+    {/* End Header */}
 
       <TableTransaction transaksi={transaksi} />
     </AdminLayout>
