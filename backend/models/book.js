@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   class book extends Model {
     
     static associate(models) {
-
+      this.hasMany(models.transaksi,{foreignKey:"BookID", as:"transaksi" })
     }
   }
   book.init({

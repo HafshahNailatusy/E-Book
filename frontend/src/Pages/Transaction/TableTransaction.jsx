@@ -26,8 +26,8 @@ export const TableTransaction = ({ transaksi }) => {
           transaksi.map((item, index) => (
             <tr key={index} className="hover:bg-slate-50">
               <td className="p-3">{index + 1}</td>
-              <td>{item[index].judul}</td>
-              <td align="center">Rp. {item.harga}</td>
+              <td>{item.book?.judul}</td>
+              <td align="center">Rp. {item.book?.harga}</td>
               <td align="center">{item.nama}</td>
               <td align="center">{formatDate(item.TglTransaksi)}</td>
               

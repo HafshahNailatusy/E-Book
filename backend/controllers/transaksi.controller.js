@@ -1,6 +1,6 @@
 const { request, response } = require("express")
 const transaksiModel = require("../models/index").transaksi
-const detailmodel = require("../models/index").detailtransaksi
+const bookModel = require("../models/index").book
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize("ebookta", "root", "", {
     host: "localhost",
@@ -8,12 +8,17 @@ const sequelize = new Sequelize("ebookta", "root", "", {
 })
 
 exports.getAllTransaksi = async (request, response) => { //unknown column
-    const sql = await sequelize.query(
-        `SELECT * from transaksis`
+    const sql = await transaksiModel.findAll({
+        include: [{
+            model: bookModel,
+            as: "book"
+        }
+        ]
+    }
     )
 
     if (sql[0].length === 0) {
-        return response.status(400).json({
+        return response.json({
             status: false,
             message: "no transaction to show",
         });
@@ -73,6 +78,7 @@ exports.addTransaksi = async (request, response) => {
         UserID: request.body.UserID,
         MetodePay: request.body.MetodePay,
         TglTransaksi: TglTransaksi,
+        BookID: request.body.BookID
     };
 
     transaksiModel
@@ -91,7 +97,7 @@ exports.addTransaksi = async (request, response) => {
             });
         });
 }
-;
+    ;
 
 
 exports.updateTransaksi = async (request, response) => {

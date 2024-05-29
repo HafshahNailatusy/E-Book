@@ -11,9 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.user)
-      this.belongsTo(models.book)
-   
+      this.belongsTo(models.user, {
+        foreignKey: `UserID`, as: "user"
+      })
+      this.belongsTo(models.book, {
+        foreignKey: `BookID`, as: "book"
+      })
+
     }
   }
   transaksi.init({

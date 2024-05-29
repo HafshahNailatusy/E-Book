@@ -5,7 +5,7 @@ const transaksiController = require(`../controllers/transaksi.controller`)
 const auth = require('../auth/auth')
 const {checkRole} = require('../middleware/checkRole')
 
-app.get("/getAllTran", auth.authVerify, checkRole(["admin"]), transaksiController.getAllTransaksi)
+app.get("/getAllTran", transaksiController.getAllTransaksi)
 app.get("/findTransaksi/:id", auth.authVerify, checkRole(["admin"]), transaksiController.findTransaksi)
 app.get("/findTransaksi/:keyword", auth.authVerify, checkRole(["admin"]), transaksiController.findTransaksi2)
 app.post("/add", transaksiController.addTransaksi)

@@ -4,7 +4,7 @@ import { handleApiError } from "./helpers/Response";
 
 export const getAllTransaksi = async () => {
   try {
-    const response = await axios.get(baseURL + "/transaksi/getAllTran");
+    const response = await axios.get(baseURL + "/transaksi/getAllTran", config());
     return response.data.data;
   } catch (error) {
     return handleApiError(error);
