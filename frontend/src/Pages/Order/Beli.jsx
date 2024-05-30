@@ -22,8 +22,7 @@ const BookDetail = () => {
   const [loading, setLoading] = useState("")
   const { id } = useParams();
   const navigate = useNavigate();
-  
-  
+
 
   useEffect(() => {
     bookData()

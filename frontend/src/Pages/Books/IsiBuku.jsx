@@ -3,6 +3,8 @@ import { toast } from "react-toastify";
 import { initialNewbookState } from "./../../Config";
 import { addBook, getallbook, updateBook, deleteBook , findbook} from "./../../utils/Buku";
 import { handleApiResponse } from "./../../utils/helpers/Response";
+import { useParams } from "react-router-dom";
+
 
 export const IsiBuku = () => {
   const [search, setSearch] = useState("");
@@ -11,6 +13,9 @@ export const IsiBuku = () => {
   const [newBuku, setNewBuku] = useState(initialNewbookState);
   const [idbuku, setidbuku] = useState("");
   const [action, setAction] = useState("");
+  const { id } = useParams();
+
+
 
   useEffect(() => {
     getall();
@@ -47,6 +52,7 @@ export const IsiBuku = () => {
       harga: item.harga,
       kategori: item.kategori,
     });
+    setidbuku(item.BookID);
   };
 
   const handleDelete = async (id) => {
@@ -91,7 +97,7 @@ export const IsiBuku = () => {
       response = await addBook(data);
       console.log(response)
     } else if (action === "edit") {
-      response = await updateBook(idbuku, data);
+      response = await updateBook(id, data);
       console.log(response)
     }
 
@@ -113,6 +119,7 @@ export const IsiBuku = () => {
     console.log(foto)
     setNewBuku({ ...newBuku, foto: foto });
   };
+  
 
   return {
     search,

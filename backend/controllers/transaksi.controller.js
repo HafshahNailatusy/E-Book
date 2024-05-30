@@ -51,10 +51,10 @@ exports.findTransaksi = async (request, response) => { //unknown column
 }
 
 exports.findTransaksi2 = async (request, response) => { //unknown column
-    let keyword = request.body.keyword
+    let userID = request.body.keyword
 
     const data = await sequelize.query(
-        `SELECT * from transaksis where UserID = '${keyword}' OR MetodePay ='${keyword}' `
+        `SELECT * from transaksis where UserID = ${userID}`
     )
     if (data[0].length === 0) {
         return response.status(400).json({
@@ -175,3 +175,5 @@ exports.deleteTransaksi = async (request, response) => {
             })
         })
 }
+
+exports

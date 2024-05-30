@@ -19,6 +19,7 @@ const Profile = lazy(() => import("../Pages/Profile"));
 const History = lazy(() => import("../Pages/History"));
 const Order = lazy(() => import("../Pages/Order"));
 const ErrorPage = lazy(() => import("../Pages/ErrorPage"));
+const TransaksiUser = lazy(() => import("../Pages/TransactionUser"));
 
 const Router = () => {
   return (
@@ -34,6 +35,15 @@ const Router = () => {
           element={
             <ProtectRoute>
               <Profile />
+            </ProtectRoute>
+          }
+        />
+
+        <Route
+          path="/transaksi"
+          element={
+            <ProtectRoute>
+              <TransaksiUser />
             </ProtectRoute>
           }
         />

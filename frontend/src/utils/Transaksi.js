@@ -11,6 +11,15 @@ export const getAllTransaksi = async () => {
   }
 };
 
+export const getTransaksiUser = async (id) => {
+  try {
+    const response = await axios.get(baseURL + `/findTransaksiUser/${id}`, config());
+    return response.data.data;
+  } catch (error) {
+    return handleApiError(error);
+  }
+};
+
 export const findtransaksi = async (id) => {
   try {
     const response = await axios.get(
