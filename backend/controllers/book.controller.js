@@ -119,7 +119,6 @@ exports.addBook = (request, response) => {
 
 exports.updateBook = (request, response) => {
     upload(request, response, async error => {
-        /** check if there are error when upload */
         if (error) {
             return response.json({ message: error })
         }
@@ -128,43 +127,32 @@ exports.updateBook = (request, response) => {
 
         let dataBook = {
             BookID: request.body.BookID,
-            Judul: request.body.judul,
-            Penulis: request.body.penulis,
-            Sinopsis: request.body.sinopsis,
-            Harga: request.body.harga,
-            KategoriID: request.body.KategoriID
+            judul: request.body.judul,
+            penulis: request.body.penulis,
+            sinopsis: request.body.sinopsis,
+            harga: request.body.harga,
+            kategori: request.body.kategori
         }
 
         if (request.file) {
-            /** get selected event's data */
             const selectedBook = await bookModel.findOne({
                 where: { BookID: BookID }
             })
             const oldImage = selectedBook.image
-
-            /** prepare path of old image to delete file */
             const pathImage = path.join(__dirname, `../image`, oldImage)
-
             if (fs.existsSync(pathImage)) {
-                /** delete old image file */
                 fs.unlink(pathImage, error => console.log(error))
             }
-
-            /** add new image filename to event object */
             dataBook.image = request.file.filename
 
         }
 
-
-
-
-        bookModel.update(dataBook, { where: { id: BookID } })
+        bookModel.update(dataBook, { where: { BookID: BookID } })
             .then(result => {
                 return response.json({
                     status: true,
                     message: `Data book has been updated`,
                     bookid: BookID,
-
                     result: dataBook,
                 })
             })

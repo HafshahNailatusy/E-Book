@@ -7,7 +7,7 @@ const {checkRole} = require('../middleware/checkRole')
 
 
 app.post("/add",auth.authVerify, checkRole(["admin"]), bookController.addBook)
-app.put("/update/:id", auth.authVerify, checkRole(["admin"]), bookController.updateBook)
+app.put("/update/:BookID", auth.authVerify, checkRole(["admin"]), bookController.updateBook)
 app.delete("/delete/:BookID", auth.authVerify, checkRole(["admin"]), bookController.deleteBook)
 app.get("/findBookAdmin", auth.authVerify, checkRole(["admin"]), bookController.findBook)
 app.get("/findByID/:id",  bookController.findBookID)

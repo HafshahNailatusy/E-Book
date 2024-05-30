@@ -55,9 +55,9 @@ export const addBook = async (data) => {
   }
 };
 
-export const updateBook = async (id, data) => {
+export const updateBook = async (BookID, data) => {
   try {
-    const response = await axios.put(baseURL + `/book/update/${id}` ,data, config());
+    const response = await axios.put(baseURL + `/book/update/${BookID}` ,data, config());
     console.log(response)
     return response.data;
   } catch (error) {
