@@ -11,16 +11,12 @@ const Book = () => {
     search,
     setSearch,
     buku,
-    setBuku,
     ModalIsOpen,
     setModalIsOpen,
     newBuku,
     setNewBuku,
-    idbuku,
-    setidbuku,
+    setBookID,
     action,
-    setAction,
-    getall,
     handleSearch,
     handleAdd,
     handleEdit,
@@ -103,7 +99,7 @@ const Book = () => {
                       className="bg-primary rounded-full hover:bg-secondary text-white w-28 my-2"
                       onClick={() => {
                         handleEdit(item);
-                        setidbuku(item.BookID);
+                        setBookID(item.BookID);
                       }}
                     >
                       Edit

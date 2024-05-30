@@ -57,7 +57,8 @@ export const addBook = async (data) => {
 
 export const updateBook = async (id, data) => {
   try {
-    const response = await axios.put(baseURL + `/book/update/${id}`,data, config());
+    const response = await axios.put(baseURL + `/book/update/${id}` ,data, config());
+    console.log(response)
     return response.data;
   } catch (error) {
     return handleApiError(error);

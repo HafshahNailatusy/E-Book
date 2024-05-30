@@ -162,7 +162,10 @@ exports.updateBook = (request, response) => {
             .then(result => {
                 return response.json({
                     status: true,
-                    message: `Data book has been updated`
+                    message: `Data book has been updated`,
+                    bookid: BookID,
+
+                    result: dataBook,
                 })
             })
             .catch(error => {

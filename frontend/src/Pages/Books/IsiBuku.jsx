@@ -3,19 +3,16 @@ import { toast } from "react-toastify";
 import { initialNewbookState } from "./../../Config";
 import { addBook, getallbook, updateBook, deleteBook , findbook} from "./../../utils/Buku";
 import { handleApiResponse } from "./../../utils/helpers/Response";
-import { useParams } from "react-router-dom";
 
 
 export const IsiBuku = () => {
   const [search, setSearch] = useState("");
+  const [data, setData] = useState([]);
   const [buku, setBuku] = useState([]);
   const [ModalIsOpen, setModalIsOpen] = useState(false);
   const [newBuku, setNewBuku] = useState(initialNewbookState);
-  const [idbuku, setidbuku] = useState("");
-  const [action, setAction] = useState("");
-  const { id } = useParams();
-
-
+  const [BookID, setBookID] = useState("");
+  const [action, setAction] = useState("")
 
   useEffect(() => {
     getall();
@@ -52,7 +49,7 @@ export const IsiBuku = () => {
       harga: item.harga,
       kategori: item.kategori,
     });
-    setidbuku(item.BookID);
+    setBookID(item.BookID);
   };
 
   const handleDelete = async (id) => {
@@ -84,7 +81,7 @@ export const IsiBuku = () => {
   const handleSave = async (e) => {
     e.preventDefault();
 
-    let data = new FormData();
+    const data = new FormData();
     data.append("judul", newBuku.judul);
     data.append("penulis", newBuku.penulis);
     data.append("sinopsis", newBuku.sinopsis);
@@ -96,9 +93,11 @@ export const IsiBuku = () => {
     if (action === "add") {
       response = await addBook(data);
       console.log(response)
+      setModalIsOpen(false);
     } else if (action === "edit") {
-      response = await updateBook(id, data);
+      response = await updateBook(BookID, newBuku);
       console.log(response)
+      setModalIsOpen(false);
     }
 
     handleApiResponse(response, () => {
@@ -110,7 +109,7 @@ export const IsiBuku = () => {
 
   const handleClose = () => {
     setAction("");
-    setidbuku("")
+    setBookID("")
     setNewBuku(initialNewbookState)
     setModalIsOpen(false);
   };
@@ -130,8 +129,8 @@ export const IsiBuku = () => {
     setModalIsOpen,
     newBuku,
     setNewBuku,
-    idbuku,
-    setidbuku,
+    BookID,
+    setBookID,
     action,
     setAction,
     getall,
