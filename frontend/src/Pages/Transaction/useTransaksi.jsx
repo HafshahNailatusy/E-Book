@@ -16,14 +16,6 @@ export const useTransaksi = () => {
   const fetchTransaksi = async () => {
     try {
       const dataTransaksi = await getAllTransaksi();
-      // const bukuList = [];
-
-      // for (const data of dataTransaksi) {
-      //   const book = await findbyID(data.BukuID);
-      //   bukuList.push(book);
-      // }
-
-      // setBuku(bukuList);
       setTransaksi(dataTransaksi);
     } catch (error) {
       console.error(error);

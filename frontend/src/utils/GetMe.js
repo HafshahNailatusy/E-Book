@@ -10,10 +10,6 @@ function GetMe() {
         setUser(user);
     }, []);
 
-    return (
-        <div>
-            <p>{user?.nama}</p>
-        </div>
-    )
+    return (user)
 }
 export default GetMe;   
