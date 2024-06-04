@@ -8,10 +8,9 @@ import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
-// import { AiOutlineEye } from "react-icons/ai";
-// import { AiOutlineEyeInvisible } from "react-icons/ai";
+import AuthHelpers from "../../utils/helpers/AuthHelpers";
 
-const LoginAdmin = () => {
+const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const navigate = useNavigate();
@@ -24,46 +23,51 @@ const LoginAdmin = () => {
 		try {
 			const res = await AdminHandler(values);
 			console.log(res);
-			if (res.status === true) {
-				navigate("/dashboard");
+			if (res.res.role === "admin") {
+
+				const isAdmin = await AuthHelpers.SetAuth(res);
+				if(isAdmin.res === "admin"){
+					navigate(`/admin/buku`);
+
+				} 
 			}
 		} catch (error) {
+			AuthHelpers.ClearAuth()
 			console.error("error:", error);
 		}
-	};
+	};	
 	const handleClickShowPassword = () => setShowPassword((show) => !show);
 	const handleMouseDownPassword = (event) => {
 		event.preventDefault();
 	  };
 
 	return (
-
-		<div className="wrapper">
-			<form onSubmit={submitHandler}>
-				<h1 className="butopia123">butopia.</h1>
-				<h2 className="jelas">-Admin-</h2>
-				<h5 className="teks">Email</h5>
-				<div className="input-box">
-					<input
-						type="email"
-						id="email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-					<MdOutlineMail className="icon" />
-				</div>
-				<h5 className="teks">Password</h5>
-				<div className="input-box">
-					<input
-						type={showPassword ? "text" : "password"}
-						id="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-					<FiLock className="icon" />
-					<InputAdornment className="pw" position="end">
+			<div className="wrapper">
+				<form onSubmit={submitHandler}>
+					<h1 className="butopia123">butopia.</h1>
+					<h2 className="jelas">-Login-</h2>
+					<h5 className="teks">Email</h5>
+					<div className="input-box">
+						<input
+							type="email"
+							id="email"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							required
+						/>
+						<MdOutlineMail className="icon" />
+					</div>
+					<h5 className="teks">Password</h5>
+					<div className="input-box">
+				 		<input
+							type={showPassword ? "text" : "password"}
+							id="password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							required
+						/>
+						<FiLock className="icon" />
+						<InputAdornment className="pw" position="end">
 						<IconButton
 							className="iconbut"
 							aria-label="toggle password visibility"
@@ -74,15 +78,13 @@ const LoginAdmin = () => {
 							{showPassword ? <VisibilityOutlinedIcon /> : < VisibilityOffOutlinedIcon/>}
 						</IconButton>
 					</InputAdornment>
-
-				</div>
-				<button type="submit" className="buttoni">Login</button>
-
-			</form>
-		</div>
-
+						
+					</div>
+					<button type="submit" className="buttoni">Login</button>
+				</form>
+			</div>
+		
 	);
-
 };
 
-export default LoginAdmin;
+export default Login;

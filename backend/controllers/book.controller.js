@@ -1,11 +1,10 @@
 const { request, response } = require("express")
 
-const upload = require('./upload-image').single('filename')
+const upload = require('./upload-image').single('foto')
 const bookModel = require(`../models/index`).book
 const Op = require(`sequelize`).Op
 const path = require('path')
 const fs = require(`fs`)
-const kategoriModel = require(`../models/kategori`).kategori
 
 exports.getAllBook = async (request, response) => {
     let books = await bookModel.findAll()
@@ -22,6 +21,7 @@ exports.findBook = async (request, response) => {
         where: {
             [Op.or]: [
                 { judul: { [Op.like]: "%" + keyword + "%" } } ||
+                { kategori: { [Op.like]: "%" + keyword + "%" } } ||
                 { penulis: { [Op.like]: "%" + keyword + "%" } } 
             ]
         }
@@ -35,8 +35,7 @@ exports.findBook = async (request, response) => {
 
 exports.findByKategori = async (req, res) => {
     await bookModel.findAll({
-        where: { KategoriID: req.params.id },
-        include: [{ kategoriModel, as: 'kategori' }]
+        where: { kategori: req.body.kategori }
     })
         .then(result => {
             return res.json({
@@ -57,10 +56,10 @@ exports.findBookID = async (request, response) => {
     if (!BookID) { 
         return response.status(400).json({
             status: false,
-            message: "masukkan id user di url",
+            message: "masukkan id buku di url",
         });
     } else { 
-        let user = await userModel.findOne({
+        let user = await bookModel.findOne({
             where: {
                 [Op.and]: [{ BookID: BookID }],
             },
@@ -91,12 +90,12 @@ exports.addBook = (request, response) => {
         }
 
         let newBook = {
-            judul: request.body.Judul,
-            penulis: request.body.Penulis,
-            sinopsis: request.body.Sinopsis,
+            judul: request.body.judul,
+            penulis: request.body.penulis,
+            sinopsis: request.body.sinopsis,
             foto: request.file.filename,
             harga: request.body.harga,
-            KategoriID: request.body.KategoriID
+            kategori: request.body.kategori
         }
 
         console.log(newBook)
@@ -120,7 +119,6 @@ exports.addBook = (request, response) => {
 
 exports.updateBook = (request, response) => {
     upload(request, response, async error => {
-        /** check if there are error when upload */
         if (error) {
             return response.json({ message: error })
         }
@@ -129,41 +127,33 @@ exports.updateBook = (request, response) => {
 
         let dataBook = {
             BookID: request.body.BookID,
-            Judul: request.body.judul,
-            Penulis: request.body.penulis,
-            Sinopsis: request.body.sinopsis,
-            Harga: request.body.harga,
-            KategoriID: request.body.KategoriID
+            judul: request.body.judul,
+            penulis: request.body.penulis,
+            sinopsis: request.body.sinopsis,
+            harga: request.body.harga,
+            kategori: request.body.kategori
         }
 
         if (request.file) {
-            /** get selected event's data */
             const selectedBook = await bookModel.findOne({
                 where: { BookID: BookID }
             })
             const oldImage = selectedBook.image
-
-            /** prepare path of old image to delete file */
             const pathImage = path.join(__dirname, `../image`, oldImage)
-
             if (fs.existsSync(pathImage)) {
-                /** delete old image file */
                 fs.unlink(pathImage, error => console.log(error))
             }
-
-            /** add new image filename to event object */
             dataBook.image = request.file.filename
 
         }
 
-
-
-
-        bookModel.update(dataBook, { where: { id: BookID } })
+        bookModel.update(dataBook, { where: { BookID: BookID } })
             .then(result => {
                 return response.json({
                     status: true,
-                    message: `Data book has been updated`
+                    message: `Data book has been updated`,
+                    bookid: BookID,
+                    result: dataBook,
                 })
             })
             .catch(error => {
@@ -193,7 +183,6 @@ exports.deleteBook = async (request, response) => {
             })
         })
         .catch(error => {
-            /** if update's process fail */
             return response.json({
                 status: false,
                 message: error.message

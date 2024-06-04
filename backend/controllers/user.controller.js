@@ -6,7 +6,6 @@ const upload = require('./upload-image').single(`foto`)
 const md5 = require(`md5`)
 const jsonwebtoken = require('jsonwebtoken')
 const Sequelize = require('sequelize')
-const { param } = require('../routes/transaksi.route')
 const sequelize = new Sequelize("ebookta", "root", "", {
     host: "localhost",
     dialect: "mysql"
@@ -99,7 +98,6 @@ exports.Login = async (request, response) => {
             });
         }
         let tokenPayLoad = { //bikin payload biar bisa dpt token
-            UserID: findUser.id,
             email: findUser.email,
             role: findUser.role,
             nama: findUser.nama
@@ -109,9 +107,10 @@ exports.Login = async (request, response) => {
         return response.status(200).json({
             status: true, //klo bisa, muncul pesan "hore uhuy bisa"
             message: "Success login",
+            logged: true,
             data: { //yang login siapa
                 token: token,
-                id_user: findUser.id_user,
+                UserID: findUser.UserID,
                 nama: findUser.nama,
                 email: findUser.email,
                 role: findUser.role
@@ -423,13 +422,13 @@ exports.deleteUser = async (request, response) => {
 
         .then((result) => {
             return response.json({
-                success: true,
+                status: true,
                 message: `data user has ben delete where id :` + UserID,
             });
         })
         .catch((error) => {
             return response.status(400).json({
-                success: false,
+                status: false,
                 message: error.message,
             });
         });
@@ -468,4 +467,14 @@ exports.resetpasswordUser = async (req, res) => {
         })
     }
 
+}
+
+exports.Logout = async (req, res) => {
+    try {
+        req.user.token = null;
+        await req.user.save();
+        res.send();
+      } catch (error) {
+        res.status(500).send();
+      }
 }

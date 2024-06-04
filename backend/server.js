@@ -9,8 +9,6 @@ const userRoute = require(`./routes/user.route`)
 app.use(`/user`, userRoute)
 const bookRoute = require(`./routes/book.route`)
 app.use(`/book`, bookRoute)
-const kategoriRoute = require(`./routes/kategori.route`)
-app.use(`/kategori`, kategoriRoute)
 const transaksiRoute = require(`./routes/transaksi.route`)
 app.use(`/transaksi`, transaksiRoute)
 

@@ -13,11 +13,12 @@ app.post("/addByAdmin", auth.authVerify, checkRole(["admin"]), userController.ad
 app.delete("/delete/:id", auth.authVerify, checkRole(["admin"]), userController.deleteUser)
 app.get("/findAllCustomer", checkRole(["admin"]), userController.findAllCustomer)
 app.get("/findAllAdmin", checkRole(["admin"]), userController.findAllAdmin)
-app.get("/updateuserAdmin/:id", checkRole(["admin"]), userController.updateUser)
+app.put("/updateuserAdmin/:id", checkRole(["admin"]), userController.updateUser)
 app.post("/login", userController.Login)
 app.put("/:id", userController.updateUser)
 app.post("/RegisterCustomer", userController.RegisterCustomer)
 app.put("/resetpassword/:id", userController.resetpasswordUser)
+app.post("/logout", userController.Logout)
 
 
 module.exports = app

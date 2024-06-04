@@ -1,6 +1,6 @@
 const { request, response } = require("express")
 const transaksiModel = require("../models/index").transaksi
-const detailmodel = require("../models/index").detailtransaksi
+const bookModel = require("../models/index").book
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize("ebookta", "root", "", {
     host: "localhost",
@@ -8,12 +8,17 @@ const sequelize = new Sequelize("ebookta", "root", "", {
 })
 
 exports.getAllTransaksi = async (request, response) => { //unknown column
-    const sql = await sequelize.query(
-        `SELECT * from transaksis`
+    const sql = await transaksiModel.findAll({
+        include: [{
+            model: bookModel,
+            as: "book"
+        }
+        ]
+    }
     )
 
     if (sql[0].length === 0) {
-        return response.status(400).json({
+        return response.json({
             status: false,
             message: "no transaction to show",
         });
@@ -26,11 +31,10 @@ exports.getAllTransaksi = async (request, response) => { //unknown column
 }
 
 exports.findTransaksi = async (request, response) => { //unknown column
-    let keyword = request.body.keyword
-    let userId = request.body.userid
+    let id = request.params.id
 
     const data = await sequelize.query(
-        `SELECT * from transaksis where UserID = '${userId}' OR MetodePay ='${keyword}' `
+        `SELECT from transaksis where TransaksiID = '${id}'`
     )
     if (data[0].length === 0) {
         return response.status(400).json({
@@ -45,6 +49,27 @@ exports.findTransaksi = async (request, response) => { //unknown column
         message: "Data Transaksi have been loaded"
     })
 }
+
+exports.findTransaksi2 = async (request, response) => { //unknown column
+    let userID = request.body.keyword
+
+    const data = await sequelize.query(
+        `SELECT * from transaksis where UserID = ${userID}`
+    )
+    if (data[0].length === 0) {
+        return response.status(400).json({
+            status: false,
+            message: "no transaction to show",
+        });
+    }
+
+    return response.json({
+        status: true,
+        data: data,
+        message: "Data Transaksi have been loaded"
+    })
+}
+
 exports.addTransaksi = async (request, response) => {
     const today = new Date();
     const TglTransaksi = `${today.getFullYear()}-${today.getMonth()}-
@@ -53,45 +78,27 @@ exports.addTransaksi = async (request, response) => {
         UserID: request.body.UserID,
         MetodePay: request.body.MetodePay,
         TglTransaksi: TglTransaksi,
+        BookID: request.body.BookID
     };
-    transaksiModel.create(transaksiData)
-        .then(result => {
+
+    transaksiModel
+        .create(transaksiData)
+        .then((result) => {
             return response.json({
                 status: true,
                 data: result,
-                message: `New transaksi has been inserted`
-            })
+                message: `New transaksi has been inserted`,
+            });
         })
-
-        .catch(error => {
-            return response.json({
+        .catch((error) => {
+            return response.status(400).json({
                 status: false,
-                message: error.message
-            })
-        })
-};
+                message: error.message,
+            });
+        });
+}
+    ;
 
-exports.addDetailTransaksi = async (request, response) => {
-    const data = {
-        TransaksiID: request.body.TransaksiID,
-        BookID: request.body.BookID,
-    };
-    transaksiModel.create(data)
-        .then(result => {
-            return response.json({
-                status: true,
-                data: result,
-                message: `New detail transaksi has been inserted`
-            })
-        })
-
-        .catch(error => {
-            return response.json({
-                status: false,
-                message: error.message
-            })
-        })
-};
 
 exports.updateTransaksi = async (request, response) => {
     let id = request.params.id
@@ -168,3 +175,5 @@ exports.deleteTransaksi = async (request, response) => {
             })
         })
 }
+
+exports

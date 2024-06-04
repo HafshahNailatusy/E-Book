@@ -20,14 +20,19 @@ module.exports = {
           key: 'UserID'
         }
       },
+      BookID: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'books',
+          key: 'BookID'
+        }
+      },
       TglTransaksi: {
         type: Sequelize.INTEGER
       },
       MetodePay: {
         type: Sequelize.STRING
-      },
-      Status: {
-        type: Sequelize.ENUM("Lunas","Belum Lunas")
       },
       createdAt: {
         allowNull: false,
