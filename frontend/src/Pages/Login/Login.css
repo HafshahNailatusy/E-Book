@@ -8,19 +8,19 @@
 
 .mail{
     color: #130202;
-    height: 29px;
+    /* height: 29px; */
     width: 35px;
 }
 .wrapper{
     width: 420px;
     background: white ;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
 
 }
 .butopia123 {
-    font-size: 96px;
+    font-size: 90px;
     text-align: center;
     position: relative;
     /* margin-left: 1; */
@@ -88,13 +88,14 @@
     align-items: center;
     justify-content: center;
     padding: auto;
+    
 
 
 }
 
 .input-box input{
     width: 456px;
-    height: 59px;
+    height: 50px;
     font-weight: 500; /* ukuran font (Medium)*/
     background: #ffffff;
     line-height: 80px;
@@ -192,7 +193,8 @@ code {
     margin: 10px;
     text-align: center;
     padding-right: 10px;
-    font-weight: bold;
+    font-weight: regular;
+    color: #000000;
 
 }
 .linkiy p a{
